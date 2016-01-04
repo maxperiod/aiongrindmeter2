@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseConsole|Win32">
+      <Configuration>ReleaseConsole</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0A28B4BD-8B98-4DEA-9E5C-DDDF14F46598}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>logfiletest</RootNamespace>
+    <ProjectName>aiongrindmeter2</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConsole|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConsole|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConsole|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\libraries\gtest-1.7.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/bigobj /time %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>E:\libraries\gtest-1.7.0\msvc\gtest\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WINVER=0x0400;__WXMSW__;_WINDOWS;wxUSE_GUI=1;_UNICODE;NDEBUG;_CRT_SECURE_NO_DEPRECATE</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\libraries\gtest-1.7.0\include;$(WXWIN)\include;$(WXWIN)\include\msvc</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>E:\libraries\gtest-1.7.0\msvc\gtest\Release;$(WXWIN)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;wxmsw30u_core.lib;wxbase30u.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConsole|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\libraries\gtest-1.7.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>E:\libraries\gtest-1.7.0\msvc\gtest\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="exception\NoSuchRuleStringException.h" />
+    <ClInclude Include="experimental\AutoAttackBuffer.h" />
+    <ClInclude Include="experimental\CombatModule.h" />
+    <ClInclude Include="experimental\CombatStats.h" />
+    <ClInclude Include="experimental\CombatStatsManager.h" />
+    <ClInclude Include="experimental\ProcDamageRegister.h" />
+    <ClInclude Include="experimental\skilldamagestats.h" />
+    <ClInclude Include="experimental\WeaponSwitch.h" />
+    <ClInclude Include="gui\ApFrame.h" />
+    <ClInclude Include="gui\ExpFrame.h" />
+    <ClInclude Include="gui\ItemAcquisitionFrame.h" />
+    <ClInclude Include="gui\ItemBundleFrame.h" />
+    <ClInclude Include="gui\ItemRollsFrame.h" />
+    <ClInclude Include="gui\ListCtrlFrame.h" />
+    <ClInclude Include="gui\MainFrame.h" />
+    <ClInclude Include="gui\MobKillsFrame.h" />
+    <ClInclude Include="gui\ModulePanel.h" />
+    <ClInclude Include="gui\ModuleWindowSelectionFrame.h" />
+    <ClInclude Include="gui\ProfessionFrame.h" />
+    <ClInclude Include="gui\ProfessionLevelingFrame.h" />
+    <ClInclude Include="language\EnglishNA.h" />
+    <ClInclude Include="language\language.h" />
+    <ClInclude Include="language\LanguageManager.h" />
+    <ClInclude Include="lookups\ApChart.h" />
+    <ClInclude Include="lookups\CommandStringsNAEnglish.h" />
+    <ClInclude Include="lookups\ExpChartNA40.h" />
+    <ClInclude Include="lookups\MessageRuleEnums.h" />
+    <ClInclude Include="lookups\RelicAp47.h" />
+    <ClInclude Include="lookups\RelicAp48.h" />
+    <ClInclude Include="lookups\SkillToClassHardCodedNA.h" />
+    <ClInclude Include="model\AbstractCounter.h" />
+    <ClInclude Include="model\ApGainMeter.h" />
+    <ClInclude Include="model\assistdamage.h" />
+    <ClInclude Include="model\Counter.h" />
+    <ClInclude Include="model\DamageInflicted.h" />
+    <ClInclude Include="model\Enemies.h" />
+    <ClInclude Include="model\ExpChart.h" />
+    <ClInclude Include="model\ExpGainMeter.h" />
+    <ClInclude Include="model\GatherCraft.h" />
+    <ClInclude Include="model\GatherCraftRecord.h" />
+    <ClInclude Include="model\IndividualItemGatherCrafts.h" />
+    <ClInclude Include="model\ItemRolls.h" />
+    <ClInclude Include="model\Items.h" />
+    <ClInclude Include="model\KinahGainMeter.h" />
+    <ClInclude Include="model\KnownPlayers.h" />
+    <ClInclude Include="model\LevelUpChecker.h" />
+    <ClInclude Include="model\MeterValue.h" />
+    <ClInclude Include="model\Observable.h" />
+    <ClInclude Include="model\Observer.h" />
+    <ClInclude Include="model\PlayerClassManager.h" />
+    <ClInclude Include="model\ProfessionLeveling.h" />
+    <ClInclude Include="model\ProfessionLevelingHistory.h" />
+    <ClInclude Include="model\pvpKillsCounter.h" />
+    <ClInclude Include="model\RelicAP.h" />
+    <ClInclude Include="model\ServerState.h" />
+    <ClInclude Include="model\SoulHealer.h" />
+    <ClInclude Include="model\ValueGainObserver.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="modules\ApModule.h" />
+    <ClInclude Include="modules\ExpModule.h" />
+    <ClInclude Include="modules\GpModule.h" />
+    <ClInclude Include="modules\HuntingModule.h" />
+    <ClInclude Include="modules\ItemAcquisitionModule.h" />
+    <ClInclude Include="modules\KinahModule.h" />
+    <ClInclude Include="modules\PlayerIdentificationModule.h" />
+    <ClInclude Include="modules\ProfessionModule.h" />
+    <ClInclude Include="modules\SoulHealerModule.h" />
+    <ClInclude Include="parser\BracketValueReader.h" />
+    <ClInclude Include="parser\ChatLogCommand.h" />
+    <ClInclude Include="parser\ChatLogCommandFactory.h" />
+    <ClInclude Include="parser\ItemIDFileReader.h" />
+    <ClInclude Include="parser\ItemIDReader.h" />
+    <ClInclude Include="parser\LogFileReader.h" />
+    <ClInclude Include="parser\LogFileUtility.h" />
+    <ClInclude Include="parser\MaxPeriodParser.h" />
+    <ClInclude Include="parser\MessageRules.h" />
+    <ClInclude Include="parser\Parser.h" />
+    <ClInclude Include="parser\SkillToClassMap.h" />
+    <ClInclude Include="parser\SystemCFG.h" />
+    <ClInclude Include="parser\UserCommandFactory.h" />
+    <ClInclude Include="stringFunctions.h" />
+    <ClInclude Include="testmodule\testlog\temporarylogfile.h" />
+    <ClInclude Include="Timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="experimental\AutoAttackBuffer.cpp" />
+    <ClCompile Include="experimental\CombatModule.cpp" />
+    <ClCompile Include="experimental\ProcDamageRegister.cpp" />
+    <ClCompile Include="gui\ApFrame.cpp" />
+    <ClCompile Include="gui\ExpFrame.cpp" />
+    <ClCompile Include="gui\ItemAcquisitionFrame.cpp" />
+    <ClCompile Include="gui\ItemBundleFrame.cpp" />
+    <ClCompile Include="gui\ItemRollsFrame.cpp" />
+    <ClCompile Include="gui\ListCtrlFrame.cpp" />
+    <ClCompile Include="gui\MainFrame.cpp" />
+    <ClCompile Include="gui\MobKillsFrame.cpp" />
+    <ClCompile Include="gui\ModuleWindowSelectionFrame.cpp" />
+    <ClCompile Include="gui\ProfessionFrame.cpp" />
+    <ClCompile Include="gui\ProfessionLevelingFrame.cpp" />
+    <ClCompile Include="language\LanguageManager.cpp" />
+    <ClCompile Include="lookups\ApChart.cpp" />
+    <ClCompile Include="lookups\CommandStringsNAEnglish.cpp" />
+    <ClCompile Include="lookups\ExpChartNA40.cpp" />
+    <ClCompile Include="lookups\RelicAp47.cpp" />
+    <ClCompile Include="lookups\RelicAp48.cpp" />
+    <ClCompile Include="lookups\SkillToClassHardCodedNA.cpp" />
+    <ClCompile Include="mains\MyApp.cpp" />
+    <ClCompile Include="model\ApGainMeter.cpp" />
+    <ClCompile Include="model\ExpChart.cpp" />
+    <ClCompile Include="model\ExpGainMeter.cpp" />
+    <ClCompile Include="model\GatherCraft.cpp" />
+    <ClCompile Include="model\GatherCraftRecord.cpp" />
+    <ClCompile Include="model\ItemRolls.cpp" />
+    <ClCompile Include="model\KinahGainMeter.cpp" />
+    <ClCompile Include="model\KnownPlayers.cpp" />
+    <ClCompile Include="model\LevelUpChecker.cpp" />
+    <ClCompile Include="model\MeterValue.cpp" />
+    <ClCompile Include="model\PlayerClassManager.cpp" />
+    <ClCompile Include="model\ProfessionLeveling.cpp" />
+    <ClCompile Include="model\ProfessionLevelingHistory.cpp" />
+    <ClCompile Include="model\pvpKillsCounter.cpp" />
+    <ClCompile Include="model\RelicAP.cpp" />
+    <ClCompile Include="model\SoulHealer.cpp" />
+    <ClCompile Include="modules\ApModule.cpp" />
+    <ClCompile Include="modules\ExpModule.cpp" />
+    <ClCompile Include="modules\GpModule.cpp" />
+    <ClCompile Include="modules\HuntingModule.cpp" />
+    <ClCompile Include="modules\ItemAcquisitionModule.cpp" />
+    <ClCompile Include="modules\KinahModule.cpp" />
+    <ClCompile Include="modules\PlayerIdentificationModule.cpp" />
+    <ClCompile Include="modules\ProfessionModule.cpp" />
+    <ClCompile Include="modules\SoulHealerModule.cpp" />
+    <ClCompile Include="parser\BracketValueReader.cpp" />
+    <ClCompile Include="parser\ChatLogCommandFactory.cpp" />
+    <ClCompile Include="parser\ItemIDFileReader.cpp" />
+    <ClCompile Include="parser\ItemIDReader.cpp" />
+    <ClCompile Include="parser\LogFileReader.cpp" />
+    <ClCompile Include="parser\LogFileUtility.cpp" />
+    <ClCompile Include="parser\MaxPeriodParser.cpp" />
+    <ClCompile Include="parser\MessageRules.cpp" />
+    <ClCompile Include="parser\SkillToClassMap.cpp" />
+    <ClCompile Include="parser\SystemCFG.cpp" />
+    <ClCompile Include="parser\UserCommandFactory.cpp" />
+    <ClCompile Include="stringFunctions.cpp" />
+    <ClCompile Include="testModule\ExpTest.cpp" />
+    <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="classSkills.txt" />
+    <None Include="file.txt" />
+    <None Include="output.txt" />
+    <None Include="testModule\testDirectoryChatLogDisabled\bin32\AION.bin" />
+    <None Include="testModule\testDirectoryChatLogDisabled\bin64\AION.bin" />
+    <None Include="testModule\testDirectoryChatLogEnabled\bin32\AION.bin" />
+    <None Include="testModule\testDirectoryChatLogEnabled\bin64\AION.bin" />
+    <None Include="testModule\testDirectoryLogfileExistsChatLogDisabled\bin32\AION.bin" />
+    <None Include="testModule\testDirectoryLogfileExistsChatLogDisabled\bin64\AION.bin" />
+    <None Include="testModule\testDirectoryLogfileExistsChatLogEnabled\bin32\AION.bin" />
+    <None Include="testModule\testDirectoryLogfileExistsChatLogEnabled\bin64\AION.bin" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,73 @@
+#include "ExpChartNA40.h"
+
+ExpChartNA40::ExpChartNA40(): ExpChart(65){
+	cumulativeMode = false;
+
+	values[ 0] = 400;
+	values[ 1] = 1033;
+	values[ 2] = 2387;
+	values[ 3] = 5234;
+	values[ 4] = 8601;
+	values[ 5] = 13323;
+	values[ 6] = 21032;
+	values[ 7] = 30972;
+	values[ 8] = 43087;
+	values[ 9] = 56183;
+	values[10] = 78370;
+	values[11] = 100203;
+	values[12] = 129506;
+	values[13] = 158838;
+	values[14] = 195209;
+	values[15] = 238640;
+	values[16] = 318338;
+	values[17] = 407257;
+	values[18] = 506158;
+	values[19] = 627122;
+	values[20] = 827364;
+	values[21] = 1041897;
+	values[22] = 1299044;
+	values[23] = 1522142;
+	values[24] = 1745386;
+	values[25] = 2017917;
+	values[26] = 2336082;
+	values[27] = 2607688;
+	values[28] = 3039136;	
+	values[29] = 3784200;
+	values[30] = 4423094;
+	values[31] = 5255354;
+	values[32] = 6286020;
+	values[33] = 8223545;
+	values[34] = 10478922;
+	values[35] = 12824678;
+	values[36] = 16916703;
+	values[37] = 19447692;
+	values[38] = 22796975;
+	values[39] = 27395550;
+	values[40] = 32060906;
+	values[41] = 37661563;
+	values[42] = 40313649;
+	values[43] = 42806525;
+	values[44] = 45761278;
+	values[45] = 49008484;
+	values[46] = 51861666;
+	values[47] = 54998404;
+	values[48] = 58478318;
+	values[49] = 62106470;
+	values[50] = 69317277;
+	values[51] = 75246001;
+	values[52] = 80259032;
+	values[53] = 90030075;
+	values[54] = 104225345;
+	values[55] = 124225345;
+	values[56] = 142978501;
+	values[57] = 165540035;
+	values[58] = 189974648;
+	values[59] = 239209928;
+	values[60] = 248865663;
+	values[61] = 257678943;
+	values[62] = 281111621;
+	values[63] = 508568274;
+	values[64] = 584561235;
+
+	initCumulativeValuesTable();
+}
