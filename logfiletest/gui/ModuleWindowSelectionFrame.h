@@ -48,11 +48,16 @@ public:
 	ModuleWindowSelectionFrame(int numRows, int numColumns);
 	void addModuleWindow(wxFrame* window, const wxString& name, int row, int column);
 
+	void finishAddingButtons() {
+		panel->SetSizer(sizer);
+		panel->Fit();
+		this->Fit();
+	}
 
 private:
 
 	wxPanel* panel;
-	wxGridSizer* sizer;
+	wxFlexGridSizer* sizer;
 	
 	vector<wxButton*> moduleWindowButtons;
 	vector<wxFrame*> moduleWindows;

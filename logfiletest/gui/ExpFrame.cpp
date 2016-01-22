@@ -226,8 +226,11 @@ void ExpFrame::OnCumulativeXP(wxCommandEvent& event){
 }
 
 void ExpFrame::OnExpUpdate(wxCommandEvent& event){
-	int currentExp = verifyNumericInput(expInputValue->GetValue().ToStdString());
-	if (soulHealerModule->soulHealer.manualExpUpdate(currentExp)){
+	//int currentExp = verifyNumericInput(expInputValue->GetValue().ToStdString());
+	double currentExpPercent = 0;
+	expInputValue->GetValue().ToDouble(&currentExpPercent);
+
+	if (soulHealerModule->soulHealer.manualExpUpdatePercent(currentExpPercent)){
 
 	}
 }

@@ -13,7 +13,7 @@ protected:
 	//EnglishNA language;
 	
 	//PlayerIdentificationModule playerIdentificationModule;
-	HuntingModule huntingModule;	
+	HuntingModule huntingModule;		
 
 	TemporaryLogFile logFile;
 
@@ -222,4 +222,73 @@ TEST_F(HuntingModuleTest, noExpQuest){
 
 	EXPECT_EQ(1, huntingModule.monstersKilled.getTotalCount());
 	EXPECT_EQ(1, huntingModule.monstersKilled.get("Unstable Triroan").numGained);
+}
+
+TEST_F(HuntingModuleTest, pvpKill){
+
+	logFile.appendFile("2015.11.01 09:08:22 : Critical Hit!You inflicted 1,639 damage on Alduin by using Holy Punishment. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You woke up. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You inflicted 637 damage on Alduin by using Body Smash. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You parried Ancient Drakan Warrior's attack. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You received 337 damage from Ancient Drakan Warrior. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You have gained 345 Abyss Points. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You are now a Protector. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You have gained 326 XP from Alduin. (Energy of Repose 93) ");
+	logFile.appendFile("2015.11.01 09:08:22 : Alduin is no longer blind. ");
+	logFile.appendFile("2015.11.01 09:08:22 : Alduin restored its movement speed. ");
+	logFile.appendFile("2015.11.01 09:08:22 : Alduin restored its attack speed. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You have defeated Alduin. ");
+
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(0, huntingModule.monstersKilled.getTotalCount());
+	EXPECT_EQ(1, huntingModule.playersKilled.getTotalKills());
+	EXPECT_EQ(0, huntingModule.playersKilled.getTotalAssists());
+	EXPECT_EQ(1, huntingModule.playersKilled.getUniqueKills());
+
+	logFile.appendFile("2015.11.01 09:08:22 : Critical Hit!You inflicted 1,639 damage on Alduin by using Holy Punishment. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You woke up. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You inflicted 637 damage on Alduin by using Body Smash. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You parried Ancient Drakan Warrior's attack. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You received 337 damage from Ancient Drakan Warrior. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You have gained 345 Abyss Points. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You are now a Protector. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You have gained 326 XP from Alduin. (Energy of Repose 93) ");
+	logFile.appendFile("2015.11.01 09:08:22 : Alduin is no longer blind. ");
+	logFile.appendFile("2015.11.01 09:08:22 : Alduin restored its movement speed. ");
+	logFile.appendFile("2015.11.01 09:08:22 : Alduin restored its attack speed. ");
+	logFile.appendFile("2015.11.01 09:08:22 : You have defeated Alduin. ");
+
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(0, huntingModule.monstersKilled.getTotalCount());
+	EXPECT_EQ(2, huntingModule.playersKilled.getTotalKills());
+	EXPECT_EQ(0, huntingModule.playersKilled.getTotalAssists());
+	EXPECT_EQ(1, huntingModule.playersKilled.getUniqueKills());
+}
+
+TEST_F(HuntingModuleTest, pvpAssist){
+
+	logFile.appendFile("2015.11.03 00:16:16 : You inflicted 520 damage on CookeTim by using Aether Leash. ");
+	logFile.appendFile("2015.11.03 00:16:16 : CookeTim's movement speed decreased as you used Aether Leash. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2015.11.03 00:16:17 : You inflicted 459 damage on CookeTim. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2015.11.03 00:16:18 : Critical Hit!You inflicted 1,133 damage on CookeTim by using Body Smash. ");
+	logFile.appendFile("2015.11.03 00:16:18 : Cirse inflicted 729 damage on CookeTim by using Infernal Blaze. ");
+	logFile.appendFile("2015.11.03 00:16:18 : CookeTim became stunned because Cirse used Infernal Blaze. ");
+	logFile.appendFile("2015.11.03 00:16:18 : You inflicted 665 damage on CookeTim by using Blood Pact. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2015.11.03 00:16:19 : Cyrano inflicted 783 damage on CookeTim by using Inquisitor's Blow. ");
+	logFile.appendFile("2015.11.03 00:16:19 : You have gained 414 Abyss Points. ");
+	logFile.appendFile("2015.11.03 00:16:19 : You cannot get any PvP XP from the current target for a while. ");
+	logFile.appendFile("2015.11.03 00:16:19 : CookeTim restored its movement speed. ");
+	logFile.appendFile("2015.11.03 00:16:19 : Cyrano has defeated CookeTim. ");
+	logFile.appendFile("2015.11.03 00:16:19 : Quest updated: [Daily] Rage Against the Asmodians ");
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(0, huntingModule.monstersKilled.getTotalCount());
+	EXPECT_EQ(0, huntingModule.playersKilled.getTotalKills());
+	EXPECT_EQ(1, huntingModule.playersKilled.getTotalAssists());
+	EXPECT_EQ(0, huntingModule.playersKilled.getUniqueKills());
 }

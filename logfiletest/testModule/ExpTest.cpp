@@ -508,11 +508,18 @@ TEST_F(ExpTest, setCurrentPercent){
 	
 	logFileUtility.parseLogFile();
 
+	EXPECT_FALSE(expModule.levelUpChecker.setCurrentPercent(47.77));
+
+	EXPECT_EQ(0, expModule.expGainMeter.getTotalLost());
+
+	EXPECT_NEAR(47.76, expModule.levelUpChecker.getPercent(), 0.01);
+
+
 	EXPECT_TRUE(expModule.levelUpChecker.setCurrentPercent(47.76));
 
 	EXPECT_EQ(0, expModule.expGainMeter.getTotalLost());
 
-	EXPECT_NEAR(47.755, expModule.levelUpChecker.getPercent(), 0.01);
+	EXPECT_NEAR(47.76, expModule.levelUpChecker.getPercent(), 0.01);
 
 	//exp lost 4342
 
@@ -524,7 +531,7 @@ TEST_F(ExpTest, setCurrentPercent){
 
 	EXPECT_TRUE(expModule.levelUpChecker.setCurrentPercent(46.76));
 
-	EXPECT_NEAR(46.755, expModule.levelUpChecker.getPercent(), 0.01);
+	EXPECT_NEAR(46.76, expModule.levelUpChecker.getPercent(), 0.01);
 
 	
 

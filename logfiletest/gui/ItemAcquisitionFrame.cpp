@@ -9,7 +9,7 @@ ItemAcquisitionFrame::ItemAcquisitionFrame(ItemAcquisitionModule& itemAcquisitio
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 	
 	addColumn("Item ID", 70, wxLIST_FORMAT_LEFT);
-	addColumn("Item Name", 400, wxLIST_FORMAT_LEFT);
+	addColumn("Item Name", 500, wxLIST_FORMAT_LEFT);
 	addColumn("Gained", 50, wxLIST_FORMAT_RIGHT);
 	addColumn("Per Hour", 70, wxLIST_FORMAT_RIGHT);
 

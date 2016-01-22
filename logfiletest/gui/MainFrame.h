@@ -24,6 +24,8 @@
 
 #include "ExpFrame.h"
 #include "ApFrame.h"
+#include "GpFrame.h"
+#include "KinahFrame.h"
 
 #include "ProfessionLevelingFrame.h"
 #include "ProfessionFrame.h"
@@ -33,6 +35,7 @@
 #include "ItemRollsFrame.h"
 
 #include "MobKillsFrame.h"
+#include "PlayerKillsFrame.h"
 
 
 #define APP_TITLE "Aion Grind Meter"
@@ -51,7 +54,8 @@
 
 enum
 {
-    TIMER_ID
+    TIMER_ID,
+	WINDOW_MENU_BUTTON_ID
 };
 
 
@@ -66,9 +70,9 @@ public:
 private:
 	ExpModule expModule;
 	ApModule apModule;
+	GpModule gpModule;
 	KinahModule kinahModule;
 	SoulHealerModule soulHealerModule;
-	GpModule gpModule;
 
 	HuntingModule huntingModule;
 	ItemAcquisitionModule itemAcquisitionModule;
@@ -83,6 +87,8 @@ private:
 
 	ExpFrame* expFrame;
 	ApFrame* apFrame;
+	GpFrame* gpFrame;
+	KinahFrame* kinahFrame;
 
 	ProfessionLevelingFrame* professionLevelingFrame;
 	ProfessionFrame* gatherFrame;
@@ -93,6 +99,7 @@ private:
 	ItemRollsFrame* itemRollsFrame;
 
 	MobKillsFrame* mobKillsFrame;
+	PlayerKillsFrame* playerKillsFrame;
 
 	
 	/*
@@ -104,8 +111,11 @@ private:
 	wxBoxSizer* parentSizer;
 	wxPanel* panel;
 
+	wxButton* windowMenuButton;
+
 	void OnTimer(wxTimerEvent& event);
-	
+	void OnWindowMenuButton(wxCommandEvent& event) {moduleWindowSelectionFrame->Show();}
+
 	int ticksPerRefresh;
 	int tickCounter;
 };

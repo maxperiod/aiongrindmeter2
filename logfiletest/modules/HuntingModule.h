@@ -6,7 +6,9 @@
 
 #include "../model/Counter.h"
 #include "../model/pvpKillsCounter.h"
+
 #include "../model/KnownPlayers.h"
+#include "../model/AssistDamage.h"
 
 //#include "../modules/PlayerIdentificationModule.h"
 
@@ -21,6 +23,7 @@ public:
 	Timer timer;
 	//Counter<int> itemsAcquired;
 	Counter<string> monstersKilled;
+	PvpKillsCounter playersKilled;
 
 	void executeChatLogCommand(ChatLogCommand& command);
 
@@ -29,6 +32,8 @@ public:
 private:
 
 	void checkAndRegisteringKill(string& target);
+
+	AssistDamage damageInflicted;
 
 	string lastKill;
 	KnownPlayers* knownPlayers;

@@ -8,19 +8,20 @@ using namespace std;
 
 BEGIN_EVENT_TABLE(MainFrame, wxFrame)
     EVT_TIMER(TIMER_ID, MainFrame::OnTimer)
+	EVT_BUTTON(WINDOW_MENU_BUTTON_ID, MainFrame::OnWindowMenuButton)
 END_EVENT_TABLE()
 
 
 MainFrame::MainFrame(const wxPoint& pos):
 	wxFrame(NULL, wxID_ANY, string(APP_TITLE) + " " + string(APP_VERSION), pos, wxSize(MAINFRAME_WIDTH, MAINFRAME_HEIGHT), 
-			(wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX)),
+			(wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)),
 		timer(this, TIMER_ID),
 		soulHealerModule(expModule, apModule, kinahModule),
 		ticksPerRefresh(2), 
 		tickCounter(0)
 {
 	parentSizer = new wxBoxSizer(wxVERTICAL);
-	panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(MAINFRAME_WIDTH, MAINFRAME_HEIGHT));
+	panel = new wxPanel(this, wxID_ANY);
 
 	/*
 	expFrame = new ExpFrame("XP", wxPoint(-1, -1), wxSize(FRAME_WIDTH, FRAME_HEIGHT), 
@@ -33,7 +34,7 @@ MainFrame::MainFrame(const wxPoint& pos):
 	expFrame->Show(true);
 	*/
 	moduleWindowSelectionFrame = new ModuleWindowSelectionFrame(5, 3);
-	moduleWindowSelectionFrame->Show();
+	//moduleWindowSelectionFrame->Show();
 
 	expFrame = new ExpFrame(expModule, soulHealerModule, wxDefaultPosition);
 	expFrame->Show();
@@ -43,9 +44,16 @@ MainFrame::MainFrame(const wxPoint& pos):
 	apFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(apFrame, "AP", 1, 0);
 
+	gpFrame = new GpFrame(gpModule, wxDefaultPosition);
+	//gpFrame->Show();
+	moduleWindowSelectionFrame->addModuleWindow(gpFrame, "GP", 2, 0);
+
+	kinahFrame = new KinahFrame(kinahModule, wxDefaultPosition);
+	moduleWindowSelectionFrame->addModuleWindow(kinahFrame, "Kinah", 3, 0);
+
 	professionLevelingFrame = new ProfessionLevelingFrame(professionModule, wxDefaultPosition);
 	//professionLevelingFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(professionLevelingFrame, "Prof Leveling", 0, 1);
+	moduleWindowSelectionFrame->addModuleWindow(professionLevelingFrame, "Gather/Craft Lvling", 0, 1);
 
 	gatherFrame = new ProfessionFrame(professionModule, GATHER, wxDefaultPosition);
 	//gatherFrame->Show();
@@ -71,7 +79,14 @@ MainFrame::MainFrame(const wxPoint& pos):
 	//mobKillsFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(mobKillsFrame, "Mob Kills", 3, 2);
 
+	playerKillsFrame = new PlayerKillsFrame(huntingModule, soulHealerModule, wxDefaultPosition);
+	//mobKillsFrame->Show();
+	moduleWindowSelectionFrame->addModuleWindow(playerKillsFrame, "Player Kills", 4, 2);
+
+	moduleWindowSelectionFrame->finishAddingButtons();
+	//mobKillsFrame->Show();
 	
+	windowMenuButton = new wxButton(panel, WINDOW_MENU_BUTTON_ID, "Open Window");
 	/*
 	wxFrame* crapFrame = new wxFrame("sdkljf", wxPoint(-1, -1), wxSize(FRAME_WIDTH, FRAME_HEIGHT);
 	crapFrame->SetSizer(new wxBoxSizer(wxVERTICAL));
@@ -92,6 +107,8 @@ MainFrame::MainFrame(const wxPoint& pos):
 
 	timer.Start(500);
 
+	panel->Fit();
+	this->Fit();
 }
 
 void MainFrame::OnTimer(wxTimerEvent& event){
@@ -101,12 +118,15 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 	if (tickCounter >= ticksPerRefresh){
 		expFrame->refresh();
 		apFrame->refresh();
+		gpFrame->refresh();
+		kinahFrame->refresh();
 		itemAcquisitionFrame->refresh();
 		professionLevelingFrame->refresh();
 		itemBundleFrame->refresh();
 		gatherFrame->refresh();
 		craftFrame->refresh();
 		mobKillsFrame->refresh();
+		playerKillsFrame->refresh();
 		itemRollsFrame->refresh();
 		this->SetTitle(formatElapsedTime(itemAcquisitionModule.timer.getElapsedTime()));
 		tickCounter = 0;

@@ -22,7 +22,9 @@ public:
 			expUpdateNeeded(false),
 			apUpdateNeeded(false),
 			lastDeathIsPk(false),
-			lastReceivedPvpHitTime(0)
+			lastReceivedPvpHitTime(0),
+			numPveDeaths(0),
+			numPvpDeaths(0)
 			{}
 
 	void PvEDeath();
@@ -32,6 +34,7 @@ public:
 	void nothingToRecover() {expUpdateNeeded = false;}
 
 	bool manualExpUpdate(long long newValue);
+	bool manualExpUpdatePercent(float newValue);
 	bool manualApUpdate(long long newValue);
 
 	bool isExpUpdateNeeded() const {return expUpdateNeeded;}
@@ -41,6 +44,9 @@ public:
 	void apUpdateNotNeeded();
 
 	void checkReceivedDamageIsPvp(string& skillName);
+
+	int getNumPveDeaths() const {return numPveDeaths;}
+	int getNumPvpDeaths() const {return numPvpDeaths;}
 
 private:
 	
@@ -53,6 +59,9 @@ private:
 	bool expUpdateNeeded;
 	bool apUpdateNeeded;
 	bool lastDeathIsPk ;
+
+	int numPveDeaths;
+	int numPvpDeaths;
 	
 	time_t lastReceivedPvpHitTime;
 

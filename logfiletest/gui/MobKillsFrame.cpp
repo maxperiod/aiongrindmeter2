@@ -5,7 +5,7 @@ MobKillsFrame::MobKillsFrame(HuntingModule& huntingModule, const wxPoint& pos):
 	ListCtrlFrame(pos) {
 	this->huntingModule = &huntingModule;
 			
-	addColumn("Monster Name", 300, wxLIST_FORMAT_LEFT);
+	addColumn("Monster Name", 500, wxLIST_FORMAT_LEFT);
 	addColumn("Kills", 50, wxLIST_FORMAT_RIGHT);
 	addColumn("Per Hour", 70, wxLIST_FORMAT_RIGHT);
 

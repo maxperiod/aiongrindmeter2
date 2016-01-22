@@ -9,7 +9,7 @@ wxEND_EVENT_TABLE()
 #define SCROLLBAR_PIXELS 25
 
 ListCtrlFrame::ListCtrlFrame(const wxPoint& pos) :
-	 wxFrame(NULL, wxID_ANY, "ffffff", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxMAXIMIZE_BOX)), 
+	 wxFrame(NULL, wxID_ANY, "ffffff", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxMINIMIZE_BOX | wxMAXIMIZE_BOX)), 
 		 nameColumnForVariableWidth(-1), totalFixedColumnsWidth(0)
 
 {

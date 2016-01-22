@@ -225,10 +225,16 @@
     <ClInclude Include="lookups\RelicAp47.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lookups\RelicAp48.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="gui\ApFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ExpFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\GpFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ItemAcquisitionFrame.h">
@@ -238,6 +244,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ItemRollsFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\KinahFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ListCtrlFrame.h">
@@ -252,16 +261,16 @@
     <ClInclude Include="gui\ModulePanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="gui\ModuleWindowSelectionFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\PlayerKillsFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="gui\ProfessionFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ProfessionLevelingFrame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lookups\RelicAp48.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gui\ModuleWindowSelectionFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -407,16 +416,19 @@
     <ClCompile Include="lookups\RelicAp47.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testModule\ExpTest.cpp">
+    <ClCompile Include="lookups\RelicAp48.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mains\MyApp.cpp">
+    <ClCompile Include="testModule\HuntingModuleTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ExpFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\GpFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ItemAcquisitionFrame.cpp">
@@ -428,6 +440,9 @@
     <ClCompile Include="gui\ItemRollsFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gui\KinahFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="gui\ListCtrlFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -437,16 +452,19 @@
     <ClCompile Include="gui\MobKillsFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gui\ModuleWindowSelectionFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\PlayerKillsFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="gui\ProfessionFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ProfessionLevelingFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lookups\RelicAp48.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gui\ModuleWindowSelectionFrame.cpp">
+    <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

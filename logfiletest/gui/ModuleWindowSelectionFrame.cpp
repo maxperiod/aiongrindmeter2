@@ -41,9 +41,9 @@ ModuleWindowSelectionFrame::ModuleWindowSelectionFrame(int numRows, int numColum
 {
 	
 	panel = new wxPanel(this);
-	sizer = new wxGridSizer(numRows, numColumns, wxSize(1, 1));	
+	sizer = new wxFlexGridSizer(numRows, numColumns, wxSize(1, 1));	
 		
-	panel->SetSizer(sizer);
+	//panel->SetSizer(sizer);
 	//panel->Show();
 
 	//sizer->Add(new wxStaticText(this, -1, "testsetset"), wxEXPAND);
@@ -55,9 +55,10 @@ ModuleWindowSelectionFrame::ModuleWindowSelectionFrame(int numRows, int numColum
 
 void ModuleWindowSelectionFrame::addModuleWindow(wxFrame* window, const wxString& name, int row, int column){
 
-	wxButton* newButton = new wxButton(panel, row * sizer->GetCols() + column, name);
+	wxButton* newButton = new wxButton(panel, row * sizer->GetCols() + column, name, wxDefaultPosition, wxSize(120, -1));
 	//newButton->Show();
-	sizer->Add(newButton, wxEXPAND);
+	sizer->Add(newButton);//, wxEXPAND);
+	//sizer->Insert(row * sizer->GetCols() + column, newButton);
 	moduleWindowButtons[row * sizer->GetCols() + column] = newButton;
 	moduleWindows[row * sizer->GetCols() + column] = window;
 	//unique_ptr<wxButton>
@@ -65,8 +66,9 @@ void ModuleWindowSelectionFrame::addModuleWindow(wxFrame* window, const wxString
 	
 	//this->Layout();
 	//panel->SetSize(this->GetClientSize());
-	panel->Fit();
-	this->Fit();
+	
+	//panel->Fit();
+	//this->Fit();
 	
 }
 

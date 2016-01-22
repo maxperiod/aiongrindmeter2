@@ -6,7 +6,7 @@ wxBEGIN_EVENT_TABLE(ProfessionLevelingFrame, wxFrame)
 wxEND_EVENT_TABLE()
 
 ProfessionLevelingFrame::ProfessionLevelingFrame(ProfessionModule& professionModule, const wxPoint& pos) :
-	 wxFrame(NULL, wxID_ANY, "sdfsdgsd", pos, wxSize(FRAME_WIDTH, FRAME_HEIGHT), (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))
+	 wxFrame(NULL, wxID_ANY, "sdfsdgsd", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))
 {
 	this->professionModule = &professionModule;
 	professionLevelingPanel = new wxPanel(this);//, wxID_ANY, wxDefaultPosition, wxSize(this->GetSize().GetX() - 10, -1));
@@ -24,16 +24,16 @@ ProfessionLevelingFrame::ProfessionLevelingFrame(ProfessionModule& professionMod
 	gatherLevelSizer->Add(label4, wxGBPosition(3, 0));
 
 	value1 = new wxStaticText(professionLevelingPanel, -1, wxT("XX,XXX"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
-	gatherLevelSizer->Add(value1, wxGBPosition(0, 1));
+	gatherLevelSizer->Add(value1, wxGBPosition(0, 1), wxDefaultSpan, wxALIGN_RIGHT);
 	value2 = new wxStaticText(professionLevelingPanel, -1, wxT("X.XX X / h"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
-	gatherLevelSizer->Add(value2, wxGBPosition(1, 1));
+	gatherLevelSizer->Add(value2, wxGBPosition(1, 1), wxDefaultSpan, wxALIGN_RIGHT);
 	value3 = new wxStaticText(professionLevelingPanel, -1, wxT("XXX"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
-	gatherLevelSizer->Add(value3, wxGBPosition(2, 1));
+	gatherLevelSizer->Add(value3, wxGBPosition(2, 1), wxDefaultSpan, wxALIGN_RIGHT);
 	value4 = new wxStaticText(professionLevelingPanel, -1, wxT("XXX"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
-	gatherLevelSizer->Add(value4, wxGBPosition(3, 1));
+	gatherLevelSizer->Add(value4, wxGBPosition(3, 1), wxDefaultSpan, wxALIGN_RIGHT);
 
-	gauge = new wxGauge(professionLevelingPanel, PROF_XP_BAR_ID, 10000, wxDefaultPosition, wxSize(this->GetClientSize().GetX(), -1), wxGA_SMOOTH);	
-	gatherLevelSizer->Add(gauge, wxGBPosition(4, 0), wxGBSpan(1, 2));
+	gauge = new wxGauge(professionLevelingPanel, PROF_XP_BAR_ID, 10000, wxDefaultPosition, wxSize(150, -1), wxGA_SMOOTH);	
+	gatherLevelSizer->Add(gauge, wxGBPosition(4, 0), wxGBSpan(1, 2), wxALIGN_CENTER);
 
 	//gatherLevelSizer->SetDimension(wxDefaultPosition, wxSize(professionLevelingPanel->GetSize().GetX() - 100, -1));
 	professionLevelingPanel->SetSizer(gatherLevelSizer);	
@@ -48,8 +48,9 @@ ProfessionLevelingFrame::ProfessionLevelingFrame(ProfessionModule& professionMod
 	professionLevelingPanel->Show();
 	//this->SetSizer(parentSizer);
 		
-	
-	this->Layout();
+	professionLevelingPanel->Fit();
+	this->Fit();
+	//this->Layout();
 	
 }
 

@@ -7,7 +7,7 @@ ItemRollsFrame::ItemRollsFrame(ItemAcquisitionModule& itemAcquisitionModule, con
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 
 	addColumn("Item ID", 70, wxLIST_FORMAT_LEFT);
-	addColumn("Item Name", 400, wxLIST_FORMAT_LEFT);
+	addColumn("Item Name", 500, wxLIST_FORMAT_LEFT);
 	addColumn("Your roll", 60, wxLIST_FORMAT_RIGHT);
 	addColumn("Winning roll", 80, wxLIST_FORMAT_RIGHT);
 	addColumn("Winner", 100, wxLIST_FORMAT_RIGHT);

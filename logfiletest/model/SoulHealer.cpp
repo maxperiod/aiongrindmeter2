@@ -9,6 +9,7 @@ void SoulHealer::PvEDeath(){
 	}
 	else{
 		expUpdateNeeded = true;
+		numPveDeaths ++;
 	}
 	//apUpdateNeeded = false;
 }
@@ -20,6 +21,7 @@ void SoulHealer::PvPDeath(){
 		apUpdateNeeded = true;
 		lastDeathIsPk = true;
 	}
+	numPvpDeaths ++;
 }
 bool SoulHealer::manualExpUpdate(long long newValue){
 	if (currentExpChecker->setCurrentValue(newValue)){
@@ -36,6 +38,18 @@ bool SoulHealer::manualExpUpdate(long long newValue){
 bool SoulHealer::manualApUpdate(long long newValue){
 	if (currentApChecker->setCurrentValue(newValue)){
 		apUpdateNeeded = false;
+		return true;
+	}
+	return false;
+}
+
+bool SoulHealer::manualExpUpdatePercent(float newValue){
+	if (currentExpChecker->setCurrentPercent(newValue)){
+		expUpdateNeeded = false;
+		if (abs(currentExpChecker->getLastChangePercent()) < 0.02){
+			apUpdateNeeded = true;
+			
+		}
 		return true;
 	}
 	return false;
