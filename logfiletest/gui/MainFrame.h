@@ -37,6 +37,7 @@
 #include "MobKillsFrame.h"
 #include "PlayerKillsFrame.h"
 
+#include "TestFrame.h"
 
 #define APP_TITLE "Aion Grind Meter"
 #define APP_VERSION "2.0.0"
@@ -63,7 +64,7 @@ class MainFrame: public wxFrame
 {
 
 public:
-	MainFrame(const wxPoint& pos);
+	MainFrame(string& aionPath, const wxPoint& pos);
 	//MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size);	
 	
 	wxDECLARE_EVENT_TABLE();
@@ -101,7 +102,7 @@ private:
 	MobKillsFrame* mobKillsFrame;
 	PlayerKillsFrame* playerKillsFrame;
 
-	
+	TestFrame* testFrame;
 	/*
 	Frame* expFrame;
 	Frame* apFrame;
@@ -115,6 +116,8 @@ private:
 
 	void OnTimer(wxTimerEvent& event);
 	void OnWindowMenuButton(wxCommandEvent& event) {moduleWindowSelectionFrame->Show();}
+
+	void OnClose(wxCloseEvent& event);
 
 	int ticksPerRefresh;
 	int tickCounter;

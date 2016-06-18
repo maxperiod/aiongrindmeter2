@@ -153,6 +153,24 @@ TEST_F(ExpTest, gainExpSalvationOnly){
 
 }
 
+TEST_F(ExpTest, gainExpFromZero){
+	expModule.levelUpChecker.initialize(13, 0);
+	
+	logFile.appendFile("2013.07.04 18:15:04 : You spent 551 Kinah. ");
+	logFile.appendFile("2013.07.04 18:15:04 : You have gained 4,142 XP. ");
+	logFile.appendFile("2013.07.04 18:15:04 : You received Soul Healing. ");
+	
+	logFileUtility.parseLogFile();
+
+	EXPECT_NEAR(3.19, expModule.levelUpChecker.getPercent(), 0.01);
+	
+	EXPECT_EQ(4142, expModule.expGainMeter.getNetGained());
+	EXPECT_EQ(4142, expModule.expGainMeter.getLastChange());
+	
+
+}
+
+
 TEST_F(ExpTest, LevelUp){
 	expModule.levelUpChecker.initialize(5, 7000);
 	
@@ -388,6 +406,9 @@ TEST_F(ExpTest, InitPercentExp1){
 	//55: 104,225,345
 	expModule.levelUpChecker.initializePercent(55, 81.77);
 
+	EXPECT_EQ(85225065, expModule.levelUpChecker.getCurrentValue());
+	EXPECT_NEAR(81.77, expModule.levelUpChecker.getPercent(), 0.01);
+
 	logFile.appendFile("2013.06.27 22:17:34 : You have gained 1,000,000 XP from testtest. ");
 	logFileUtility.parseLogFile();	
 
@@ -443,7 +464,7 @@ TEST_F(ExpTest, InitPercentNewCharacter){
 TEST_F(ExpTest, PercentlevelUp){
 	//55: 104,225,345
 	expModule.levelUpChecker.initializePercent(55, 99.1);
-	//99.1% est: 103,297,226
+	//99.1% est: 103,287,317
 	
 	logFile.appendFile("2013.06.27 22:17:34 : You have gained 902,754 XP from testtest. ");
 	logFile.appendFile("2013.06.27 22:17:34 : You learned Yoki Geri Jodan (Level 9). ");
@@ -456,6 +477,7 @@ TEST_F(ExpTest, PercentlevelUp){
 	EXPECT_EQ(902754, expModule.expGainMeter.getTotalGained());
 	EXPECT_EQ(0, expModule.expGainMeter.getTotalLost());
 	EXPECT_EQ(0, expModule.expGainMeter.getReposeUsed());
+	EXPECT_NEAR(0.09, expModule.levelUpChecker.getPercent(), 0.01);
 	EXPECT_NEAR(0.0086615924, expModule.levelUpChecker.getNumLevelsGained(), 0.0001);
 
 }
@@ -464,7 +486,7 @@ TEST_F(ExpTest, PercentlevelUp2){
 	//55: 104,225,345
 	//56: 124,225,345
 
-	//55 at 99.095%: 103,287,317
+	//55 at 99.1%: 103,287,317
 	expModule.levelUpChecker.initializePercent(55, 99.1);
 	
 	logFile.appendFile("2013.06.27 22:17:34 : You have gained 2,000,000 XP from testtest. ");

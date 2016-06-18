@@ -9,8 +9,8 @@ wxBEGIN_EVENT_TABLE(ApFrame, wxFrame)
 wxEND_EVENT_TABLE()
 
 
-ApFrame::ApFrame(ApModule& apModule, SoulHealerModule& soulHealerModule, const wxPoint& pos):
-	wxFrame(NULL, wxID_ANY, "AP", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
+ApFrame::ApFrame(wxWindow* parent, ApModule& apModule, SoulHealerModule& soulHealerModule, const wxPoint& pos):
+	wxFrame(parent, wxID_ANY, "AP", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
 	{
 	this->apModule = &apModule;
 	this->soulHealerModule = &soulHealerModule;
@@ -149,6 +149,7 @@ void ApFrame::refresh(){
 		if (soulHealerModule->soulHealer.isApUpdateNeeded() && !manualApUpdatePanel->IsShown()){
 			apPanel->Hide();
 			manualApUpdatePanel->Show();
+			this->Show();
 		}
 		else if (!soulHealerModule->soulHealer.isApUpdateNeeded() && !apPanel->IsShown()){
 			manualApUpdatePanel->Hide();

@@ -44,7 +44,7 @@ bool LevelUpChecker::initialize(int level, long long currentValue){
 	else return false;
 }
 
-bool LevelUpChecker::initializePercent(int level, float percent){
+bool LevelUpChecker::initializePercent(int level, double percent){
 	//percentage displayed ingame are truncated past 2 decimal places
 	//if (percent < 0) percent = 0;
 
@@ -56,6 +56,8 @@ bool LevelUpChecker::initializePercent(int level, float percent){
 		startingDecimalLevel = getCurrentDecimalLevel();
 		return true;
 	}
+	else if (level > expChart->getLevelCap()) return true;
+	return false;
 }
 
 long long LevelUpChecker::getCurrentValue(){
@@ -76,14 +78,14 @@ int LevelUpChecker::getCurrentLevel(){
 	return level;
 }
 
-float LevelUpChecker::getCurrentDecimalLevel(){
+double LevelUpChecker::getCurrentDecimalLevel(){
 	if (expChart->isCumulativeMode() && level >= expChart->getLevelCap())
 		return level;
 	
 	return level + getPercent() / 100;
 }
 
-float LevelUpChecker::getPercent(){
+double LevelUpChecker::getPercent(){
 
 	if (!initialized) return 0;
 	// AP chart is cumulative since 9th kyu
@@ -97,7 +99,7 @@ float LevelUpChecker::getPercent(){
 			long long last = expChart->getMaxValue(level - 1);			
 
 			if (max != -1) 
-				return (float)(currentValue - last) * 100 / (max - last);
+				return (double)(currentValue - last) * 100 / (max - last);
 
 			else return 0;
 		}
@@ -106,22 +108,22 @@ float LevelUpChecker::getPercent(){
 	// XP chart is amount since last level up
 	else{
 		long long max = expChart->getMaxValue(level);
-		if (max != -1) return (float)currentValue * 100 / max;
+		if (max != -1) return (double)currentValue * 100 / max;
 		else return 0;
 	}
 }
 
-float LevelUpChecker::getCumulativePercent(){
+double LevelUpChecker::getCumulativePercent(){
 	if (!initialized) return 0;
 	if (expChart->isCumulativeMode()){
-		return (float)currentValue / expChart->getLevelCapValue();
+		return (double)currentValue / expChart->getLevelCapValue();
 	}
 	else {
-		return (float)getCumulativeCurrentValue() * 100 / expChart->getLevelCapValue();
+		return (double)getCumulativeCurrentValue() * 100 / expChart->getLevelCapValue();
 	}
 }
 
-float LevelUpChecker::getLastChangePercent(){
+double LevelUpChecker::getLastChangePercent(){
 	if (!initialized) return 0;
 	//if (!expChart->isCumulativeMode()){
 		return ((getCurrentDecimalLevel() - getProjectedDecimalLevel(-referringMeter->getLastChange())) * 100);
@@ -196,8 +198,8 @@ bool LevelUpChecker::setCurrentValue(long long newValue){
 	return true;
 }
 
-bool LevelUpChecker::setCurrentPercent(float newValue){
-	float percent = newValue;// - 0.005f;
+bool LevelUpChecker::setCurrentPercent(double newValue){
+	double percent = newValue;// - 0.005f;
 	//if (percent < 0) percent = 0;
 	if (percent < 0 || percent > 100) return false;
 
@@ -207,12 +209,12 @@ bool LevelUpChecker::setCurrentPercent(float newValue){
 	
 }
 
-float LevelUpChecker::getNumLevelsGained(){
+double LevelUpChecker::getNumLevelsGained(){
 	if (!initialized) return 0;
 	else return getCurrentDecimalLevel() - startingDecimalLevel;
 }
 
-float LevelUpChecker::getProjectedDecimalLevel(long long expGain){
+double LevelUpChecker::getProjectedDecimalLevel(long long expGain){
 	if (!initialized) return -1;
 	
 
@@ -226,10 +228,10 @@ float LevelUpChecker::getProjectedDecimalLevel(long long expGain){
 	long long newExp = newCumulativeExp - cumulativeExpRequirementForNewLevel;
 	
 	if (!expChart->isCumulativeMode()){
-		return newLevel + (float)newExp / expChart->getMaxValue(newLevel);
+		return newLevel + (double)newExp / expChart->getMaxValue(newLevel);
 	}
 	else {		
-		return newLevel + (float)newExp / 
+		return newLevel + (double)newExp / 
 			(expChart->getMaxValue(newLevel) - expChart->getMaxValue(newLevel - 1));
 	}
 	

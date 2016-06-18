@@ -16,7 +16,7 @@ class KinahFrame: public wxFrame
 {
 
 public:
-	KinahFrame(KinahModule& kinahModule, const wxPoint& pos);
+	KinahFrame(wxWindow* parent, KinahModule& kinahModule, const wxPoint& pos);
 	void refresh();
 	
 

@@ -1,8 +1,8 @@
 #include "ItemRollsFrame.h"
 #include "../stringFunctions.h"
 
-ItemRollsFrame::ItemRollsFrame(ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos)
-	: ListCtrlFrame(pos), itemIDReader("itemnames.txt")
+ItemRollsFrame::ItemRollsFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos)
+	: ListCtrlFrame(parent, pos), itemIDReader("itemnames.txt")
 {
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 

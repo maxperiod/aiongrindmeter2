@@ -22,6 +22,7 @@ string formatElapsedTime(long elapsedTime);
 
 int stringToInt(string& input);
 int verifyNumericInput(string& input);
+double verifyPercentInput(const string& input, int maxDecimals = 2);
 
 
 #endif

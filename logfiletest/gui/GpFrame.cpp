@@ -7,8 +7,8 @@ wxEND_EVENT_TABLE()
 
 
 
-GpFrame::GpFrame(GpModule& gpModule, const wxPoint& pos) :
-	wxFrame(NULL, wxID_ANY, "GP", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
+GpFrame::GpFrame(wxWindow* parent, GpModule& gpModule, const wxPoint& pos) :
+	wxFrame(parent, wxID_ANY, "GP", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
 {
 	this->gpModule = &gpModule;
 	

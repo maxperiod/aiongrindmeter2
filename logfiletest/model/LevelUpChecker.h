@@ -21,14 +21,14 @@ public:
 
 	bool initialize(long long currentValue);
 	bool initialize(int level, long long currentValue);
-	bool initializePercent(int level, float percent);
+	bool initializePercent(int level, double percent);
 
 	bool isInitialized() {return initialized;}
 
 	void increaseValue(long long increase) {if (initialized) currentValue += increase;}
 	
 	bool setCurrentValue(long long newValue);
-	bool setCurrentPercent(float newValue);
+	bool setCurrentPercent(double newValue);
 
 	long long getCurrentValue();
 	long long getCurrentLevelMaxValue();
@@ -44,15 +44,15 @@ public:
 	void levelUpLearnSkill();
 
 	int getCurrentLevel();
-	float getCurrentDecimalLevel();
+	double getCurrentDecimalLevel();
 
-	float getPercent();
-	float getCumulativePercent();
+	double getPercent();
+	double getCumulativePercent();
 
-	float getLastChangePercent();
+	double getLastChangePercent();
 
-	float getNumLevelsGained();
-	float getProjectedDecimalLevel(long long expGain);
+	double getNumLevelsGained();
+	double getProjectedDecimalLevel(long long expGain);
 
 private:
 	bool initialized;
@@ -73,7 +73,7 @@ private:
 
 	MeterValue* referringMeter;
 
-	float startingDecimalLevel;
+	double startingDecimalLevel;
 
 	bool hasSkillLearnedInTick;
 	//void initCumulativeValuesTable();

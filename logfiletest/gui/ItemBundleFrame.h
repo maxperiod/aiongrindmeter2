@@ -20,7 +20,7 @@ class ItemBundleFrame: public wxFrame
 {
 
 public:
-	ItemBundleFrame(ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos);
+	ItemBundleFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos);
 		
 	void refresh();
 

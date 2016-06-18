@@ -6,9 +6,9 @@ wxBEGIN_EVENT_TABLE(ProfessionFrame, wxFrame)
 wxEND_EVENT_TABLE()
 */
 
-ProfessionFrame::ProfessionFrame(ProfessionModule& professionModule, GatherType type, const wxPoint& pos) :
+ProfessionFrame::ProfessionFrame(wxWindow* parent, ProfessionModule& professionModule, GatherType type, const wxPoint& pos) :
 	 //wxFrame(NULL, wxID_ANY, "ffffff", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxMAXIMIZE_BOX)), type(type)
-	ListCtrlFrame(pos), type(type)
+	ListCtrlFrame(parent, pos), type(type)
 {
 	this->professionModule = &professionModule;
 	/*

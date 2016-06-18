@@ -1,8 +1,8 @@
 #include "MobKillsFrame.h"
 #include "../stringFunctions.h"
 
-MobKillsFrame::MobKillsFrame(HuntingModule& huntingModule, const wxPoint& pos):
-	ListCtrlFrame(pos) {
+MobKillsFrame::MobKillsFrame(wxWindow* parent, HuntingModule& huntingModule, const wxPoint& pos):
+	ListCtrlFrame(parent, pos) {
 	this->huntingModule = &huntingModule;
 			
 	addColumn("Monster Name", 500, wxLIST_FORMAT_LEFT);

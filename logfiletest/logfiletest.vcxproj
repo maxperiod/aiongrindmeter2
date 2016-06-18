@@ -152,11 +152,13 @@
     <ClInclude Include="gui\PlayerKillsFrame.h" />
     <ClInclude Include="gui\ProfessionFrame.h" />
     <ClInclude Include="gui\ProfessionLevelingFrame.h" />
+    <ClInclude Include="gui\TestFrame.h" />
     <ClInclude Include="language\EnglishNA.h" />
     <ClInclude Include="language\language.h" />
     <ClInclude Include="language\LanguageManager.h" />
     <ClInclude Include="lookups\ApChart.h" />
     <ClInclude Include="lookups\CommandStringsNAEnglish.h" />
+    <ClInclude Include="lookups\ExpChartKR51.h" />
     <ClInclude Include="lookups\ExpChartNA40.h" />
     <ClInclude Include="lookups\MessageRuleEnums.h" />
     <ClInclude Include="lookups\RelicAp47.h" />
@@ -234,9 +236,11 @@
     <ClCompile Include="gui\PlayerKillsFrame.cpp" />
     <ClCompile Include="gui\ProfessionFrame.cpp" />
     <ClCompile Include="gui\ProfessionLevelingFrame.cpp" />
+    <ClCompile Include="gui\TestFrame.cpp" />
     <ClCompile Include="language\LanguageManager.cpp" />
     <ClCompile Include="lookups\ApChart.cpp" />
     <ClCompile Include="lookups\CommandStringsNAEnglish.cpp" />
+    <ClCompile Include="lookups\ExpChartKR51.cpp" />
     <ClCompile Include="lookups\ExpChartNA40.cpp" />
     <ClCompile Include="lookups\RelicAp47.cpp" />
     <ClCompile Include="lookups\RelicAp48.cpp" />
@@ -279,8 +283,8 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
-    <ClCompile Include="testModule\HuntingModuleTest.cpp" />
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
+    <ClCompile Include="tests\StringFunctionTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="classSkills.txt" />

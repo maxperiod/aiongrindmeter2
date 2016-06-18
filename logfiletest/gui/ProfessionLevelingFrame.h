@@ -31,7 +31,7 @@ class ProfessionLevelingFrame: public wxFrame
 public:
 
 
-	ProfessionLevelingFrame(ProfessionModule& professionModule, const wxPoint& pos);
+	ProfessionLevelingFrame(wxWindow* parent, ProfessionModule& professionModule, const wxPoint& pos);
 
 	void refresh();
 

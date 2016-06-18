@@ -9,7 +9,7 @@ class PlayerKillsFrame: public ListCtrlFrame
 {
 
 public:
-	PlayerKillsFrame(HuntingModule& huntingModule, SoulHealerModule& soulHealerModule, const wxPoint& pos);
+	PlayerKillsFrame(wxWindow* parent, HuntingModule& huntingModule, SoulHealerModule& soulHealerModule, const wxPoint& pos);
 		
 	void refresh();
 

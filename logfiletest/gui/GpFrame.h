@@ -16,7 +16,7 @@ class GpFrame: public wxFrame
 {
 
 public:
-	GpFrame(GpModule& gpModule, const wxPoint& pos);
+	GpFrame(wxWindow* parent, GpModule& gpModule, const wxPoint& pos);
 	void refresh();
 	
 

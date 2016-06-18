@@ -7,8 +7,8 @@ wxEND_EVENT_TABLE()
 
 
 
-KinahFrame::KinahFrame(KinahModule& kinahModule, const wxPoint& pos) :
-	wxFrame(NULL, wxID_ANY, "Kinah", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
+KinahFrame::KinahFrame(wxWindow* parent, KinahModule& kinahModule, const wxPoint& pos) :
+	wxFrame(parent, wxID_ANY, "Kinah", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
 {
 	this->kinahModule = &kinahModule;
 	

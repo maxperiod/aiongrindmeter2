@@ -30,7 +30,7 @@ class ExpFrame: public wxFrame
 {
 
 public:
-	ExpFrame(ExpModule& expModule, SoulHealerModule& soulHealerModule, const wxPoint& pos);
+	ExpFrame(wxWindow* parent, ExpModule& expModule, SoulHealerModule& soulHealerModule, const wxPoint& pos);
 	void refresh();
 
 	void OnOK(wxCommandEvent& event);

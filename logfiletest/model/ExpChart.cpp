@@ -3,11 +3,16 @@ ExpChart::ExpChart(int levelCap){
 	this->levelCap = levelCap;
 	values = new long long[levelCap];
 	cumulativeValues = new long long[levelCap];
+
+	//levelMilestones = new int[
 }
 
 ExpChart::~ExpChart(){
 	delete values;
 	delete cumulativeValues;
+
+	//delete levelMilestones;
+	//delete levelMilestoneNames;
 }
 
 void ExpChart::initCumulativeValuesTable(){
@@ -44,4 +49,8 @@ long long ExpChart::getLevelCapValue(){
 	else{
 		return getCumulativeValueForLevel(levelCap);
 	}
+}
+
+void ExpChart::addMilestone(int level, string description){
+
 }

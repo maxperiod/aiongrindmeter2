@@ -105,9 +105,11 @@ void ExpModule::executeChatLogCommand(ChatLogCommand& command){
 		expGainMeter.gain(0);
 
 	// Item Exp
+	/*
 	case STR_MSG_ADDEXP_POINT_USE:
 		expGainMeter.gain(stringToInt(params["%num1"]));
 		break;
+	*/
 	case STR_MSG_EXP_EXTRACTION_USE:
 		expGainMeter.spend(stringToInt(params["%num1"]));
 		break;

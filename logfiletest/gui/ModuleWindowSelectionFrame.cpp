@@ -34,8 +34,8 @@ wxBEGIN_EVENT_TABLE(ModuleWindowSelectionFrame, wxFrame)
 wxEND_EVENT_TABLE()
 
 
-ModuleWindowSelectionFrame::ModuleWindowSelectionFrame(int numRows, int numColumns): 
-	wxFrame(NULL, wxID_ANY, "Open Window", wxDefaultPosition, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)),
+ModuleWindowSelectionFrame::ModuleWindowSelectionFrame(wxWindow* parent, int numRows, int numColumns): 
+	wxFrame(parent, wxID_ANY, "Open Window", wxDefaultPosition, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)),
 	moduleWindowButtons(numRows * numColumns, nullptr),
 	moduleWindows(numRows * numColumns, nullptr)
 {

@@ -5,8 +5,8 @@ wxBEGIN_EVENT_TABLE(ItemBundleFrame, wxFrame)
 	EVT_CLOSE(ItemBundleFrame::OnClose)
 wxEND_EVENT_TABLE()
 
-ItemBundleFrame::ItemBundleFrame(ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos) :
-	 wxFrame(NULL, wxID_ANY, "Containers Opened", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxMAXIMIZE_BOX))  
+ItemBundleFrame::ItemBundleFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos) :
+	 wxFrame(parent, wxID_ANY, "Containers Opened", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxMAXIMIZE_BOX))  
 		 , itemIDReader("itemnames.txt")
 {
 	this->itemAcquisitionModule = &itemAcquisitionModule;

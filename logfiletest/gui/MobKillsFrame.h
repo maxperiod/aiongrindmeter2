@@ -8,7 +8,7 @@ class MobKillsFrame: public ListCtrlFrame
 {
 
 public:
-	MobKillsFrame(HuntingModule& huntingModule, const wxPoint& pos);
+	MobKillsFrame(wxWindow* parent, HuntingModule& huntingModule, const wxPoint& pos);
 		
 	void refresh();
 

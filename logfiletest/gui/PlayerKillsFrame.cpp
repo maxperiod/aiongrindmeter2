@@ -1,8 +1,8 @@
 #include "PlayerKillsFrame.h"
 #include "../stringFunctions.h"
 
-PlayerKillsFrame::PlayerKillsFrame(HuntingModule& huntingModule, SoulHealerModule& soulHealerModule, const wxPoint& pos):
-	ListCtrlFrame(pos) {
+PlayerKillsFrame::PlayerKillsFrame(wxWindow* parent, HuntingModule& huntingModule, SoulHealerModule& soulHealerModule, const wxPoint& pos):
+	ListCtrlFrame(parent, pos) {
 	this->huntingModule = &huntingModule;
 	this->soulHealerModule = &soulHealerModule;
 			

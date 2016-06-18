@@ -45,7 +45,7 @@ enum{
 
 class ModuleWindowSelectionFrame: public wxFrame {
 public:
-	ModuleWindowSelectionFrame(int numRows, int numColumns);
+	ModuleWindowSelectionFrame(wxWindow* parent, int numRows, int numColumns);
 	void addModuleWindow(wxFrame* window, const wxString& name, int row, int column);
 
 	void finishAddingButtons() {

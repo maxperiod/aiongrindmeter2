@@ -17,7 +17,7 @@ class ListCtrlFrame: public wxFrame
 {
 
 public:
-	ListCtrlFrame(const wxPoint& pos);
+	ListCtrlFrame(wxWindow* parent, const wxPoint& pos);
 		
 	virtual void refresh() = 0;
 

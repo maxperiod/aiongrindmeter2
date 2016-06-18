@@ -10,7 +10,7 @@ class ItemRollsFrame: public ListCtrlFrame//wxFrame
 {
 
 public:
-	ItemRollsFrame(ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos);
+	ItemRollsFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos);
 	void refresh();
 
 

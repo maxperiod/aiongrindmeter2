@@ -9,10 +9,11 @@ using namespace std;
 BEGIN_EVENT_TABLE(MainFrame, wxFrame)
     EVT_TIMER(TIMER_ID, MainFrame::OnTimer)
 	EVT_BUTTON(WINDOW_MENU_BUTTON_ID, MainFrame::OnWindowMenuButton)
+	EVT_CLOSE(MainFrame::OnClose)
 END_EVENT_TABLE()
 
 
-MainFrame::MainFrame(const wxPoint& pos):
+MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	wxFrame(NULL, wxID_ANY, string(APP_TITLE) + " " + string(APP_VERSION), pos, wxSize(MAINFRAME_WIDTH, MAINFRAME_HEIGHT), 
 			(wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)),
 		timer(this, TIMER_ID),
@@ -33,58 +34,61 @@ MainFrame::MainFrame(const wxPoint& pos):
 	);
 	expFrame->Show(true);
 	*/
-	moduleWindowSelectionFrame = new ModuleWindowSelectionFrame(5, 3);
+	moduleWindowSelectionFrame = new ModuleWindowSelectionFrame(this, 5, 3);
 	//moduleWindowSelectionFrame->Show();
 
-	expFrame = new ExpFrame(expModule, soulHealerModule, wxDefaultPosition);
+	expFrame = new ExpFrame(this, expModule, soulHealerModule, wxDefaultPosition);
 	expFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(expFrame, "XP", 0, 0);
 
-	apFrame = new ApFrame(apModule, soulHealerModule, wxDefaultPosition);
+	apFrame = new ApFrame(this,apModule, soulHealerModule, wxDefaultPosition);
 	apFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(apFrame, "AP", 1, 0);
 
-	gpFrame = new GpFrame(gpModule, wxDefaultPosition);
+	gpFrame = new GpFrame(this,gpModule, wxDefaultPosition);
 	//gpFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(gpFrame, "GP", 2, 0);
-
-	kinahFrame = new KinahFrame(kinahModule, wxDefaultPosition);
+	
+	kinahFrame = new KinahFrame(this,kinahModule, wxDefaultPosition);
 	moduleWindowSelectionFrame->addModuleWindow(kinahFrame, "Kinah", 3, 0);
 
-	professionLevelingFrame = new ProfessionLevelingFrame(professionModule, wxDefaultPosition);
+	professionLevelingFrame = new ProfessionLevelingFrame(this,professionModule, wxDefaultPosition);
 	//professionLevelingFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(professionLevelingFrame, "Gather/Craft Lvling", 0, 1);
 
-	gatherFrame = new ProfessionFrame(professionModule, GATHER, wxDefaultPosition);
+	gatherFrame = new ProfessionFrame(this,professionModule, GATHER, wxDefaultPosition);
 	//gatherFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(gatherFrame, "Gathering", 1, 1);
 
-	craftFrame = new ProfessionFrame(professionModule, CRAFT, wxDefaultPosition);
+	craftFrame = new ProfessionFrame(this,professionModule, CRAFT, wxDefaultPosition);
 	//craftFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(craftFrame, "Crafting", 2, 1);
 
-	itemAcquisitionFrame = new ItemAcquisitionFrame(itemAcquisitionModule, wxDefaultPosition);
+	itemAcquisitionFrame = new ItemAcquisitionFrame(this,itemAcquisitionModule, wxDefaultPosition);
 	//itemAcquisitionFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(itemAcquisitionFrame, "Items Acquired", 0, 2);
 
-	itemBundleFrame = new ItemBundleFrame(itemAcquisitionModule, wxDefaultPosition);
+	itemBundleFrame = new ItemBundleFrame(this,itemAcquisitionModule, wxDefaultPosition);
 	//itemBundleFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(itemBundleFrame, "Bundles Opened", 1, 2);
 
-	itemRollsFrame = new ItemRollsFrame(itemAcquisitionModule, wxDefaultPosition);
+	itemRollsFrame = new ItemRollsFrame(this,itemAcquisitionModule, wxDefaultPosition);
 	//itemRollsFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(itemRollsFrame, "Item Rolls", 2, 2);
 
-	mobKillsFrame = new MobKillsFrame(huntingModule, wxDefaultPosition);
+	mobKillsFrame = new MobKillsFrame(this,huntingModule, wxDefaultPosition);
 	//mobKillsFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(mobKillsFrame, "Mob Kills", 3, 2);
 
-	playerKillsFrame = new PlayerKillsFrame(huntingModule, soulHealerModule, wxDefaultPosition);
+	playerKillsFrame = new PlayerKillsFrame(this,huntingModule, soulHealerModule, wxDefaultPosition);
 	//mobKillsFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(playerKillsFrame, "Player Kills", 4, 2);
 
 	moduleWindowSelectionFrame->finishAddingButtons();
 	//mobKillsFrame->Show();
+
+	testFrame = new TestFrame(this, wxDefaultPosition);
+	//testFrame->Show();
 	
 	windowMenuButton = new wxButton(panel, WINDOW_MENU_BUTTON_ID, "Open Window");
 	/*
@@ -92,7 +96,7 @@ MainFrame::MainFrame(const wxPoint& pos):
 	crapFrame->SetSizer(new wxBoxSizer(wxVERTICAL));
 	crapFrame->GetSizer()->Add(new ValuePerHourLine(this, wxID_ANY));
 	*/
-	logFileUtility.setAionDirectory("d:/Aion/");
+	logFileUtility.setAionDirectory(aionPath);
 
 	logFileUtility.registerModule(soulHealerModule);
 	logFileUtility.registerModule(expModule);
@@ -132,5 +136,12 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 		tickCounter = 0;
 	}
 	tickCounter ++;
+	
+}
+
+void MainFrame::OnClose(wxCloseEvent& event){
+	tickCounter = -99999;
+	this->DestroyChildren();
+	this->Destroy();
 	
 }

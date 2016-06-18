@@ -1,6 +1,9 @@
 #ifndef EXPCHART_H
 #define EXPCHART_H
 
+#include <string>
+using namespace std;
+
 class ExpChart{
 public:
 	ExpChart(int levelCap);
@@ -15,11 +18,16 @@ public:
 	int getLevelCap() {return levelCap;}
 	bool isCumulativeMode() {return cumulativeMode;}
 
+	void addMilestone(int level, string description);
+
 protected:
 	int levelCap;
 	long long* values;	
 	long long* cumulativeValues;
-	bool cumulativeMode;	
+	bool cumulativeMode;
+
+	//int* levelMilestones;
+	//string* levelMilestoneNames;
 	
 	void initCumulativeValuesTable();
 };

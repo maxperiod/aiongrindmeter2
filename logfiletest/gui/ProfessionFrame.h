@@ -35,7 +35,7 @@ class ProfessionFrame: public ListCtrlFrame//wxFrame
 {
 
 public:
-	ProfessionFrame(ProfessionModule& professionModule, GatherType type, const wxPoint& pos);
+	ProfessionFrame(wxWindow* parent, ProfessionModule& professionModule, GatherType type, const wxPoint& pos);
 		
 	void refresh();
 

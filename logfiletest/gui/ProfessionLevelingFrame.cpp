@@ -5,8 +5,8 @@ wxBEGIN_EVENT_TABLE(ProfessionLevelingFrame, wxFrame)
 	EVT_CLOSE(ProfessionLevelingFrame::OnClose)
 wxEND_EVENT_TABLE()
 
-ProfessionLevelingFrame::ProfessionLevelingFrame(ProfessionModule& professionModule, const wxPoint& pos) :
-	 wxFrame(NULL, wxID_ANY, "sdfsdgsd", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))
+ProfessionLevelingFrame::ProfessionLevelingFrame(wxWindow* parent, ProfessionModule& professionModule, const wxPoint& pos) :
+	 wxFrame(parent, wxID_ANY, "sdfsdgsd", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))
 {
 	this->professionModule = &professionModule;
 	professionLevelingPanel = new wxPanel(this);//, wxID_ANY, wxDefaultPosition, wxSize(this->GetSize().GetX() - 10, -1));

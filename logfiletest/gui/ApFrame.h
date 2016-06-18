@@ -31,7 +31,7 @@ class ApFrame: public wxFrame
 {
 
 public:
-	ApFrame(ApModule& apModule, SoulHealerModule& soulHealerModule, const wxPoint& pos);
+	ApFrame(wxWindow* parent, ApModule& apModule, SoulHealerModule& soulHealerModule, const wxPoint& pos);
 	void refresh();
 
 	void OnOK(wxCommandEvent& event);

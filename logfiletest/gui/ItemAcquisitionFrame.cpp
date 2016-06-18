@@ -3,8 +3,8 @@
 
 
 
-ItemAcquisitionFrame::ItemAcquisitionFrame(ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos) :
-	 ListCtrlFrame(pos), itemIDReader("itemnames.txt")
+ItemAcquisitionFrame::ItemAcquisitionFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos) :
+	 ListCtrlFrame(parent, pos), itemIDReader("itemnames.txt")
 {
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 	

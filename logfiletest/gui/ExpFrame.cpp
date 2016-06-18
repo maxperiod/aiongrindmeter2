@@ -9,8 +9,8 @@ wxBEGIN_EVENT_TABLE(ExpFrame, wxFrame)
 	EVT_CLOSE(ExpFrame::OnClose)
 wxEND_EVENT_TABLE()
 
-ExpFrame::ExpFrame(ExpModule& expModule, SoulHealerModule& soulHealerModule, const wxPoint& pos) :
-	wxFrame(NULL, wxID_ANY, "XP", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
+ExpFrame::ExpFrame(wxWindow* parent, ExpModule& expModule, SoulHealerModule& soulHealerModule, const wxPoint& pos) :
+	wxFrame(parent, wxID_ANY, "XP", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX))	
 {
 	this->expModule = &expModule;
 	this->soulHealerModule = &soulHealerModule;
@@ -82,7 +82,7 @@ ExpFrame::ExpFrame(ExpModule& expModule, SoulHealerModule& soulHealerModule, con
 
 	initLabel1 = new wxStaticText(initPanel, -1, wxT("Char Level")); 
 	initSizer->Add(initLabel1, wxGBPosition(0, 0));
-	initLabel2 = new wxStaticText(initPanel, -1, wxT("Current XP")); 
+	initLabel2 = new wxStaticText(initPanel, -1, wxT("Current XP %")); 
 	initSizer->Add(initLabel2, wxGBPosition(1, 0));
 	
 	initValue1 = new wxTextCtrl(initPanel, -1, wxEmptyString, wxDefaultPosition, wxSize(LEVEL_INPUT_WIDTH, -1)); 
@@ -133,6 +133,7 @@ void ExpFrame::refresh(){
 		if (soulHealerModule->soulHealer.isExpUpdateNeeded() && !manualExpUpdatePanel->IsShown()){
 			expPanel->Hide();
 			manualExpUpdatePanel->Show();
+			this->Show();
 		}
 		else if (!soulHealerModule->soulHealer.isExpUpdateNeeded() && !expPanel->IsShown()){
 			manualExpUpdatePanel->Hide();
@@ -198,7 +199,7 @@ void ExpFrame::OnOK(wxCommandEvent& event){
 	// For verifyNumericInput function, -2 is blank input, -1 is invalid input
 	int level = verifyNumericInput(initValue1->GetValue().ToStdString());
 	//int currentExp = verifyNumericInput(initValue2->GetValue().ToStdString());
-	double currentExpPercent = 0;
+	double currentExpPercent = verifyPercentInput(initValue2->GetValue().ToStdString());//= 0;
 	initValue2->GetValue().ToDouble(&currentExpPercent);
 	/*
 	if (level == -2 || currentExp == -2){
