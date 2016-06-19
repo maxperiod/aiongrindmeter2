@@ -200,7 +200,7 @@ void ExpFrame::OnOK(wxCommandEvent& event){
 	int level = verifyNumericInput(initValue1->GetValue().ToStdString());
 	//int currentExp = verifyNumericInput(initValue2->GetValue().ToStdString());
 	double currentExpPercent = verifyPercentInput(initValue2->GetValue().ToStdString());//= 0;
-	initValue2->GetValue().ToDouble(&currentExpPercent);
+	//initValue2->GetValue().ToDouble(&currentExpPercent);
 	/*
 	if (level == -2 || currentExp == -2){
 	}

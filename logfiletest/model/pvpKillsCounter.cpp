@@ -8,6 +8,7 @@ void PvpKillsCounter::addKill(const string& name){
 		uniqueKills ++;
 	}
 	else {
+		if (theMap[name].kills == 0) uniqueKills ++;
 		theMap[name].kills ++;
 	}
 	totalKills ++;
