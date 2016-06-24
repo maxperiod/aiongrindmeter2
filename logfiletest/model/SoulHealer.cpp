@@ -11,6 +11,7 @@ void SoulHealer::PvEDeath(){
 		expUpdateNeeded = true;
 		numPveDeaths ++;
 	}
+	soulHealingNeeded = true;
 	//apUpdateNeeded = false;
 }
 
@@ -21,6 +22,7 @@ void SoulHealer::PvPDeath(){
 		apUpdateNeeded = true;
 		lastDeathIsPk = true;
 	}
+	soulHealingNeeded = true;
 	numPvpDeaths ++;
 }
 bool SoulHealer::manualExpUpdate(long long newValue){
@@ -43,9 +45,10 @@ bool SoulHealer::manualApUpdate(long long newValue){
 	return false;
 }
 
-bool SoulHealer::manualExpUpdatePercent(float newValue){
+bool SoulHealer::manualExpUpdatePercent(double newValue){
 	if (currentExpChecker->setCurrentPercent(newValue)){
 		expUpdateNeeded = false;
+		if (soulHealingNeeded) hasManuallyUpdatedExpBeforeSoulHeal = true;
 		if (abs(currentExpChecker->getLastChangePercent()) < 0.02){
 			apUpdateNeeded = true;
 			
@@ -56,18 +59,27 @@ bool SoulHealer::manualExpUpdatePercent(float newValue){
 }
 
 void SoulHealer::soulHeal(){
+	
 	int lastKinahTransaction = kinahMeter->getLastSingleChange();
 	if (lastKinahTransaction != -1 && expUpdateNeeded){
-		int expLoss = floor((float) expGainMeter->getLastSingleChange() * 1.5);
-		expGainMeter->lose(expLoss);
-		
+		if (!hasManuallyUpdatedExpBeforeSoulHeal){
+			int expLoss = floor((float) expGainMeter->getLastSingleChange() * 1.5);
+			expGainMeter->lose(expLoss);
+			expUpdateNeeded = false;
+		}
+		else {
+			hasManuallyUpdatedExpBeforeSoulHeal = false;
+		}
 	}
 	else if (lastKinahTransaction == -1 && !lastDeathIsPk && currentApChecker->isInitialized()){
 		apUpdateNeeded = true;
+		if (!hasManuallyUpdatedExpBeforeSoulHeal) expUpdateNeeded = false;
 	}
 	expGainMeter->applyFromBuffer();		
 	kinahMeter->applyFromBuffer();
-	expUpdateNeeded = false;
+	//expUpdateNeeded = false;
+	soulHealingNeeded = false;
+		
 }
 
 void SoulHealer::checkReceivedDamageIsPvp(string& skillName){

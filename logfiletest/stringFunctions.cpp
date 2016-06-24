@@ -291,6 +291,9 @@ double verifyPercentInput(const string& input, int maxDecimals){
 	int numDecimalPoints = 0;
 	int numDecimalPlaces = 0;
 	
+	//Strip trailing percentage sign at the back
+	if (input2[input2.length() - 1] == '%') input2.erase(input2.length() - 1, 1);
+
 	//Strip spaces in front of input
 	while(input2[0] == ' ') input2.erase(0, 1);
 

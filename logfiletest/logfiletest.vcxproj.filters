@@ -428,7 +428,7 @@
     <ClCompile Include="lookups\ExpChartKR51.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\StringFunctionTest.cpp">
+    <ClCompile Include="testModule\SoulHealerModuleTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">

@@ -19,9 +19,11 @@ public:
 			currentExpChecker(&currentExpChecker),
 			currentApChecker(&currentApChecker), 
 			kinahMeter(&kinahMeter),
+			soulHealingNeeded(false),
 			expUpdateNeeded(false),
 			apUpdateNeeded(false),
 			lastDeathIsPk(false),
+			hasManuallyUpdatedExpBeforeSoulHeal(false),
 			lastReceivedPvpHitTime(0),
 			numPveDeaths(0),
 			numPvpDeaths(0)
@@ -34,7 +36,7 @@ public:
 	void nothingToRecover() {expUpdateNeeded = false;}
 
 	bool manualExpUpdate(long long newValue);
-	bool manualExpUpdatePercent(float newValue);
+	bool manualExpUpdatePercent(double newValue);
 	bool manualApUpdate(long long newValue);
 
 	bool isExpUpdateNeeded() const {return expUpdateNeeded;}
@@ -56,9 +58,11 @@ private:
 	LevelUpChecker* currentApChecker;
 	MeterValue* kinahMeter;
 
+	bool soulHealingNeeded;
 	bool expUpdateNeeded;
 	bool apUpdateNeeded;
-	bool lastDeathIsPk ;
+	bool lastDeathIsPk;
+	bool hasManuallyUpdatedExpBeforeSoulHeal;	
 
 	int numPveDeaths;
 	int numPvpDeaths;

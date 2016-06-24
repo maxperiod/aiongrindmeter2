@@ -133,22 +133,22 @@ void ExpModule::endOfTickAction(){
 }
 
 
-float ExpModule::getWeightedLevelUpsPerHour(){
+double ExpModule::getWeightedLevelUpsPerHour(){
 	if (!levelUpChecker.isInitialized()) return 0;
 
-	float hours = (float)timer.getElapsedTime() / 3600;
-	float levelsGainedWeight = 1;
+	double hours = (double)timer.getElapsedTime() / 3600;
+	double levelsGainedWeight = 1;
 	if (hours >= 1) return timer.calculatePerHourRate(levelUpChecker.getNumLevelsGained());
 
 	levelsGainedWeight = hours;
 
-	float expPerHour = timer.calculatePerHourRate(expGainMeter.getNetGained());
-	float projectedDecimalLevelAfterOneHour = levelUpChecker.getProjectedDecimalLevel(expPerHour);	
+	double expPerHour = timer.calculatePerHourRate(expGainMeter.getNetGained());
+	double projectedDecimalLevelAfterOneHour = levelUpChecker.getProjectedDecimalLevel(expPerHour);	
 	/*
-	float weightedLevelsGainedPerHour = timer.calculatePerHourRate(
+	double weightedLevelsGainedPerHour = timer.calculatePerHourRate(
 		levelUpChecker.getNumLevelsGained() * levelsGainedWeight);		
 	*/
-	float weightedLevelUpProjectionPerHour = (projectedDecimalLevelAfterOneHour - levelUpChecker.getCurrentDecimalLevel())
+	double weightedLevelUpProjectionPerHour = (projectedDecimalLevelAfterOneHour - levelUpChecker.getCurrentDecimalLevel())
 		* (1 - levelsGainedWeight);
 		
 

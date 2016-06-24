@@ -32,7 +32,7 @@ public:
 
 	ExpModule(); 
 
-	float getWeightedLevelUpsPerHour();
+	double getWeightedLevelUpsPerHour();
 	//ValueGainObserver valueGainObserver;
 
 	void executeChatLogCommand(ChatLogCommand& command);

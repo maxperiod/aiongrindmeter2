@@ -40,6 +40,7 @@ protected:
 		string aionDirectory = "testModule/testLog/";
 		
 		ASSERT_TRUE(logFileUtility.setAionDirectory(aionDirectory));
+
 		/*
 		logFileUtility.registerMessageRuleCode(STR_MSG_COMBAT_MY_ABYSS_POINT_GAIN);
 		logFileUtility.registerMessageRuleCode(STR_GET_EXP_VITAL_MAKEUP_BONUS);		
@@ -99,6 +100,9 @@ TEST_F(ExpTest, gainExpNoInit){
 TEST_F(ExpTest, gainExpWithInit){
 	expModule.levelUpChecker.initialize(20, 12000);
 	
+	EXPECT_EQ(0, expModule.expGainMeter.getNetGained());
+	EXPECT_EQ(0, expModule.levelUpChecker.getNumLevelsGained());
+
 	logFile.appendFile("2013.06.26 22:05:44 : You have gained 15,411 XP from Studio Butler (Energy of Repose 3,626, Energy of Salvation 2,719).");
 	logFileUtility.parseLogFile();
 

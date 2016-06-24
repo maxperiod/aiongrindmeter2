@@ -134,6 +134,7 @@ void ExpFrame::refresh(){
 			expPanel->Hide();
 			manualExpUpdatePanel->Show();
 			this->Show();
+			expInputValue->Clear();
 		}
 		else if (!soulHealerModule->soulHealer.isExpUpdateNeeded() && !expPanel->IsShown()){
 			manualExpUpdatePanel->Hide();
@@ -154,7 +155,7 @@ void ExpFrame::refresh(){
 			expBarValueLabel << formatKiloMega(expModule->levelUpChecker.getCumulativeCurrentValue(), 4) << " / " << formatKiloMega(expModule->expChart.getLevelCapValue(), 4);
 			//expBarValueLabel << formatCurrentAndNextValuesWithKiloMega(expModule->levelUpChecker.getCumulativeCurrentValue(), expModule->expChart.getLevelCapValue(), 4);
 			expBarValue = expModule->levelUpChecker.getCumulativePercent() * 100;
-			
+
 		}
 		else {
 			//expBarValueLabel << formatKiloMega(expModule->levelUpChecker.getCurrentValue()) << " / " << formatKiloMega(expModule->levelUpChecker.getCurrentLevelMaxValue());
