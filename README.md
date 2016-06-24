@@ -1,3 +1,5 @@
+##[Click here for Downloads](https://github.com/maxperiod/aiongrindmeter2/releases)
+
 Aion Grind Meter 2 - Aion XP/hr meter and more
 
 ##Overview
