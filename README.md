@@ -34,7 +34,7 @@ Once you have enabled chat log using ARM, log into Aion with any one of your cha
 
 ##Setup
 
-Extract the executable to anywhere. 
+Extract the folder to anywhere (Recommended: inside your Aion folder). 
 You will be prompted to browse for your Aion folder when you run it for the first time.
 
 You do not need to browse for your Aion folder if you extracted it into your Aion folder.
