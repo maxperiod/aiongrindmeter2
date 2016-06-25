@@ -2,6 +2,42 @@
 
 Aion Grind Meter 2 - Aion XP/hr meter and more
 
+##Screenshots
+
+![alt text](images/expexample1.png "EXP - progress to next level")
+
+EXP - progress to next level
+
+
+![alt text](images/expexample2.png "EXP - cumulative progress to level 65")
+
+EXP - cumulative progress to level 65
+
+
+![alt text](images/gatheringexample49.png "Gathering")
+
+Gathering
+
+
+![alt text](images/ophidan jerkin 1.png "Crafting")
+
+Crafting
+
+
+![alt text](images/theo 19x containers.png "Items from container opens")
+
+Items from container opens
+
+
+![alt text](images/theo 19x itemsacquired.png "Items acquired (except opened from containers)")
+
+Items acquired (except opened from containers)
+
+
+![alt text](images/theo 19x mobkills.png "Monster Kills")
+
+Monster Kills
+
 ##Overview
 
 Aion Grind Meter contains various grinding meters for Aion: 
