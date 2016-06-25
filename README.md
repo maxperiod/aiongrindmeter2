@@ -5,14 +5,15 @@ Aion Grind Meter 2 - Aion XP/hr meter and more
 ##Overview
 
 Aion Grind Meter contains various grinding meters for Aion: 
-* XP gains and XP/hour (Experience gained per hour) 
-* AP gain/loss and AP/hour (Abyss Points gained per hour).
+* XP gains, XP/hour (Experience gained per hour), levels or percentage per hour, cumulative exp bar to level 65  
+* AP gain/loss and AP/hour (Abyss Points gained per hour), AP gain from PvP.
 * GP gain and GP/hour (Glory Points gained per hour)
 * Gathering and/or crafting success/failure/cancellation/procs, successes per hour
 * Gathering and/or crafting level ups per hour, estimated XP bars
 * Monster kills (per hour)
 * Item Acquisitions (per hour)
 * Player kills (per hour)
+* Item dice rolls
 
 It uses the chat log file (Chat.log) to obtain gameplay information. It does not interact or modify the Aion client in any way.
 
