@@ -12,6 +12,7 @@ Aion Grind Meter contains various grinding meters for Aion:
 * Gathering and/or crafting level ups per hour, estimated XP bars
 * Monster kills (per hour)
 * Item Acquisitions (per hour)
+* Items acquired from container opens
 * Player kills (per hour)
 * Item dice rolls
 
