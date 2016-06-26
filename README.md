@@ -68,7 +68,7 @@ Aion Grind Meter contains various grinding meters for Aion:
 * Monster kills (per hour)
 * Item Acquisitions (per hour)
 * Items acquired from container opens
-* Player kills (per hour)
+* Player kills (per hour) and assists
 * Item dice rolls
 
 It uses the chat log file (Chat.log) to obtain gameplay information. It does not interact or modify the Aion client in any way.
