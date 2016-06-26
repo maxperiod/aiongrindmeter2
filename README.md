@@ -24,6 +24,11 @@ Gathering
 Crafting
 
 
+![alt text](images/proflevelingexample.png "Gathering/crafting profession leveling")
+
+Gathering/crafting profession leveling
+
+
 ![alt text](images/theo 19x containers.png "Items from container opens")
 
 Items from container opens
