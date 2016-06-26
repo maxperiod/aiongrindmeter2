@@ -14,6 +14,16 @@ EXP - progress to next level
 EXP - cumulative progress to level 65
 
 
+![alt text](images/apexample.png "AP")
+
+AP
+
+
+![alt text](images/gpexample.png "GP")
+
+GP
+
+
 ![alt text](images/gatheringexample49.png "Gathering")
 
 Gathering
@@ -39,15 +49,19 @@ Items from container opens
 Items acquired (except opened from containers)
 
 
-![alt text](images/theo 19x mobkills.png "Monster Kills")
+![alt text](images/theo 19x mobkills.png "Monster kills")
 
-Monster Kills
+Monster kills
+
+![alt text](images/pvpexample.png "Player kills and assists")
+
+Player kills and assists
 
 ##Overview
 
 Aion Grind Meter contains various grinding meters for Aion: 
 * XP gains, XP/hour (Experience gained per hour), levels or percentage per hour, cumulative exp bar to level 65  
-* AP gain/loss and AP/hour (Abyss Points gained per hour), AP gain from PvP.
+* AP gain/loss and AP/hour (Abyss Points gained per hour), AP gain from PvP, AP value of gained relics
 * GP gain and GP/hour (Glory Points gained per hour)
 * Gathering and/or crafting success/failure/cancellation/procs, successes per hour
 * Gathering and/or crafting level ups per hour, estimated XP bars
