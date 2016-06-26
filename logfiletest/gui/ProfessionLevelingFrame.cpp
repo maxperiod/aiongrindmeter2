@@ -14,11 +14,11 @@ ProfessionLevelingFrame::ProfessionLevelingFrame(wxWindow* parent, ProfessionMod
 
 	gatherLevelSizer = new wxGridBagSizer(2, 6);
 	
-	label1 = new wxStaticText(professionLevelingPanel, -1, wxT("Gather level ups"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE); 
+	label1 = new wxStaticText(professionLevelingPanel, -1, wxT("Profession level ups"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE); 
 	gatherLevelSizer->Add(label1, wxGBPosition(0, 0));
 	label2 = new wxStaticText(professionLevelingPanel, -1, wxT("Level ups / hour"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE); 
 	gatherLevelSizer->Add(label2, wxGBPosition(1, 0));
-	label3 = new wxStaticText(professionLevelingPanel, -1, wxT("Crafts this level"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE); 
+	label3 = new wxStaticText(professionLevelingPanel, -1, wxT("Gather/Crafts this level"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE); 
 	gatherLevelSizer->Add(label3, wxGBPosition(2, 0));
 	label4 = new wxStaticText(professionLevelingPanel, -1, wxT("Last level up"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE); 
 	gatherLevelSizer->Add(label4, wxGBPosition(3, 0));
@@ -59,7 +59,9 @@ void ProfessionLevelingFrame::refresh() {
 	//professionModule->craftLeveling.getCurrentProfession();
 	ProfessionLeveling* professionLeveling = &professionModule->craftLeveling;
 	
-	this->SetTitle(formatNumber(professionLeveling->getCurrentLevel()) + professionLeveling->getCurrentProfession());
+	wxString title;
+	title << professionLeveling->getCurrentProfession() << ": " << formatNumber(professionLeveling->getCurrentLevel()) << 'p';
+	this->SetTitle(title);
 	value1->SetLabel(formatNumber(professionLeveling->getNumLevelUps()));
 	value2->SetLabel(formatKiloMega(professionModule->timer.calculatePerHourRate(
 		professionLeveling->getNumLevelUps() + professionLeveling->getProgressBarValue() / 100)) + " / h");

@@ -14,6 +14,8 @@ ItemAcquisitionFrame::ItemAcquisitionFrame(wxWindow* parent, ItemAcquisitionModu
 	addColumn("Per Hour", 70, wxLIST_FORMAT_RIGHT);
 
 	setNameColumnForVariableWidth(1);
+
+	SetTitle("Items Acquired");
 }
 
 

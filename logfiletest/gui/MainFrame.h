@@ -40,7 +40,7 @@
 #include "TestFrame.h"
 
 #define APP_TITLE "Aion Grind Meter"
-#define APP_VERSION "2.0.0"
+#define APP_VERSION "2.0.1-alpha"
 
 #define MAINFRAME_WIDTH 230
 #define MAINFRAME_HEIGHT 100
