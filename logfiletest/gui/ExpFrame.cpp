@@ -152,7 +152,7 @@ void ExpFrame::refresh(){
 		float expBarValue;
 		
 		if (cumulativeToggle->GetValue()){
-			expBarValueLabel << formatKiloMega(expModule->levelUpChecker.getCumulativeCurrentValue(), 4) << " / " << formatKiloMega(expModule->expChart.getLevelCapValue(), 4);
+			expBarValueLabel << formatKiloMega(expModule->levelUpChecker.getCumulativeCurrentValue(), 4) << " / " << formatKiloMega(expModule->expChart->getLevelCapValue(), 4);
 			//expBarValueLabel << formatCurrentAndNextValuesWithKiloMega(expModule->levelUpChecker.getCumulativeCurrentValue(), expModule->expChart.getLevelCapValue(), 4);
 			expBarValue = expModule->levelUpChecker.getCumulativePercent() * 100;
 

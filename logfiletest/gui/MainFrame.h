@@ -37,6 +37,9 @@
 #include "MobKillsFrame.h"
 #include "PlayerKillsFrame.h"
 
+#include "../lookups/ExpChartNA40.h"
+#include "../lookups/ExpChartEU49.h"
+
 #include "TestFrame.h"
 
 #define APP_TITLE "Aion Grind Meter"
@@ -81,6 +84,8 @@ private:
 	ProfessionModule professionModule;
 
 	LogFileUtility logFileUtility;
+
+	ApChart apChart;
 
 	wxTimer timer;
 

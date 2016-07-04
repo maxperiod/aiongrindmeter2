@@ -150,6 +150,7 @@ void ApFrame::refresh(){
 			apPanel->Hide();
 			manualApUpdatePanel->Show();
 			this->Show();
+			apInputValue->Clear();
 		}
 		else if (!soulHealerModule->soulHealer.isApUpdateNeeded() && !apPanel->IsShown()){
 			manualApUpdatePanel->Hide();

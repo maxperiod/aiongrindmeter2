@@ -16,11 +16,15 @@ END_EVENT_TABLE()
 MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	wxFrame(NULL, wxID_ANY, string(APP_TITLE) + " " + string(APP_VERSION), pos, wxSize(MAINFRAME_WIDTH, MAINFRAME_HEIGHT), 
 			(wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)),
+		expModule(shared_ptr<ExpChart>(new ExpChartEU49())),
+		apModule(shared_ptr<ApChart>(new ApChart())),
 		timer(this, TIMER_ID),
 		soulHealerModule(expModule, apModule, kinahModule),
 		ticksPerRefresh(2), 
-		tickCounter(0)
+		tickCounter(0)		
 {
+	LANGUAGE_MANAGER.setToEnglishEU();
+
 	parentSizer = new wxBoxSizer(wxVERTICAL);
 	panel = new wxPanel(this, wxID_ANY);
 

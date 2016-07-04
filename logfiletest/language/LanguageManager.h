@@ -6,21 +6,24 @@
 #define LANGUAGE_MANAGER_H
 
 #include "EnglishNA.h"
+#include "EnglishEU.h"
 
 class LanguageManager{
 public:
-	enum LanguageID{ENGLISH_NA};
+	enum LanguageID{ENGLISH_NA, ENGLISH_EU};
 	
 	LanguageManager(LanguageID language) {currentLanguage = language;}
 	
 	Language& getCurrentLanguage();
 	
+	void setToEnglishEU() {currentLanguage = ENGLISH_EU;}
 
 private:
 	LanguageID currentLanguage;
 	
 	//RuleStringsHard
 	EnglishNA englishNA;
+	EnglishEU englishEU;
 };
 
 extern LanguageManager LANGUAGE_MANAGER;

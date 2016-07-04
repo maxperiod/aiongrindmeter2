@@ -153,16 +153,20 @@
     <ClInclude Include="gui\ProfessionFrame.h" />
     <ClInclude Include="gui\ProfessionLevelingFrame.h" />
     <ClInclude Include="gui\TestFrame.h" />
+    <ClInclude Include="language\EnglishEU.h" />
     <ClInclude Include="language\EnglishNA.h" />
     <ClInclude Include="language\language.h" />
     <ClInclude Include="language\LanguageManager.h" />
     <ClInclude Include="lookups\ApChart.h" />
+    <ClInclude Include="lookups\CommandStringsEUEnglish.h" />
     <ClInclude Include="lookups\CommandStringsNAEnglish.h" />
+    <ClInclude Include="lookups\ExpChartEU49.h" />
     <ClInclude Include="lookups\ExpChartKR51.h" />
     <ClInclude Include="lookups\ExpChartNA40.h" />
     <ClInclude Include="lookups\MessageRuleEnums.h" />
     <ClInclude Include="lookups\RelicAp47.h" />
     <ClInclude Include="lookups\RelicAp48.h" />
+    <ClInclude Include="lookups\SkillToClassHardCodedEUEnglish.h" />
     <ClInclude Include="lookups\SkillToClassHardCodedNA.h" />
     <ClInclude Include="model\AbstractCounter.h" />
     <ClInclude Include="model\ApGainMeter.h" />
@@ -239,11 +243,14 @@
     <ClCompile Include="gui\TestFrame.cpp" />
     <ClCompile Include="language\LanguageManager.cpp" />
     <ClCompile Include="lookups\ApChart.cpp" />
+    <ClCompile Include="lookups\CommandStringsEUEnglish.cpp" />
     <ClCompile Include="lookups\CommandStringsNAEnglish.cpp" />
+    <ClCompile Include="lookups\ExpChartEU49.cpp" />
     <ClCompile Include="lookups\ExpChartKR51.cpp" />
     <ClCompile Include="lookups\ExpChartNA40.cpp" />
     <ClCompile Include="lookups\RelicAp47.cpp" />
     <ClCompile Include="lookups\RelicAp48.cpp" />
+    <ClCompile Include="lookups\SkillToClassHardCodedEUEnglish.cpp" />
     <ClCompile Include="lookups\SkillToClassHardCodedNA.cpp" />
     <ClCompile Include="mains\MyApp.cpp" />
     <ClCompile Include="model\ApGainMeter.cpp" />
@@ -283,7 +290,6 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
-    <ClCompile Include="testModule\SoulHealerModuleTest.cpp" />
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
   </ItemGroup>
   <ItemGroup>

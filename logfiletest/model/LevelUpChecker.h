@@ -14,7 +14,8 @@ public:
 	//~LevelUpChecker();
 
 	void setReferringMeter(MeterValue& referringMeter) {this->referringMeter = &referringMeter;}
-	void setExpChart(ExpChart& expChart) {this->expChart = &expChart;}
+	//void setExpChart(ExpChart& expChart) {this->expChart = &expChart;}
+	void setExpChart(shared_ptr<ExpChart> expChart) {this->expChart = move(expChart);}
 
 	void prohibitLevelUp() {levelUpBlocked = true;}
 	void clearLevelUpProhibition() {levelUpBlocked = false;}
@@ -68,7 +69,8 @@ private:
 
 	long long manuallyUpdatedChanges;
 
-	ExpChart* expChart;
+	//ExpChart* expChart;
+	shared_ptr<ExpChart> expChart;
 	//bool cumulativeMode;	
 
 	MeterValue* referringMeter;

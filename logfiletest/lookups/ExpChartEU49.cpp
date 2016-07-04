@@ -1,0 +1,73 @@
+#include "ExpChartEU49.h"
+
+ExpChartEU49::ExpChartEU49(): ExpChart(65){
+	cumulativeMode = false;
+	
+	values[0] = 400;
+	values[1] = 1033;
+	values[2] = 2387;
+	values[3] = 5234;
+	values[4] = 8601;
+	values[5] = 13323;
+	values[6] = 21032;
+	values[7] = 30972;
+	values[8] = 43087;
+	values[9] = 56183;
+	values[10] = 78370;
+	values[11] = 100203;
+	values[12] = 129506;
+	values[13] = 158838;
+	values[14] = 195209;
+	values[15] = 236101;
+	values[16] = 312654;
+	values[17] = 400844;
+	values[18] = 488209;
+	values[19] = 599161;
+	values[20] = 778169;
+	values[21] = 962891;
+	values[22] = 1199117;
+	values[23] = 1406459;
+	values[24] = 1607073;
+	values[25] = 1864380;
+	values[26] = 2154562;
+	values[27] = 2401817;
+	values[28] = 2805357;
+	values[29] = 3490773;
+	values[30] = 4083698;
+	values[31] = 4854721;
+	values[32] = 5809416;
+	values[33] = 7590965;
+	values[34] = 9668316;
+	values[35] = 11833925;
+	values[36] = 15612813;
+	values[37] = 17960088;
+	values[38] = 21040392;
+	values[39] = 25299267;
+	values[40] = 29596360;
+	values[41] = 34777045;
+	values[42] = 37244961;
+	values[43] = 39567960;
+	values[44] = 42320163;
+	values[45] = 45345403;
+	values[46] = 48008552;
+	values[47] = 50936580;
+	values[48] = 54185061;
+	values[49] = 57573684;
+	values[50] = 64287820;
+	values[51] = 69818133;
+	values[52] = 74503034;
+	values[53] = 78038281;
+	values[54] = 81671945;
+	values[55] = 86283269;
+	values[56] = 91151545;
+	values[57] = 96290941;
+	values[58] = 101716397;
+	values[59] = 105939427;
+	values[60] = 113579483;
+	values[61] = 119281359;
+	values[62] = 125896094;
+	values[63] = 133446367;
+	values[64] = 140120210;
+
+	initCumulativeValuesTable();
+}

@@ -24,7 +24,8 @@ using namespace std;
 
 class ApModule: public Module{
 public:
-	ApChart apChart;
+	//ApChart apChart;
+	shared_ptr<ApChart> apChart;
 	
 	LevelUpChecker abyssRankChecker;
 	RelicAp48 relicAp;
@@ -33,7 +34,7 @@ public:
 	
 	Timer timer;
 
-	ApModule();
+	ApModule(shared_ptr<ApChart> apChart);
 
 
 	//ValueGainObserver valueGainObserver;

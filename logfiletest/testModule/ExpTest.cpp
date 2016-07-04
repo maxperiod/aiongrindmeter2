@@ -6,13 +6,14 @@
 #include "../parser/LogFileUtility.h"
 #include "testLog/TemporaryLogFile.h"
 
+#include "../lookups/ExpChartNA40.h"
 
 class ExpTest: public ::testing::Test{
 protected:
 	//MaxPeriodParser parser;
 	//RuleStringsHardCodedNA rules;
 	
-	ExpModule expModule;
+	ExpModule expModule(shared_ptr<ExpChart>(new ExpChartNA40()));
 	//ApModule apModule;
 	//KinahModule kinahModule;
 	//SoulHealerModule soulHealerModule;
@@ -464,7 +465,7 @@ TEST_F(ExpTest, InitPercentNewCharacter){
 
 }
 
-
+/*
 TEST_F(ExpTest, PercentlevelUp){
 	//55: 104,225,345
 	expModule.levelUpChecker.initializePercent(55, 99.1);
@@ -485,6 +486,7 @@ TEST_F(ExpTest, PercentlevelUp){
 	EXPECT_NEAR(0.0086615924, expModule.levelUpChecker.getNumLevelsGained(), 0.0001);
 
 }
+*/
 
 TEST_F(ExpTest, PercentlevelUp2){
 	//55: 104,225,345

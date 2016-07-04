@@ -1,7 +1,7 @@
 #include "ExpModule.h"
 #include "../stringFunctions.h"
 
-ExpModule::ExpModule(): expGainMeter(levelUpChecker) 
+ExpModule::ExpModule(shared_ptr<ExpChart> expChart): expChart(expChart), expGainMeter(levelUpChecker) 
 	{
 		levelUpChecker.setExpChart(expChart);		
 		//expGainMeter.setObserver(valueGainObserver);		
@@ -43,11 +43,13 @@ void ExpModule::executeChatLogCommand(ChatLogCommand& command){
 	switch(command.getMessageRuleCode()){
 	// EXP from a monster/player/NPC
 	case STR_GET_EXP_VITAL_MAKEUP_BONUS:
+	case STR_MSG_F2P_GET_EXP_BOOST_VITAL_MAKEUP_BONUS:
 		expGainMeter.gain(stringToInt(params["%num1"]));
 		expGainMeter.useRepose(stringToInt(params["%num2"]));
 		expGainMeter.useSalvation(stringToInt(params["%num3"]));
 		break;
 	case STR_GET_EXP_VITAL_BONUS:
+	case STR_MSG_F2P_GET_EXP_BOOST_VITAL_BONUS:
 		expGainMeter.gain(stringToInt(params["%num1"]));
 		expGainMeter.useRepose(stringToInt(params["%num2"]));
 		break;
@@ -61,11 +63,13 @@ void ExpModule::executeChatLogCommand(ChatLogCommand& command){
 
 	// EXP from no target (gathering/crafting)
 	case STR_GET_EXP2_VITAL_MAKEUP_BONUS:
+	case STR_MSG_F2P_GET_EXP2_BOOST_VITAL_MAKEUP_BONUS:
 		expGainMeter.gain(stringToInt(params["%num0"]));
 		expGainMeter.useRepose(stringToInt(params["%num1"]));
 		expGainMeter.useSalvation(stringToInt(params["%num2"]));
 		break;
 	case STR_GET_EXP2_VITAL_BONUS:
+	case STR_MSG_F2P_GET_EXP2_BOOST_VITAL_BONUS:
 		expGainMeter.gain(stringToInt(params["%num0"]));
 		expGainMeter.useRepose(stringToInt(params["%num1"]));
 		break;

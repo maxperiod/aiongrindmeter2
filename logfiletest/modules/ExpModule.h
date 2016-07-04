@@ -22,7 +22,8 @@ using namespace std;
 
 class ExpModule: public Module{
 public:
-	ExpChartNA40 expChart;
+	//ExpChartNA40 expChart;
+	shared_ptr<ExpChart> expChart;
 
 	LevelUpChecker levelUpChecker;
 
@@ -30,7 +31,7 @@ public:
 
 	Timer timer;
 
-	ExpModule(); 
+	ExpModule(shared_ptr<ExpChart> expChart); 
 
 	double getWeightedLevelUpsPerHour();
 	//ValueGainObserver valueGainObserver;
@@ -39,5 +40,6 @@ public:
 
 	void endOfTickAction();
 
+	
 };
 #endif

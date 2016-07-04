@@ -2,7 +2,7 @@
 #include "../stringFunctions.h"
 #include "../parser/BracketValueReader.h"
 
-ApModule::ApModule()
+ApModule::ApModule(shared_ptr<ApChart> apChart)
 	: apGainMeter(abyssRankChecker, relicAp), isItemSale(false){		
 	abyssRankChecker.setExpChart(apChart);
 	//apGainMeter.setObserver(valueGainObserver);		
