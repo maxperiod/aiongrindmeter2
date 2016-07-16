@@ -57,7 +57,9 @@ ProfessionLevelingFrame::ProfessionLevelingFrame(wxWindow* parent, ProfessionMod
 
 void ProfessionLevelingFrame::refresh() {
 	//professionModule->craftLeveling.getCurrentProfession();
-	ProfessionLeveling* professionLeveling = &professionModule->craftLeveling;
+	ProfessionLeveling* professionLeveling; 
+	if (professionModule->professionMode == ProfessionModule::GATHER) professionLeveling = &professionModule->gatherLeveling;
+	else professionLeveling = &professionModule->craftLeveling;
 	
 	wxString title;
 	title << professionLeveling->getCurrentProfession() << ": " << formatNumber(professionLeveling->getCurrentLevel()) << 'p';

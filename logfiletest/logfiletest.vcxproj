@@ -291,6 +291,7 @@
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
+    <ClCompile Include="tests\ParserTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="classSkills.txt" />

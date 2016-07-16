@@ -40,6 +40,9 @@ private:
 	
 	ProfessionModule* professionModule;
 
+	wxBoxSizer *gatherOrCraftSelectionSizer;
+
+
 	wxBoxSizer *parentSizer;
 
 	wxPanel* professionLevelingPanel;

@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../parser/MaxPeriodParser.h"
 
-#include "../parser/RuleStrings.h"
+//#include "../parser/RuleStrings.h"
 #include "../exception/NoSuchRuleStringException.h"
 
 class MaxPeriodParserTest: public ::testing::Test{
@@ -253,6 +253,7 @@ TEST_F(MaxPeriodParserTest, resemble16){
 	
 }
 
+
 TEST_F(MaxPeriodParserTest, isCrit1){
 	EXPECT_TRUE(parser.isCrit("2014.06.19 21:37:57 : Critical Hit!You inflicted 2,869 damage on Steel Rose Combatant by using Parrying Strike IV. "));
 }
@@ -261,8 +262,11 @@ TEST_F(MaxPeriodParserTest, isCrit2){
 	EXPECT_FALSE(parser.isCrit("2014.05.24 10:07:52 : Momomomoo Increased Protectorate Special Enforcer's enmity Increase by using Provoking Severe Blow V. "));
 }
 
-TEST_F(MaxPeriodParserTest, date){
-	EXPECT_EQ("2014.05.24 10:07:52", parser.getDate(	
-		"2014.05.24 10:07:52 : Momomomoo Increased Protectorate Special Enforcer's enmity Increase by using Provoking Severe Blow V. "
-		));
+TEST_F(MaxPeriodParserTest, newRepose){
+	map<string, string> params;
+	EXPECT_FALSE(parser.resembles(	
+		"2016.07.14 18:20:44 : You have gained 308,613 XP from Starlit Spirit. (Energy of Repose 64,971, Growth Energy 81,214) ",
+		"You have gained %num1 XP from %0.",
+		params));	
+
 }

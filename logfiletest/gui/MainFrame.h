@@ -37,6 +37,7 @@
 #include "MobKillsFrame.h"
 #include "PlayerKillsFrame.h"
 
+#include "../lookups/ExpChartKR51.h"
 #include "../lookups/ExpChartNA40.h"
 #include "../lookups/ExpChartEU49.h"
 
