@@ -10,6 +10,6 @@ const string& MessageRules::getRule(MessageRuleCode commandIdentifier){
 	if (rules.count(commandIdentifier) == 1)
 		return rules[commandIdentifier];
 	else 
-		throw NoSuchRuleStringException("String for rule not found!");
+		return string(); //throw NoSuchRuleStringException("String for rule not found!");
 	
 }

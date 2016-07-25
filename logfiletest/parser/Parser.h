@@ -43,7 +43,7 @@ public:
 	 * False otherwise.
 	 */
 	virtual bool resembles(const string& input, const string &rule, 
-		map<string, string>& parametersRecovered, bool critical = false) = 0;
+		map<string, string>& parametersRecovered, bool critical = false, bool additionalTrailingValues = false) = 0;
 
 	/*
 	 * Set the string which indicate a critical hit. For example, for English language it is "Critical Hit!".

@@ -28,8 +28,10 @@ bool MaxPeriodParser::isCrit(const string &input){
 }
 
 
-bool MaxPeriodParser::resembles(const string &input, const string &rule, map<string, string>& parameterMap, bool critical){
-		
+bool MaxPeriodParser::resembles(const string &input, const string &rule, map<string, string>& parameterMap, bool critical, bool additionalTrailingValues){
+	
+	if (rule.length() == 0) return false;
+
 	int totalOffset = TIMESTAMP_OFFSET;
 	if (critical) totalOffset += criticalStringLength;
 
@@ -92,6 +94,12 @@ bool MaxPeriodParser::resembles(const string &input, const string &rule, map<str
 			}			
 			i ++;
 			j ++;
+		}
+
+		//If additionalTrailingValues enabled, add all the trailing characters as a single parameter _REPOSE_
+		if (additionalTrailingValues && rule.size() - i == 1){
+			string trailingValues (inputPointer + j + 2, input.size() - j - 3 - totalOffset);
+			parameterMap.insert(pair<string, string>("_REPOSE_", trailingValues));
 		}
 	}
 	

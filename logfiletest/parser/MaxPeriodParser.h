@@ -11,7 +11,7 @@ public:
 
 	bool isCrit(const string &input);
 	
-	bool resembles(const string &input, const string &rule, map<string, string>& parametersRecovered, bool critical = false);
+	bool resembles(const string &input, const string &rule, map<string, string>& parametersRecovered, bool critical = false, bool additionalTrailingValues = false);
 	
 	void setCriticalString(const string& criticalString);
 	

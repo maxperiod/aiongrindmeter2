@@ -92,6 +92,7 @@
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +143,7 @@
     <ClInclude Include="gui\GpFrame.h" />
     <ClInclude Include="gui\ItemAcquisitionFrame.h" />
     <ClInclude Include="gui\ItemBundleFrame.h" />
+    <ClInclude Include="gui\ItemConsumptionFrame.h" />
     <ClInclude Include="gui\ItemRollsFrame.h" />
     <ClInclude Include="gui\KinahFrame.h" />
     <ClInclude Include="gui\ListCtrlFrame.h" />
@@ -231,6 +233,7 @@
     <ClCompile Include="gui\GpFrame.cpp" />
     <ClCompile Include="gui\ItemAcquisitionFrame.cpp" />
     <ClCompile Include="gui\ItemBundleFrame.cpp" />
+    <ClCompile Include="gui\ItemConsumptionFrame.cpp" />
     <ClCompile Include="gui\ItemRollsFrame.cpp" />
     <ClCompile Include="gui\KinahFrame.cpp" />
     <ClCompile Include="gui\ListCtrlFrame.cpp" />

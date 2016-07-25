@@ -31,6 +31,7 @@
 #include "ProfessionFrame.h"
 
 #include "ItemAcquisitionFrame.h"
+#include "ItemConsumptionFrame.h"
 #include "ItemBundleFrame.h"
 #include "ItemRollsFrame.h"
 
@@ -102,6 +103,7 @@ private:
 	ProfessionFrame* craftFrame;
 	
 	ItemAcquisitionFrame* itemAcquisitionFrame;
+	ItemConsumptionFrame* itemConsumptionFrame;
 	ItemBundleFrame* itemBundleFrame;
 	ItemRollsFrame* itemRollsFrame;
 

@@ -38,7 +38,7 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	);
 	expFrame->Show(true);
 	*/
-	moduleWindowSelectionFrame = new ModuleWindowSelectionFrame(this, 5, 3);
+	moduleWindowSelectionFrame = new ModuleWindowSelectionFrame(this, 6, 3);
 	//moduleWindowSelectionFrame->Show();
 
 	expFrame = new ExpFrame(this, expModule, soulHealerModule, wxDefaultPosition);
@@ -47,38 +47,41 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 
 	apFrame = new ApFrame(this,apModule, soulHealerModule, wxDefaultPosition);
 	apFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(apFrame, "AP", 1, 0);
+	moduleWindowSelectionFrame->addModuleWindow(apFrame, "AP", 0, 1);
 
 	gpFrame = new GpFrame(this,gpModule, wxDefaultPosition);
 	//gpFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(gpFrame, "GP", 2, 0);
+	moduleWindowSelectionFrame->addModuleWindow(gpFrame, "GP", 0, 2);
 	
 	kinahFrame = new KinahFrame(this,kinahModule, wxDefaultPosition);
-	moduleWindowSelectionFrame->addModuleWindow(kinahFrame, "Kinah", 3, 0);
+	moduleWindowSelectionFrame->addModuleWindow(kinahFrame, "Kinah", 1, 0);
 
 	professionLevelingFrame = new ProfessionLevelingFrame(this,professionModule, wxDefaultPosition);
 	//professionLevelingFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(professionLevelingFrame, "Gather/Craft Lvling", 0, 1);
+	moduleWindowSelectionFrame->addModuleWindow(professionLevelingFrame, "Gather/Craft Lvling", 1, 1);
 
 	gatherFrame = new ProfessionFrame(this,professionModule, GATHER, wxDefaultPosition);
 	//gatherFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(gatherFrame, "Gathering", 1, 1);
+	moduleWindowSelectionFrame->addModuleWindow(gatherFrame, "Gathering", 1, 2);
 
 	craftFrame = new ProfessionFrame(this,professionModule, CRAFT, wxDefaultPosition);
 	//craftFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(craftFrame, "Crafting", 2, 1);
+	moduleWindowSelectionFrame->addModuleWindow(craftFrame, "Crafting", 2, 0);
 
 	itemAcquisitionFrame = new ItemAcquisitionFrame(this,itemAcquisitionModule, wxDefaultPosition);
 	//itemAcquisitionFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(itemAcquisitionFrame, "Items Acquired", 0, 2);
+	moduleWindowSelectionFrame->addModuleWindow(itemAcquisitionFrame, "Items Acquired", 2, 1);
+
+	itemConsumptionFrame = new ItemConsumptionFrame(this,itemAcquisitionModule, wxDefaultPosition);
+	moduleWindowSelectionFrame->addModuleWindow(itemConsumptionFrame, "Items Consumed", 2, 2);
 
 	itemBundleFrame = new ItemBundleFrame(this,itemAcquisitionModule, wxDefaultPosition);
 	//itemBundleFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(itemBundleFrame, "Bundles Opened", 1, 2);
+	moduleWindowSelectionFrame->addModuleWindow(itemBundleFrame, "Bundles Opened", 3, 0);
 
 	itemRollsFrame = new ItemRollsFrame(this,itemAcquisitionModule, wxDefaultPosition);
 	//itemRollsFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(itemRollsFrame, "Item Rolls", 2, 2);
+	moduleWindowSelectionFrame->addModuleWindow(itemRollsFrame, "Item Rolls", 3, 1);
 
 	mobKillsFrame = new MobKillsFrame(this,huntingModule, wxDefaultPosition);
 	//mobKillsFrame->Show();
@@ -86,7 +89,7 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 
 	playerKillsFrame = new PlayerKillsFrame(this,huntingModule, soulHealerModule, wxDefaultPosition);
 	//mobKillsFrame->Show();
-	moduleWindowSelectionFrame->addModuleWindow(playerKillsFrame, "Player Kills", 4, 2);
+	moduleWindowSelectionFrame->addModuleWindow(playerKillsFrame, "Player Kills", 4, 0);
 
 	moduleWindowSelectionFrame->finishAddingButtons();
 	//mobKillsFrame->Show();
@@ -129,6 +132,7 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 		gpFrame->refresh();
 		kinahFrame->refresh();
 		itemAcquisitionFrame->refresh();
+		itemConsumptionFrame->refresh();
 		professionLevelingFrame->refresh();
 		itemBundleFrame->refresh();
 		gatherFrame->refresh();

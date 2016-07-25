@@ -258,6 +258,9 @@
     <ClInclude Include="gui\ItemBundleFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="gui\ItemConsumptionFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="gui\ItemRollsFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -452,6 +455,9 @@
     <ClCompile Include="tests\ParserTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mains\MyApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -465,6 +471,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ItemBundleFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ItemConsumptionFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ItemRollsFrame.cpp">
@@ -495,9 +504,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\TestFrame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

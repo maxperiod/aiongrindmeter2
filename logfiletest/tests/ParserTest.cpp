@@ -264,9 +264,73 @@ TEST_F(MaxPeriodParserTest, isCrit2){
 
 TEST_F(MaxPeriodParserTest, newRepose){
 	map<string, string> params;
-	EXPECT_FALSE(parser.resembles(	
+	EXPECT_TRUE(parser.resembles(	
 		"2016.07.14 18:20:44 : You have gained 308,613 XP from Starlit Spirit. (Energy of Repose 64,971, Growth Energy 81,214) ",
 		"You have gained %num1 XP from %0.",
-		params));	
+		params,
+		false,
+		true));	
+	EXPECT_EQ(3, params.size());
+	EXPECT_EQ("308,613", params.at("%num1"));
+	EXPECT_EQ("Starlit Spirit", params.at("%0"));
+	EXPECT_EQ("(Energy of Repose 64,971, Growth Energy 81,214)", params.at("_REPOSE_"));
+}
 
+TEST_F(MaxPeriodParserTest, newRepose2){
+	map<string, string> params;
+	EXPECT_TRUE(parser.resembles(	
+		"2016.07.15 22:22:12 : You have gained 3,656 XP. (Energy of Repose 522) ",
+		"You have gained %num0 XP.",
+		params,
+		false,
+		true));	
+	EXPECT_EQ(2, params.size());
+	EXPECT_EQ("3,656", params.at("%num0"));	
+	EXPECT_EQ("(Energy of Repose 522)", params.at("_REPOSE_"));
+}
+
+
+
+
+
+TEST_F(MaxPeriodParserTest, emptyString1){
+	map<string, string> params;
+	EXPECT_FALSE(parser.resembles(	
+		"",
+		"",
+		params));	
+	EXPECT_EQ(0, params.size());	
+	
+}
+
+TEST_F(MaxPeriodParserTest, emptyString2){
+	map<string, string> params;
+	EXPECT_FALSE(parser.resembles(	
+		"2016.07.16 21:46:35 : You recovered 72 MP by using Invincibility Mantra Effect. ",
+		"",
+		params));	
+	EXPECT_EQ(0, params.size());	
+	
+}
+
+
+TEST_F(MaxPeriodParserTest, emptyString3){
+	map<string, string> params;
+	EXPECT_FALSE(parser.resembles(	
+		"2016.07.16 21:46:35 : You recovered 72 MP by using Invincibility Mantra Effect. ",
+		string(),
+		params));	
+	EXPECT_EQ(0, params.size());	
+	
+}
+
+TEST_F(MaxPeriodParserTest, growthAura){
+	map<string, string> params;
+	EXPECT_TRUE(parser.resembles(	
+		"2016.07.24 00:04:22 : Growth Aura filled to 29.91%. ",
+		"Growth Aura filled to %0%%.",
+		params));	
+	EXPECT_EQ(1, params.size());	
+	EXPECT_EQ("29.91", params.at("%0"));
+	
 }

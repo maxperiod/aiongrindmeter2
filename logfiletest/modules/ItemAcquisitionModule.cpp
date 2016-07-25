@@ -8,6 +8,9 @@ ItemAcquisitionModule::ItemAcquisitionModule(): idleTicks(0), isContainerOpened(
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM_MULTI);
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM);
 	DECLARE_MESSAGE_RULE(STR_USE_ITEM);
+	DECLARE_MESSAGE_RULE(STR_MSG_ENCHANT_TYPE1_ENCHANT_FAIL);
+	DECLARE_MESSAGE_RULE(STR_MSG_STIGMA_ENCHANT_FAIL);
+	DECLARE_MESSAGE_RULE(STR_DECOMPOSE_ITEM_SUCCEED);
 	DECLARE_MESSAGE_RULE(STR_UNCOMPRESS_COMPRESSED_ITEM_SUCCEEDED);
 	DECLARE_MESSAGE_RULE(STR_MSG_DICE_RESULT_ME);
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM_PARTYNOTICE_DICE);
@@ -88,10 +91,23 @@ void ItemAcquisitionModule::executeChatLogCommand(ChatLogCommand& command){
 
 		// use item
 		case STR_USE_ITEM:
-			if (!isContainerOpened)
-				itemsConsumed.add(params["%0"]);
+			//if (!isContainerOpened)
+			itemsConsumed.add(params["%0"]);
+			break;
+		/*
+		case STR_MSG_ENCHANT_TYPE1_ENCHANT_FAIL:
+			itemsConsumed.add(params["%0"]);
 			break;
 
+		case STR_MSG_STIGMA_ENCHANT_FAIL:
+			itemsConsumed.add(params["%0"]);
+			break;
+		*/
+		// extract 
+		case STR_DECOMPOSE_ITEM_SUCCEED:
+			itemsConsumed.add(params["%0"]);
+			break;
+			
 		// open container
 		case STR_UNCOMPRESS_COMPRESSED_ITEM_SUCCEEDED:
 			isContainerOpened = true;			

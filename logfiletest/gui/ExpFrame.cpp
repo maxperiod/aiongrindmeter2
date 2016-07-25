@@ -57,7 +57,10 @@ ExpFrame::ExpFrame(wxWindow* parent, ExpModule& expModule, SoulHealerModule& sou
 	expValueLabel = new wxStaticText(expPanel, -1, wxT("XXX.X X / XXX.X X")); 
 	expSizer->Add(expValueLabel, wxGBPosition(4, 0), wxGBSpan(1, 2), wxALIGN_CENTER);
 
-	cumulativeToggle = new wxCheckBox(expPanel, ID_Cumulative_XP, wxT("Cumulative Lv 1-65 XP bar"));
+	wxString cumulativeXPbarString;
+	cumulativeXPbarString << "Cumulative Lv 1-" << expModule.expChart->getLevelCap() << " XP bar";
+
+	cumulativeToggle = new wxCheckBox(expPanel, ID_Cumulative_XP, cumulativeXPbarString);
 	expSizer->Add(cumulativeToggle, wxGBPosition(5, 0), wxGBSpan(1, 2));
 	//expSizer->GetC
 	//parentSizer = new wxBoxSizer(wxVERTICAL);
