@@ -10,6 +10,7 @@ LevelUpChecker::LevelUpChecker(){
 	manuallyUpdatedChanges = 0;
 	startingDecimalLevel = -1;
 	hasSkillLearnedInTick = false;
+	hasEssenceGainedInTick = false;
 }
 
 bool LevelUpChecker::initialize(long long currentValue){
@@ -154,6 +155,13 @@ bool LevelUpChecker::checkLevelUp(){
 				hasSkillLearnedInTick = false;
 				return true;
 			}
+			if (hasEssenceGainedInTick && currentValue <= maxValue && getPercent() > 99.95){
+				startingDecimalLevel += (maxValue - currentValue) / maxValue;
+				currentValue = 0;
+				level ++;
+				hasEssenceGainedInTick = false;
+				return true;
+			}
 		}		
 		else {
 			if (currentValue > maxValue){
@@ -181,6 +189,10 @@ bool LevelUpChecker::checkLevelUp(){
 
 void LevelUpChecker::levelUpLearnSkill(){
 	hasSkillLearnedInTick = true;
+}
+
+void LevelUpChecker::gainEssence(){
+	hasEssenceGainedInTick = true;
 }
 
 bool LevelUpChecker::setCurrentValue(long long newValue){

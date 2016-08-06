@@ -43,6 +43,7 @@ public:
 
 	bool checkLevelUp();
 	void levelUpLearnSkill();
+	void gainEssence();
 
 	int getCurrentLevel();
 	double getCurrentDecimalLevel();
@@ -78,6 +79,7 @@ private:
 	double startingDecimalLevel;
 
 	bool hasSkillLearnedInTick;
+	bool hasEssenceGainedInTick;
 	//void initCumulativeValuesTable();
 };
 

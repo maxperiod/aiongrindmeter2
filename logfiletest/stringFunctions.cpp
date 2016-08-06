@@ -108,7 +108,10 @@ string formatPercentChange(float value){
 	
 	if (value >= 0) oss << "+";
 	oss << fixed;
-	if (abs(value) < 0.0005) oss << setprecision(0);
+	if (abs(value) < 0.00005) oss << setprecision(0);
+	else if (abs(value) < 0.0001) oss << setprecision(6);
+	else if (abs(value) < 0.001) oss << setprecision(5);
+	else if (abs(value) < 0.01) oss << setprecision(4);
 	else if (abs(value) < 0.1) oss << setprecision(3);
 	else oss << setprecision(2);
 	

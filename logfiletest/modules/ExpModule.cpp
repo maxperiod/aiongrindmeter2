@@ -39,6 +39,8 @@ ExpModule::ExpModule(shared_ptr<ExpChart> expChart): expChart(expChart), expGain
 
 		DECLARE_MESSAGE_RULE(STR_SKILL_LEARNED_NEW_SKILL);
 
+		DECLARE_MESSAGE_RULE(STR_MSG_GET_CP);
+
 		timer.start();
 	}
 
@@ -133,7 +135,13 @@ void ExpModule::executeChatLogCommand(ChatLogCommand& command){
 	case STR_SKILL_LEARNED_NEW_SKILL:
 		levelUpChecker.levelUpLearnSkill();
 		break;
+		
+	case STR_MSG_GET_CP:
+		levelUpChecker.gainEssence();
+		break;
 	}
+
+	
 
 }
 

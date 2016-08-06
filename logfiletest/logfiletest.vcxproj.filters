@@ -452,9 +452,6 @@
     <ClCompile Include="lookups\ExpChartEU49.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\ParserTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

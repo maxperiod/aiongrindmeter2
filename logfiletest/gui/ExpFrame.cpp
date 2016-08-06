@@ -39,7 +39,7 @@ ExpFrame::ExpFrame(wxWindow* parent, ExpModule& expModule, SoulHealerModule& sou
 	expSizer->Add(value1b, wxGBPosition(0, 2), wxDefaultSpan, wxALIGN_RIGHT);
 	value2b = new wxStaticText(expPanel, -1, wxT("X.XX Lv / h"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
 	expSizer->Add(value2b, wxGBPosition(1, 2), wxDefaultSpan, wxALIGN_RIGHT);
-	value3b = new wxStaticText(expPanel, -1, wxT("XX.XX %"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
+	value3b = new wxStaticText(expPanel, -1, wxT("XX.XXXX %"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxALIGN_RIGHT); 
 	expSizer->Add(value3b, wxGBPosition(2, 2), wxDefaultSpan, wxALIGN_RIGHT);
 	//value4 = new wxStaticText(expPanel, -1, wxT("xxxxxxxxx")); 
 	//expSizer->Add(value4, wxGBPosition(3, 1), wxDefaultSpan, wxALIGN_RIGHT);
