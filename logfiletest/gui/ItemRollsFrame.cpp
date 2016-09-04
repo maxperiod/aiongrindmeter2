@@ -1,8 +1,10 @@
 #include "ItemRollsFrame.h"
 #include "../stringFunctions.h"
 
+#include "../language/LanguageManager.h"
+
 ItemRollsFrame::ItemRollsFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos)
-	: ListCtrlFrame(parent, pos), itemIDReader("itemnames.txt")
+	: ListCtrlFrame(parent, pos)/*, itemIDReader("itemnames.txt")*/
 {
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 
@@ -34,7 +36,7 @@ void ItemRollsFrame::refresh(){
 		else 
 			listCtrl->SetItem(rowNum, 0, wxString() << entry.item);
 
-		listCtrl->SetItem(rowNum, 1, itemIDReader.getItemName(entry.item));
+		listCtrl->SetItem(rowNum, 1, LANGUAGE_MANAGER.getCurrentLanguage().getItemIDFileReader().getItemName(entry.item));
 		
 		if (entry.yourRoll > 0)
 			listCtrl->SetItem(rowNum, 2, formatNumber(entry.yourRoll));

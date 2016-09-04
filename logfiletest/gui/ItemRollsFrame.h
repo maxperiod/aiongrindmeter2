@@ -17,7 +17,7 @@ public:
 private:
 	
 	ItemAcquisitionModule* itemAcquisitionModule;
-	ItemIDFileReader itemIDReader;
+	//ItemIDFileReader itemIDReader;
 
 };
 

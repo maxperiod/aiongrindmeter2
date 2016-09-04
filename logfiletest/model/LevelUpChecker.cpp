@@ -148,19 +148,23 @@ bool LevelUpChecker::checkLevelUp(){
 				return true;
 				
 			}
-			if (hasSkillLearnedInTick && currentValue <= maxValue){
+			if (hasSkillLearnedInTick && currentValue <= maxValue && level <= 64){
 				startingDecimalLevel += (maxValue - currentValue) / maxValue;
 				currentValue = 0;
 				level ++;
 				hasSkillLearnedInTick = false;
 				return true;
 			}
-			if (hasEssenceGainedInTick && currentValue <= maxValue && getPercent() > 99.95){
-				startingDecimalLevel += (maxValue - currentValue) / maxValue;
-				currentValue = 0;
-				level ++;
-				hasEssenceGainedInTick = false;
-				return true;
+			if (hasEssenceGainedInTick){
+				if (currentValue <= maxValue && getPercent() > 99.95){
+					startingDecimalLevel += (maxValue - currentValue) / maxValue;
+					currentValue = 0;
+					level ++;
+					hasEssenceGainedInTick = false;
+					return true;
+				}
+				else hasEssenceGainedInTick = false;
+
 			}
 		}		
 		else {

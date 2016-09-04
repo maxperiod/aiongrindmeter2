@@ -1,4 +1,5 @@
 #include "ItemBundleFrame.h"
+#include "../language/LanguageManager.h"
 
 wxBEGIN_EVENT_TABLE(ItemBundleFrame, wxFrame)    
     EVT_SIZE(ItemBundleFrame::OnSize)
@@ -7,7 +8,7 @@ wxEND_EVENT_TABLE()
 
 ItemBundleFrame::ItemBundleFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos) :
 	 wxFrame(parent, wxID_ANY, "Containers Opened", pos, wxDefaultSize, (wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxMAXIMIZE_BOX))  
-		 , itemIDReader("itemnames.txt")
+		 /*, itemIDReader("itemnames.txt")*/
 {
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 
@@ -56,7 +57,7 @@ void ItemBundleFrame::refresh(){
 		for (map<int, CounterEntry>::iterator iter2 = contentsMap.begin(); 
 				iter2 != contentsMap.end(); iter2 ++) {
 			wxString itemAcquiredLine;
-			itemAcquiredLine << "[" << iter2->first << "] " << itemIDReader.getItemName(iter2->first) << " x" << iter2->second.numGained;
+			itemAcquiredLine << "[" << iter2->first << "] " << LANGUAGE_MANAGER.getCurrentLanguage().getItemIDFileReader().getItemName(iter2->first) << " x" << iter2->second.numGained;
 			if (iter2->second.numPackets >= 3) 
 				itemAcquiredLine <<"\t (" << formatKiloMega(itemAcquisitionModule->timer.calculatePerHourRate(iter2->second.numGained)) << " / h)";
 				

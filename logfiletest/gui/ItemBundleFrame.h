@@ -29,7 +29,7 @@ protected:
 	
 	ItemAcquisitionModule* itemAcquisitionModule;
 	
-	ItemIDFileReader itemIDReader;
+	//ItemIDFileReader itemIDReader;
 
 	wxBoxSizer *parentSizer;
 	

@@ -1,10 +1,10 @@
 #include "ItemAcquisitionFrame.h"
 #include "../stringFunctions.h"
 
-
+#include "../language/LanguageManager.h"
 
 ItemAcquisitionFrame::ItemAcquisitionFrame(wxWindow* parent, ItemAcquisitionModule& itemAcquisitionModule, const wxPoint& pos) :
-	 ListCtrlFrame(parent, pos), itemIDReader("itemnames.txt")
+	 ListCtrlFrame(parent, pos)/*, itemIDReader("itemnames.txt")*/
 {
 	this->itemAcquisitionModule = &itemAcquisitionModule;
 	
@@ -33,7 +33,7 @@ void ItemAcquisitionFrame::refresh() {
 		else 
 			listCtrl->SetItem(rowNum, 0, wxString() << iter->first);
 			
-		listCtrl->SetItem(rowNum, 1, itemIDReader.getItemName(iter->first));
+		listCtrl->SetItem(rowNum, 1, LANGUAGE_MANAGER.getCurrentLanguage().getItemIDFileReader().getItemName(iter->first));
 		listCtrl->SetItem(rowNum, 2, formatNumber(iter->second.numGained));
 
 		if (iter->second.numPackets >= 3) 
