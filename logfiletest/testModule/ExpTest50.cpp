@@ -64,7 +64,8 @@ TEST_F(ExpTest, PercentLevelUpWithCP1){
 	logFile.appendFile("2016.07.28 20:45:18 : Quest updated: [Group] Protect the Ruins of Roah ");
 	logFile.appendFile("2016.07.28 20:45:18 : Icewing restored its attack speed. ");
 	logFile.appendFile("2016.07.28 20:45:18 : You have gained 201 Abyss Points. ");
-	logFile.appendFile("2016.07.28 20:45:18 : Essence has increased by 1. ");
+	//logFile.appendFile("2016.07.28 20:45:18 : Essence has increased by 1. ");
+	logFile.appendFile("2016.11.10 23:03:36 : You’ve obtained 6 Essence. ");
 	logFile.appendFile("2016.07.28 20:45:18 : A survey has arrived. Click the icon to open the survey window. ");
 	logFileUtility.parseLogFile();	
 	logFile.appendFile("2016.07.28 20:45:19 : Growth Aura filled to 48.49%. ");
@@ -92,7 +93,8 @@ TEST_F(ExpTest, CPNonLevelUp){
 	logFile.appendFile("2016.07.26 00:12:54 : You have acquired 6 [item:186000236;ver6;;;;]s and stored them in your special cube. ");
 	logFile.appendFile("2016.07.26 00:12:54 : You have acquired [item:186000414;ver6;;;;] and stored it in your special cube. ");
 	logFile.appendFile("2016.07.26 00:12:54 : You have gained 3,618,881 XP from Dupor. ");
-	logFile.appendFile("2016.07.26 00:12:54 : Essence has increased by 1. ");
+	//logFile.appendFile("2016.07.26 00:12:54 : Essence has increased by 1. ");
+	logFile.appendFile("2016.11.10 23:03:36 : You’ve obtained 6 Essence. ");
 	logFile.appendFile("2016.07.26 00:12:54 : Completed quest has contributed 60 points to the Landing. ");
 	logFile.appendFile("2016.07.26 00:12:54 : You can receive the weekly quest again at 9 in the morning on Monday. ");
 	logFile.appendFile("2016.07.26 00:12:54 : Quest complete: [Weekly] Protect Stokebellow Outpost ");
@@ -151,6 +153,42 @@ TEST_F(ExpTest, CPTransformIsNotLevelUp){
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(68, expModule.levelUpChecker.getCurrentLevel());
+	
+
+}
+
+TEST_F(ExpTest, updateExpFromDeathNoExpLoss){
+	//lvl 68: 3,752,976,718
+	//before kill: 37,529,768
+	//after kill: 118,000,639 (3.144%)
+
+	expModule.levelUpChecker.initializePercent(68, 1);
+	
+	logFile.appendFile("2016.11.27 10:10:40 : Magical Water Damage Effect has been activated. ");
+	logFile.appendFile("2016.11.27 10:10:40 : You have gained 80,470,871 XP from Special Forces Commander Gegares. (Growth Energy 16,894,767) ");
+	logFile.appendFile("2016.11.27 10:10:40 : Indratu Legion Drakan Ambusher inflicted 1 damage on Atreia Protector. ");
+	logFile.appendFile("2016.11.27 10:10:40 : Indratu Legion Drakan Ambusher inflicted 1 damage on Atreia Protector. ");
+	logFile.appendFile("2016.11.27 10:10:40 : Indratu Legion Drakan Elite Combatant inflicted 945 damage on Atreia Protector. ");
+	logFile.appendFile("2016.11.27 10:10:40 : Atreia Protector inflicted 1 damage on Indratu Legion Drakan Elite Combatant. ");
+	logFile.appendFile("2016.11.27 10:10:40 : Indratu Legion Drakan Searcher inflicted 198 damage on Atreia Protector. ");
+	logFileUtility.parseLogFile();
+
+	logFile.appendFile("2016.12.03 09:46:21 : Shadow of Oblivion has inflicted 20,342 damage on you by using Oblivion Wave. ");
+	logFile.appendFile("2016.12.03 09:46:21 : MooMOOMoomooOOo has been dismissed. ");
+	logFile.appendFile("2016.12.03 09:46:21 : You have died. ");
+	logFile.appendFile("2016.12.03 09:46:21 : You cannot do that while you are dead. ");
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(68, expModule.levelUpChecker.getCurrentLevel());
+		
+	EXPECT_TRUE(expModule.levelUpChecker.setCurrentPercent(3.145));
+
+	EXPECT_EQ(80470871, expModule.expGainMeter.getTotalGained());
+	EXPECT_EQ(80470871, expModule.expGainMeter.getNetGained());
+	EXPECT_NEAR(0.02145, expModule.levelUpChecker.getNumLevelsGained(), 0.01);
+	EXPECT_EQ(0, expModule.expGainMeter.getTotalLost());
+
+	EXPECT_NEAR(3.145, expModule.levelUpChecker.getPercent(), 0.01);
 	
 
 }

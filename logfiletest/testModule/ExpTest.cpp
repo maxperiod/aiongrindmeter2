@@ -1,3 +1,5 @@
+// Old regression test cases with North America 4.8 XP chart
+
 #include "gtest/gtest.h"
 //#include "../parser/MaxPeriodParser.h"
 //#include "../lookups/RuleStringsHardCodedNA.h"
@@ -81,7 +83,7 @@ TEST_F(ExpTest, gainExpNoInit){
 	logFileUtility.parseLogFile();
 
 	logFile.appendFile("2013.06.27 22:17:33 : Roadhouse recovered 183 MP due to the effect of Strong Instant Recovery. ");
-	logFile.appendFile("2013.06.27 22:17:34 : You have gained 20,052,999 XP from Vard (Energy of Repose 10,405). ");
+	logFile.appendFile("2013.06.27 22:17:34 : You have gained 20,052,999 XP from Vard. (Energy of Repose 10,405) ");
 	logFile.appendFile("2013.06.27 22:17:34 : Quest complete: Kata-where? ");
 	logFile.appendFile("2013.06.27 22:17:34 : Quest updated: For the Dead ");
 	logFileUtility.parseLogFile();
@@ -105,7 +107,7 @@ TEST_F(ExpTest, gainExpWithInit){
 	EXPECT_EQ(0, expModule.expGainMeter.getNetGained());
 	EXPECT_EQ(0, expModule.levelUpChecker.getNumLevelsGained());
 
-	logFile.appendFile("2013.06.26 22:05:44 : You have gained 15,411 XP from Studio Butler (Energy of Repose 3,626, Energy of Salvation 2,719).");
+	logFile.appendFile("2013.06.26 22:05:44 : You have gained 15,411 XP from Studio Butler. (Energy of Repose 3,626, Energy of Salvation 2,719)");
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(20, expModule.levelUpChecker.getCurrentLevel());
@@ -118,7 +120,7 @@ TEST_F(ExpTest, gainExpWithInit){
 
 TEST_F(ExpTest, initAfterGainExp){
 			
-	logFile.appendFile("2013.06.25 14:46:50 : You have gained 170,177 XP from Terath Warmonger (Energy of Repose 48,622). ");
+	logFile.appendFile("2013.06.25 14:46:50 : You have gained 170,177 XP from Terath Warmonger. (Energy of Repose 48,622) ");
 	logFile.appendFile("2013.06.25 14:46:50 : Quest updated: [Group] Alluna's Crew Cuts ");
 	logFile.appendFile("2013.06.25 14:46:50 : Terath Warmonger is no longer shocked. ");
 	logFile.appendFile("2013.06.25 14:46:50 : Terath Warmonger restored its attack speed. ");
@@ -126,7 +128,7 @@ TEST_F(ExpTest, initAfterGainExp){
 
 	logFileUtility.parseLogFile();
 
-	logFile.appendFile("2013.06.25 14:47:06 : You have gained 170,177 XP from Terath Magician (Energy of Repose 48,622). ");
+	logFile.appendFile("2013.06.25 14:47:06 : You have gained 170,177 XP from Terath Magician. (Energy of Repose 48,622) ");
 	logFile.appendFile("2013.06.25 14:47:06 : Terath Magician is no longer immobilized. ");
 	logFile.appendFile("2013.06.25 14:47:06 : Terath Magician is no longer afraid. ");
 	logFile.appendFile("2013.06.25 14:47:06 : Terath Magician is no longer staggering. ");
@@ -148,7 +150,7 @@ TEST_F(ExpTest, initAfterGainExp){
 
 TEST_F(ExpTest, gainExpSalvationOnly){
 	
-	logFile.appendFile("2013.06.26 22:05:44 : You have gained 13.000.000 XP from s u p e r c h a r g e d (Energy of Salvation 3.000.000).");
+	logFile.appendFile("2013.06.26 22:05:44 : You have gained 13.000.000 XP from s u p e r c h a r g e d. (Energy of Salvation 3.000.000) ");
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(-1, expModule.levelUpChecker.getCurrentLevel());
@@ -576,3 +578,5 @@ TEST_F(ExpTest, setCurrentPercent){
 	EXPECT_TRUE(soulHealerModule.soulHealer.isApUpdateNeeded());
 	*/
 }
+
+

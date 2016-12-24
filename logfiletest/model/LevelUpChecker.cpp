@@ -52,7 +52,7 @@ bool LevelUpChecker::initializePercent(int level, double percent){
 	if (level >= 1 && level <= expChart->getLevelCap() 
 		&& percent >= 0 && percent <= 100){
 		this->level = level;
-		this->currentValue = percent * expChart->getMaxValue(level) / 100 + 0.5;
+		this->currentValue = percent * expChart->getMaxValue(level) / 100 + 0.5; //round up to nearest integer
 		initialized = true;
 		startingDecimalLevel = getCurrentDecimalLevel();
 		return true;
@@ -209,6 +209,15 @@ bool LevelUpChecker::setCurrentValue(long long newValue){
 			manuallyUpdatedChanges -= change;
 			return true;
 		}
+		else if (newValue >= 0){
+			double initialLevelAdjustment = (double)(newValue - currentValue - manuallyUpdatedChanges) / expChart->getMaxValue(level);
+			
+			if (initialLevelAdjustment < 0.0001) {
+				startingDecimalLevel += initialLevelAdjustment;
+				return true;
+			}
+			else return false;
+		}
 		else return false;
 	}
 	return true;
@@ -219,7 +228,7 @@ bool LevelUpChecker::setCurrentPercent(double newValue){
 	//if (percent < 0) percent = 0;
 	if (percent < 0 || percent > 100) return false;
 
-	long long resultExp = expChart->getMaxValue(level) * percent / 100 + 0.5;
+	long long resultExp = expChart->getMaxValue(level) * percent / 100 + 0.5; //round up to nearest integer
 	
 	return setCurrentValue(resultExp);
 	

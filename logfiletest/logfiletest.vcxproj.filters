@@ -452,7 +452,7 @@
     <ClCompile Include="lookups\ExpChartEU49.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testModule\ExpTest50.cpp">
+    <ClCompile Include="testModule\GatheringTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">
@@ -535,5 +535,6 @@
     <None Include="classSkills.txt" />
     <None Include="file.txt" />
     <None Include="output.txt" />
+    <None Include="changelog.txt" />
   </ItemGroup>
 </Project>

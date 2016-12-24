@@ -29,29 +29,7 @@ protected:
 		string aionDirectory = "testModule/testLog/";
 		
 		ASSERT_TRUE(logFileUtility.setAionDirectory(aionDirectory));								
-		/*
-		logFileUtility.registerMessageRuleCode(STR_GET_ITEM);
-		logFileUtility.registerMessageRuleCode(STR_GATHER_START_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_EXTRACT_GATHER_START_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_START);
-		logFileUtility.registerMessageRuleCode(STR_GATHERING_SUCCESS_GETEXP);
-		logFileUtility.registerMessageRuleCode(STR_EXTRACT_GATHERING_SUCCESS_GETEXP);
-		logFileUtility.registerMessageRuleCode(STR_CRAFT_SUCCESS_GETEXP);
-		logFileUtility.registerMessageRuleCode(STR_GATHER_SUCCESS_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_EXTRACT_GATHER_SUCCESS_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_SUCCESS);
-		logFileUtility.registerMessageRuleCode(STR_GATHER_FAIL_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_EXTRACT_GATHER_FAIL_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_FAIL);
-		logFileUtility.registerMessageRuleCode(STR_GATHER_CANCEL_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_EXTRACT_GATHER_CANCEL_1_BASIC);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_CANCEL);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_COMBO_FAIL_MULTI);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_COMBO_FAIL);
-		logFileUtility.registerMessageRuleCode(STR_GATHER_SKILL_POINT_UP);
-		logFileUtility.registerMessageRuleCode(STR_COMBINE_SKILL_POINT_UP);
-		logFileUtility.registerMessageRuleCode(STR_CRAFT_INFO_MAXPOINT_UP);
-		*/
+
 	}
 
 	virtual void TearDown(){		
@@ -336,7 +314,34 @@ TEST_F(GatheringTest, crafting2){
 }
 
 	
-	
+TEST_F(GatheringTest, highCraft1){
+
+	logFile.appendFile("2016.12.03 23:18:00 : Your Aetherforging skill has been upgraded to 2 points. ");
+	logFile.appendFile("2016.12.03 23:18:00 : You have gained 15,461 XP. (Energy of Repose 4,417) ");
+	logFile.appendFile("2016.12.03 23:18:00 : You have crafted successfully. ");
+	logFile.appendFile("2016.12.03 23:18:00 : You’ve completed 10 [item:152012728;ver7;;;;](s). ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2016.12.03 23:18:09 : You’ve completed 10 [item:152012728;ver7;;;;](s). ");
+	logFile.appendFile("2016.12.03 23:18:09 : You have gained 15,409 XP. (Energy of Repose 4,402) ");
+	logFile.appendFile("2016.12.03 23:18:09 : You have crafted successfully. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2016.12.03 23:18:13 : You’ve completed 10 [item:152012728;ver7;;;;](s). ");
+	logFile.appendFile("2016.12.03 23:18:13 : You have gained 15,409 XP. (Energy of Repose 4,402) ");
+	logFile.appendFile("2016.12.03 23:18:13 : You have crafted successfully. ");
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(3, professionModule.crafts.getResult().getNumSuccess());
+	EXPECT_EQ(0, professionModule.crafts.getResult().getNumFailure());
+	EXPECT_EQ(0, professionModule.crafts.getResult().getNumCancel());
+	EXPECT_EQ(0, professionModule.crafts.getResult().getNumProcs());
+	EXPECT_EQ(3, professionModule.crafts.getResult().getTotalAttempts());
+
+	EXPECT_EQ(3, professionModule.crafts.getIndividualItemGatherCrafts().getEntry("[item:152012728;ver7;;;;]").getNumSuccess());
+	EXPECT_EQ(0, professionModule.crafts.getIndividualItemGatherCrafts().getEntry("[item:152012728;ver7;;;;]").getNumFailure());
+	EXPECT_EQ(0, professionModule.crafts.getIndividualItemGatherCrafts().getEntry("[item:152012728;ver7;;;;]").getNumCancel());
+	EXPECT_EQ(0, professionModule.crafts.getIndividualItemGatherCrafts().getEntry("[item:152012728;ver7;;;;]").getNumProcs());
+	EXPECT_EQ(3, professionModule.crafts.getIndividualItemGatherCrafts().getEntry("[item:152012728;ver7;;;;]").getTotalAttempts());
+}	
 
 	
 	

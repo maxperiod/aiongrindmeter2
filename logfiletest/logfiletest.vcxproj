@@ -293,10 +293,11 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
-    <ClCompile Include="testModule\ExpTest50.cpp" />
+    <ClCompile Include="testModule\GatheringTest.cpp" />
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="changelog.txt" />
     <None Include="classSkills.txt" />
     <None Include="file.txt" />
     <None Include="output.txt" />
