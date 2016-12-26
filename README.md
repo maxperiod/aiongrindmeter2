@@ -60,16 +60,36 @@ Player kills and assists
 ##Overview
 
 Aion Grind Meter contains various grinding meters for Aion: 
-* XP gains, XP/hour (Experience gained per hour), levels or percentage per hour, cumulative exp bar to level 65  
-* AP gain/loss and AP/hour (Abyss Points gained per hour), AP gain from PvP, AP value of gained relics
-* GP gain and GP/hour (Glory Points gained per hour)
-* Gathering and/or crafting success/failure/cancellation/procs, successes per hour
-* Gathering and/or crafting level ups per hour, estimated XP bars
-* Monster kills (per hour)
-* Item Acquisitions (per hour)
-* Items acquired from container opens
-* Player kills (per hour) and assists
+* XP (Experience) mode
+ * XP gained, in actual numbers and percentage
+ * XP/hour (XP gained per hour), in actual amounts and percentage per hour
+ * Cumulative progress bar to level 75
+* AP (Abyss Points) mode
+ * AP gained and lost 
+ * AP/hour
+ * AP gain from PvP
+ * AP value of gained relics
+* GP (Glory Points) gained and GP/hour
+* Profession (Gathering / crafting) mode
+ * List of recipes crafted
+ * Number of success/failure/cancellation/procs per recipe
+ * Successful attempts per hour
+* Profession (Gathering / crafting) leveling mode
+ * Profession level ups per hour
+ * Estimated XP bar toward next skill level, if two level ups have been attained (not yet supported for aetherforging)
+* Monster kills
+ * List of XP-granting monsters killed
+ * Mobs killed per hour, by monster name
+* Item Acquisition
+ * List of items acquired
+ * Items gained per hour, by item ID
+* Items acquired from container openings
+* Player kills
+ * Number of kills, deaths, and assists in PvP
+ * List of players killed (you made last hit) or assisted (you dealt damage to a dead enemy player within 20 seconds)
+ * Number of PvP kills per hour
 * Item dice rolls
+
 
 It uses the chat log file (Chat.log) to obtain gameplay information. It does not interact or modify the Aion client in any way.
 
