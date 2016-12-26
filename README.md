@@ -63,6 +63,8 @@ Aion Grind Meter contains various grinding meters for Aion:
 * XP (Experience) mode
  * XP gained, in actual numbers and percentage
  * XP/hour (XP gained per hour), in actual amounts and percentage per hour
+ * Actual XP numbers (4 most significant digits)
+ * Total XP gained since level 1 (4 most significant digits)
  * Cumulative progress bar to level 75
 * AP (Abyss Points) mode
  * AP gained and lost 
@@ -83,12 +85,16 @@ Aion Grind Meter contains various grinding meters for Aion:
 * Item Acquisition
  * List of items acquired
  * Items gained per hour, by item ID
+* Item Consumption
+ * List of items consumed
+ * Items consumed per hour, by item name
 * Items acquired from container openings
 * Player kills
  * Number of kills, deaths, and assists in PvP
  * List of players killed (you made last hit) or assisted (you dealt damage to a dead enemy player within 20 seconds)
  * Number of PvP kills per hour
 * Item dice rolls
+ * For each item that are distribute by dice rolls in a party, the item ID, name, your roll, winning roll, and winner's player name are listed individually
 
 
 It uses the chat log file (Chat.log) to obtain gameplay information. It does not interact or modify the Aion client in any way.
