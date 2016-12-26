@@ -88,7 +88,8 @@ Aion Grind Meter contains various grinding meters for Aion:
 * Item Consumption
  * List of items consumed
  * Items consumed per hour, by item name
-* Items acquired from container openings
+* Items acquired from container openings 
+ * Items acquired from different containers are listed separately
 * Player kills
  * Number of kills, deaths, and assists in PvP
  * List of players killed (you made last hit) or assisted (you dealt damage to a dead enemy player within 20 seconds)
