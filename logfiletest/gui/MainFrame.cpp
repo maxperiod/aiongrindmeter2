@@ -1,4 +1,5 @@
 #include <string>
+#include <ctime>
 using namespace std;
 
 #include "MainFrame.h"
@@ -14,31 +15,29 @@ END_EVENT_TABLE()
 
 
 MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
-	wxFrame(NULL, wxID_ANY, string(APP_TITLE) + " " + string(APP_VERSION), pos, wxSize(MAINFRAME_WIDTH, MAINFRAME_HEIGHT), 
-			(wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)),
-		expModule(shared_ptr<ExpChart>(new ExpChartKR51())),
-		apModule(shared_ptr<ApChart>(new ApChart())),
-		timer(this, TIMER_ID),
-		soulHealerModule(expModule, apModule, kinahModule),
-		ticksPerRefresh(2), 
-		tickCounter(0)		
+	wxFrame(NULL, 
+		wxID_ANY, 
+		string(APP_TITLE) + " " + string(APP_VERSION), 
+		pos, 
+		wxSize(MAINFRAME_WIDTH, MAINFRAME_HEIGHT), 
+		(wxDEFAULT_FRAME_STYLE | wxSTAY_ON_TOP) & ~(wxRESIZE_BORDER | wxMINIMIZE_BOX | wxMAXIMIZE_BOX)
+	),
+	started(false),
+	aionPath(aionPath),
+	expModule(shared_ptr<ExpChart>(new ExpChartKR51())),
+	apModule(shared_ptr<ApChart>(new ApChart())),
+	timer(this, TIMER_ID),
+	soulHealerModule(expModule, apModule, kinahModule),
+	ticksPerRefresh(2), 
+	tickCounter(0)		
 {
 	//LANGUAGE_MANAGER.setToEnglishEU();
 
 	parentSizer = new wxBoxSizer(wxVERTICAL);
 	panel = new wxPanel(this, wxID_ANY);
-
-	/*
-	expFrame = new ExpFrame("XP", wxPoint(-1, -1), wxSize(FRAME_WIDTH, FRAME_HEIGHT), 
-		expModule, 
-		soulHealerModule,
-		huntingModule,
-		itemAcquisitionModule,
-		"file.txt"
-	);
-	expFrame->Show(true);
-	*/
+	
 	moduleWindowSelectionFrame = new ModuleWindowSelectionFrame(this, 6, 3);
+	moduleWindowSelectionFrame->SetTitle("Open Window - " + string(APP_TITLE) + " " + string(APP_VERSION) + " " + LANGUAGE_MANAGER.getCurrentLanguage().getLanguageCode());
 	//moduleWindowSelectionFrame->Show();
 
 	expFrame = new ExpFrame(this, expModule, soulHealerModule, wxDefaultPosition);
@@ -126,6 +125,37 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 	timer.Start(500);
 	logFileUtility.parseLogFile();
 
+
+	float secondsSinceLastMessage = (clock() - logFileUtility.getTimestampOfLatestMessage()) / CLOCKS_PER_SEC;
+
+	//Start timer if logFileUtility reads first new line from chat log
+	if (!started && logFileUtility.getTimestampOfLatestMessage() != -1 && secondsSinceLastMessage <= 10){
+		expModule.timer.start();
+		apModule.timer.start();
+		gpModule.timer.start();
+		kinahModule.timer.start();
+		huntingModule.timer.start();
+		itemAcquisitionModule.timer.start();
+		professionModule.timer.start();
+		started = true;
+	}
+
+	/*
+	int secondsBeforePause = 30;
+	//Pause timer after 30 seconds of inactivity
+	if (started && secondsSinceLastMessage > secondsBeforePause){
+		expModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		apModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		gpModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		kinahModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		huntingModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		itemAcquisitionModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		professionModule.timer.stopWithAdjustmentSeconds(-secondsBeforePause + 12);
+		started = false;
+	}
+	*/
+
+	//Refresh windows every ticksPerRefresh ticks
 	if (tickCounter >= ticksPerRefresh){
 		expFrame->refresh();
 		apFrame->refresh();
@@ -144,12 +174,36 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 		tickCounter = 0;
 	}
 	tickCounter ++;
+
+	//Automatic chatlog re-enablement
+	systemCFG.readCFG(aionPath + "system.cfg");
+	
+	if (systemCFG.getProperty("g_chatlog") != "1"){
+				
+		systemCFG.setProperty("g_chatlog", "1");
+				
+		bool writeSuccess = systemCFG.writeCFG(aionPath + "system.cfg");
+		if (writeSuccess){
+			wxNotificationMessage systemCFGEnableSuccessMessage("Aion Grind Meter 2", "Chatlog re-enabled after it was just disabled by Aion client.", this);			
+			systemCFGEnableSuccessMessage.Show();
+		}
+		else {
+			wxNotificationMessage systemCFGEnableFailureMessage("Aion Grind Meter 2", "Chatlog disabled by Aion client. Aion Grind Meter was unable to re-enable it.", this);
+			systemCFGEnableFailureMessage.Show();
+			this->Close();
+		}
+		
+	}
 	
 }
 
 void MainFrame::OnClose(wxCloseEvent& event){
-	tickCounter = -99999;
-	this->DestroyChildren();
-	this->Destroy();
+
+	wxMessageDialog exitDialog(this, "Exit Aion Grind Meter?\n", "Exit", wxOK | wxCANCEL | wxCANCEL_DEFAULT);
+	if (exitDialog.ShowModal() == wxID_OK){
+		tickCounter = -99999;
+		this->DestroyChildren();
+		this->Destroy();
+	}
 	
 }

@@ -1,5 +1,7 @@
 #include <string>
 #include <vector>
+#include <ctime>
+
 using namespace std;
 
 #include "LogFileReader.h"
@@ -15,6 +17,8 @@ using namespace std;
 
 class LogFileUtility{
 public:
+	LogFileUtility();
+
 	bool setAionDirectory(const string& aionDirectory);
 
 	bool isValidAionDirectory();
@@ -29,6 +33,8 @@ public:
 
 	void parseLogFile();
 
+	long long getTimestampOfLatestMessage() {return timestampOfLatestMessage;}
+
 private:
 	string aionDirectory;
 
@@ -41,4 +47,6 @@ private:
 	queue<ChatLogCommand> parsedChatLogCommands;
 
 	vector<Module*> modules;
+
+	long long timestampOfLatestMessage;
 };

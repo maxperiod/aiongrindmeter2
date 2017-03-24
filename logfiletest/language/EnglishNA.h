@@ -10,11 +10,15 @@
 
 class EnglishNA: public Language{
 public:
-	EnglishNA(): itemIDFileReader("itemnames_NA_ENU.txt"){}
+	EnglishNA(): itemIDFileReader("itemnames_ENU.txt"),
+		languageCode("ENU(NA)")
+	  {}
 	MessageRules& getMessageRules() {return commandStrings;}
 	SkillToClassMap& getSkillToClassMap() {return skillToClass;}
 	ItemIDFileReader& getItemIDFileReader() {return itemIDFileReader;}
+	string getLanguageCode() {return languageCode;}
 private:
+	string languageCode;
 	ItemIDFileReader itemIDFileReader;
 	CommandStringsNAEnglish commandStrings;
 	SkillToClassHardCodedNA skillToClass;

@@ -12,6 +12,7 @@ using namespace std;
 class LogFileReader{
 
 public:	
+	void setDirectory(const string& directory) {this->directory = directory;}
 	/*
 	LogFileReader(): bufferSize(1024) {
 		buffer = new char(bufferSize);
@@ -28,6 +29,8 @@ public:
 	bool isOK() {return OK;}
 
 private:
+	string directory;
+
 	ifstream file;
 	bool OK;
 

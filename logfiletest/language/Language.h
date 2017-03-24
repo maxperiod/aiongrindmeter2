@@ -11,5 +11,6 @@ public:
 	virtual MessageRules& getMessageRules() = 0;
 	virtual SkillToClassMap& getSkillToClassMap() = 0;
 	virtual ItemIDFileReader& getItemIDFileReader() = 0;
+	virtual string getLanguageCode() = 0;
 };
 #endif

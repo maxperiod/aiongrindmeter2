@@ -1,6 +1,7 @@
 #include "ProfessionModule.h"
 
 ProfessionModule::ProfessionModule(): professionMode(NONE){
+	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM_MULTI);
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM);
 	DECLARE_MESSAGE_RULE(STR_GATHER_START_1_BASIC);
 	DECLARE_MESSAGE_RULE(STR_EXTRACT_GATHER_START_1_BASIC);
@@ -36,6 +37,7 @@ void ProfessionModule::executeChatLogCommand(ChatLogCommand& command){
 	map<string, string>& params = command.getParams();
 
 	switch(command.getMessageRuleCode()){
+	case STR_MSG_GET_ITEM_MULTI:
 	case STR_MSG_GET_ITEM:
 		gathers.success();
 		break;

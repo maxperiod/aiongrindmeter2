@@ -69,81 +69,6 @@
     <ClInclude Include="lookups\SkillToClassHardCodedNA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="model\AbstractCounter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ApGainMeter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\assistdamage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Counter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Enemies.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ExpChart.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ExpGainMeter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\GatherCraft.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\GatherCraftRecord.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\IndividualItemGatherCrafts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ItemRolls.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Items.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\KinahGainMeter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\KnownPlayers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\LevelUpChecker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MeterValue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Observable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\PlayerClassManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ProfessionLeveling.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ProfessionLevelingHistory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\pvpKillsCounter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ServerState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\SoulHealer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ValueGainObserver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="modules\ApModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -219,9 +144,6 @@
     <ClInclude Include="testmodule\testlog\temporarylogfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="model\RelicAP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lookups\RelicAp47.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -241,6 +163,87 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lookups\ExpChartEU49.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\ChatLogActivityModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\AbstractCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ApGainMeter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\assistdamage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Counter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Enemies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ExpChart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ExpGainMeter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\GatherCraft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\GatherCraftRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\IndividualItemGatherCrafts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ItemRolls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Items.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\KinahGainMeter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\KnownPlayers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\LevelUpChecker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MeterValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Observable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\PlayerClassManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ProfessionLeveling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ProfessionLevelingHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\pvpKillsCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\RelicAP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ServerState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\SoulHealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ValueGainObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ApFrame.h">
@@ -320,51 +323,6 @@
     <ClCompile Include="lookups\SkillToClassHardCodedNA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="model\ApGainMeter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ExpChart.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ExpGainMeter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\GatherCraft.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\GatherCraftRecord.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ItemRolls.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\KinahGainMeter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\KnownPlayers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\LevelUpChecker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\MeterValue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\PlayerClassManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ProfessionLeveling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ProfessionLevelingHistory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\pvpKillsCounter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="model\SoulHealer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="modules\ApModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -431,9 +389,6 @@
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="model\RelicAP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lookups\RelicAp47.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -452,7 +407,55 @@
     <ClCompile Include="lookups\ExpChartEU49.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testModule\GatheringTest.cpp">
+    <ClCompile Include="model\ApGainMeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ExpChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ExpGainMeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\GatherCraft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\GatherCraftRecord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ItemRolls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\KinahGainMeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\KnownPlayers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\LevelUpChecker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MeterValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\PlayerClassManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ProfessionLeveling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ProfessionLevelingHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\pvpKillsCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\RelicAP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\SoulHealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testModule\ApTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">

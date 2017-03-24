@@ -199,6 +199,7 @@
     <ClInclude Include="model\ValueGainObserver.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="modules\ApModule.h" />
+    <ClInclude Include="modules\ChatLogActivityModule.h" />
     <ClInclude Include="modules\ExpModule.h" />
     <ClInclude Include="modules\GpModule.h" />
     <ClInclude Include="modules\HuntingModule.h" />
@@ -293,7 +294,7 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
-    <ClCompile Include="testModule\GatheringTest.cpp" />
+    <ClCompile Include="testModule\ApTest.cpp" />
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
   </ItemGroup>
   <ItemGroup>

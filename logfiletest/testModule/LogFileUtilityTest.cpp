@@ -33,7 +33,7 @@ class Module2: public Module{
 public:
 	int y;
 	int n;
-	Module2(): y(5), n(0){
+	Module2(): y(6), n(0){
 		DECLARE_MESSAGE_RULE(STR_WORLDMAP_UNDER_CONSTRUCTION);
 		DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM);
 	}
@@ -82,10 +82,15 @@ protected:
 };
 
 TEST_F(LogFileUtilityTest, test1){
+	logFileUtility.parseLogFile();
+	EXPECT_EQ(-1, logFileUtility.getTimestampOfLatestMessage());
+
 	logFile.appendFile("2014.06.18 17:37:06 : [3.LFG] [charname:RoboNublet;1.0000 0.6941 0.6941]: [cmd:mj7/5TZfrJ2pXvZb+rtkB5YNnze4s0GemRKuJ7Dm4clFUYOZnylZ5HCClET+4/tCxcsuVhhDO9yuNqQAm2su0z1PcaoWddhrHx3o2lBYvN0=]EC 350 plse ");
 	logFile.appendFile("2014.06.18 17:37:22 : The map is now loading. ");
 
 	logFileUtility.parseLogFile();
+
+	EXPECT_GT(logFileUtility.getTimestampOfLatestMessage(), 0);
 
 	EXPECT_EQ(1, module1.x);
 	EXPECT_EQ(4, module2.y);
@@ -98,7 +103,7 @@ TEST_F(LogFileUtilityTest, test2){
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(0, module1.x);
-	EXPECT_EQ(9, module2.y);
+	EXPECT_EQ(11, module2.y);
 }
 
 TEST_F(LogFileUtilityTest, test3){

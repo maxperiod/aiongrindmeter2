@@ -5,24 +5,27 @@
 
 #include "../parser/LogFileUtility.h"
 #include "testLog/TemporaryLogFile.h"
-
+#include "../lookups/ApChart.h"
 
 class ApModuleTest: public ::testing::Test{
 protected:
 	//MaxPeriodParser parser;
 	//RuleStringsHardCodedNA rules;
 	
+	shared_ptr<ApChart> apChart;
 	//ExpModule expModule;
 	ApModule apModule;
 	//KinahModule kinahModule;
 	//SoulHealerModule soulHealerModule;
 	
+
 	TemporaryLogFile logFile;
 	
 	LogFileUtility logFileUtility;
 	
 
-	ApModuleTest(): logFile("testModule/testLog/tests.log", "testModule/testLog/Chat.log")//,
+	ApModuleTest(): logFile("testModule/testLog/tests.log", "testModule/testLog/Chat.log"),
+		apChart(new ApChart()), apModule(apChart)//,
 		//soulHealerModule(expModule, apModule, kinahModule)
 	{
 	}
@@ -216,7 +219,7 @@ TEST_F(ApModuleTest, gainRelic){
 	EXPECT_EQ(0, apModule.apGainMeter.getTotalGained());
 	EXPECT_EQ(0, apModule.apGainMeter.getNetGained());
 	EXPECT_EQ(0, apModule.apGainMeter.getLastChange());
-	EXPECT_EQ(1515, apModule.apGainMeter.getRelicAp());
+	EXPECT_EQ(1500, apModule.apGainMeter.getRelicAp());
 	EXPECT_EQ(0, apModule.apGainMeter.getPvpAp());
 
 }
@@ -263,5 +266,58 @@ TEST_F(ApModuleTest, relics){
 	EXPECT_EQ(376068, apModule.apGainMeter.getTotalGained());
 	EXPECT_EQ(376068, apModule.apGainMeter.getNetGained());
 	EXPECT_EQ(apModule.relicAp.getRelicApValue(186000066) - 376068, apModule.apGainMeter.getRelicAp());
+
+}
+
+TEST_F(ApModuleTest, relics2){
+	apModule.abyssRankChecker.initialize(10000);
+	EXPECT_EQ(10000, apModule.abyssRankChecker.getCurrentValue());
+
+	logFile.appendFile("2017.03.23 20:12:20 : Insaneivan inflicted 694 damage on LuuKaazZ. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ is no longer shocked. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ is in the boost Stun, Knock Back, Stumble, Spin, and Aerial Thrust Resistance Values state because LuuKaazZ used Remove Shock I. ");
+	logFile.appendFile("2017.03.23 20:12:20 : Insaneivan blocked LuuKaazZ's attack with the protective shield effect. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ inflicted 111 damage on Insaneivan. ");
+	logFile.appendFile("2017.03.23 20:12:20 : Insaneivan blocked LuuKaazZ's attack with the protective shield effect. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ inflicted 116 damage on Insaneivan. ");
+	logFile.appendFile("2017.03.23 20:12:20 : You sold the item. ");
+	logFile.appendFile("2017.03.23 20:12:20 : You have gained 297,600 Abyss Points. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ restored its movement speed. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ is no longer bound ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ is in the teleport state as it used Teleport Escape. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ used Teleport Escape to dispel magic effects. ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ is in the boost Speed state because LuuKaazZ used Teleport Escape. ");
+	logFile.appendFile("2017.03.23 20:12:20 : Insaneivan inflicted 547 damage on LuuKaazZ by using Hallowed Strike . ");
+	logFile.appendFile("2017.03.23 20:12:20 : LuuKaazZ's attack speed has decreased because Insaneivan used Hallowed Strike . ");
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(297600, apModule.apGainMeter.getNetGained());
+	EXPECT_EQ(-297600, apModule.apGainMeter.getRelicAp());
+	
+	logFile.appendFile("2017.03.23 20:13:43 : Critical Hit! You inflicted 1,505 critical damage on Sootguzzle Beritra Blade. ");
+	logFile.appendFile("2017.03.23 20:13:43 : You inflicted 150 damage on Sootguzzle Beritra Blade. ");
+	logFile.appendFile("2017.03.23 20:13:43 : Invalid target. ");
+	logFile.appendFile("2017.03.23 20:13:43 : You have gained 474,265 XP from Sootguzzle Beritra Blade. (Energy of Repose 135,504) ");
+	logFile.appendFile("2017.03.23 20:13:43 : Sootguzzle Beritra Blade restored its attack speed. ");
+	logFile.appendFile("2017.03.23 20:13:43 : You have gained 49 Abyss Points. ");
+	logFile.appendFile("2017.03.23 20:13:43 : Quest updated: [Weekly] Shield Sootguzzle Outpost ");
+
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(297600 + 49, apModule.apGainMeter.getNetGained());
+	EXPECT_EQ(-297600, apModule.apGainMeter.getRelicAp());
+
+	logFile.appendFile("2017.03.23 20:14:01 : You have gained 474,265 XP from Sootguzzle Beritra Blade. (Energy of Repose 135,504) ");
+	logFile.appendFile("2017.03.23 20:14:01 : Sootguzzle Beritra Blade restored its movement speed. ");
+	logFile.appendFile("2017.03.23 20:14:01 : Sootguzzle Beritra Blade restored its attack speed. ");
+	logFile.appendFile("2017.03.23 20:14:01 : Quest updated: [Weekly] Shield Sootguzzle Outpost ");
+	logFile.appendFile("2017.03.23 20:14:01 : You have gained 49 Abyss Points. ");
+	logFile.appendFile("2017.03.23 20:14:01 : You recovered 72 MP by using Invincibility Mantra Effect. ");
+	logFile.appendFile("2017.03.23 20:14:01 : You blocked Sootguzzle Beritra Seeker's attack with the protective shield effect. ");
+
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(297600 + 49 + 49, apModule.apGainMeter.getNetGained());
+	EXPECT_EQ(-297600, apModule.apGainMeter.getRelicAp());
 
 }

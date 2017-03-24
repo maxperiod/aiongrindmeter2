@@ -87,4 +87,5 @@ void ApModule::executeChatLogCommand(ChatLogCommand& command){
 
 void ApModule::endOfTickAction(){
 	apGainMeter.applyFromBuffer();	
+	isItemSale = false;
 }

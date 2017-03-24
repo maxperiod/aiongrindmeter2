@@ -1,23 +1,21 @@
 #include <memory>
 
+
 #include "MessageRules.h"
 #include "LogFileUtility.h"
 
 #include "../language/LanguageManager.h"
 
 bool isFileExists(string& filename);
-/*
-LogFileUtility::LogFileUtility(Language& language){
-		
-	parser.setCriticalString(language.getMessageRules().getCriticalString());
-	commandFactory.setParser(parser);
-	commandFactory.setMessageRules(language.getMessageRules());	
-	
+
+LogFileUtility::LogFileUtility(): timestampOfLatestMessage(-1) {
+
 }
-*/
+
 
 bool LogFileUtility::setAionDirectory(const string& aionDirectory){
 	this->aionDirectory = aionDirectory;
+	logFileReader.setDirectory(aionDirectory);
 	return logFileReader.openChatLog(aionDirectory);
 
 	
@@ -45,6 +43,8 @@ void LogFileUtility::parseLogFile(){
 	commandFactory.setMessageRules(LANGUAGE_MANAGER.getCurrentLanguage().getMessageRules());		
 
 	logFileReader.readLines(lines, false);
+
+	if (!lines.empty()) timestampOfLatestMessage = clock();
 
 	//Parse chatlog lines into command object
 	while(!lines.empty()){
@@ -107,6 +107,7 @@ bool LogFileUtility::enableChatLog(){
 bool LogFileUtility::disableChatLog(){
 	return false;
 }
+
 
 bool isFileExists(string& filename){
 	bool fileExists;

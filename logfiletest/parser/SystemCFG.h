@@ -16,12 +16,14 @@ public:
 
 	bool isReadSuccessful() {return CFGReadSuccess;}
 
-	void writeCFG(const string& filename, bool encrypted = false);
-	void readCFG(const string& filename, bool encrypted = false);
+	bool writeCFG(const string& filename, bool encrypted = true);
+	void readCFG(const string& filename, bool encrypted = true);
 
-	const CFGmap& getEntries() {return entries;}
+	const CFGmap getEntries() const {return entries;}
 	
+	string getProperty(const string& attribute) const;
 	void setProperty(const string& attribute, const string& value);
+	void removeProperty(const string& attribute);
 
 private:
 	bool CFGReadSuccess;

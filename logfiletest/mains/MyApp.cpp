@@ -11,8 +11,10 @@ using namespace std;
 class MyApp: public wxApp
 {
 public:
-	virtual bool OnInit();
+	virtual bool OnInit();	
+	
 private:
+	bool checkSystemCFG(string aionPath);
 	bool FileExists(string filename);
 };
 
@@ -49,9 +51,13 @@ bool MyApp::OnInit()
 			aionPath = conf->Read( wxT("AionPath"));		      
 
 		}
-		if (FileExists(aionPath + LOG_FILE) || FileExists(aionPath + AION_BIN_32) || FileExists(aionPath + AION_BIN_64)){
-			mainFrame = new MainFrame(aionPath, wxDefaultPosition);
-			mainFrame->Show(true);
+		if (/*FileExists(aionPath + LOG_FILE) || */FileExists(aionPath + AION_BIN_32) || FileExists(aionPath + AION_BIN_64)){
+			
+			if (checkSystemCFG(aionPath)){			
+				mainFrame = new MainFrame(aionPath, wxDefaultPosition);
+				mainFrame->Show(true);
+			}
+			else return false;
 		}
 		// Ask for user to browser for Aion's directory
 		else{
@@ -62,15 +68,16 @@ bool MyApp::OnInit()
 				//Close(true);
 			}
 			else if (!FileExists(aionPath + AION_BIN_32) &&  !FileExists(aionPath + AION_BIN_64)){
-				//notFoundLabel1->SetLabel("This does not appear to be an Aion directory. Also, Aion's Chat.log file must be enabled.");
-				//notFoundLabel1->Wrap(FRAME_WIDTH);
-				wxMessageBox("This does not appear to be an Aion directory. Also, Aion's Chat.log file must be enabled.", "Error", wxOK);
+				wxMessageBox("This does not appear to be an Aion directory.", "Error", wxOK);
 				return false;
 			}
 			else{ // Write directory choice to ini
-				conf->Write(wxT("AionPath"), aionPath.c_str());
-				mainFrame = new MainFrame(aionPath, wxDefaultPosition);
-				mainFrame->Show(true);
+				if (checkSystemCFG(aionPath)){		
+					conf->Write(wxT("AionPath"), aionPath.c_str());
+					mainFrame = new MainFrame(aionPath, wxDefaultPosition);
+					mainFrame->Show(true);
+				}
+				else return false;
 			}
 			
 		}
@@ -80,6 +87,27 @@ bool MyApp::OnInit()
 	MainFrame* mainFrame = new MainFrame(wxDefaultPosition);
 	mainFrame->Show(true);
 	*/
+	return true;
+}
+
+bool MyApp::checkSystemCFG(string aionPath){
+	SystemCFG systemCFG;
+	systemCFG.readCFG(aionPath + "system.cfg");
+	if (!systemCFG.isReadSuccessful()){
+		wxMessageBox("Unable to read Aion system.cfg file. Exiting.", "Error", wxOK);
+		return false;
+	}
+	if (systemCFG.getProperty("g_chatlog") != "1"){
+		
+		wxMessageBox("Chat log disabled. Aion Grind Meter is trying to enable it now. You must restart your Aion client if it is already running.", "Notice", wxOK);
+		systemCFG.setProperty("g_chatlog", "1");
+				
+		bool writeSuccess = systemCFG.writeCFG(aionPath + "system.cfg");
+		if (!writeSuccess){
+			wxMessageBox("Failed to enable Aion chatlog. If Aion was installed in Program Files folder, you must run Aion Grind Meter as an administrator.", "Error", wxOK);
+			return false;
+		}
+	}
 	return true;
 }
 

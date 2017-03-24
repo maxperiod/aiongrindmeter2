@@ -57,7 +57,10 @@ void SystemCFG::readCFG(const string& filename, bool encrypted){
 	stream.close();
 }
 
-void SystemCFG::writeCFG(const string& filename, bool encrypted){
+bool SystemCFG::writeCFG(const string& filename, bool encrypted){
+	bool success = false;
+	if (!CFGReadSuccess) return success;
+
 	ostringstream stringstream;
 	ofstream stream;
 	stream.open(filename);
@@ -87,14 +90,24 @@ void SystemCFG::writeCFG(const string& filename, bool encrypted){
 			}
 		}
 		stream << encryptedOutput << endl;			
+		success = true;
 	}
 
 	stream.close();
-	
+	return success;
+}
+
+string SystemCFG::getProperty(const string& attribute) const{
+	if (entries.count(attribute) == 1) return entries.at(attribute);
+	return "";
 }
 
 void SystemCFG::setProperty(const string& attribute, const string& value){
 	entries[attribute] = value;
+}
+
+void SystemCFG::removeProperty(const string& attribute){
+	entries.erase(attribute);
 }
 
 bool caseInsensitiveStringCompare::operator()(const string& lhs, const string& rhs) const{

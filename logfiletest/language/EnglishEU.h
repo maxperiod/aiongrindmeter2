@@ -8,11 +8,16 @@
 
 class EnglishEU: public Language{
 public:
-	EnglishEU(): itemIDFileReader("itemnames_EU_ENG.txt"){}
+	EnglishEU(): 
+		itemIDFileReader("itemnames_ENG.txt"),
+		languageCode("ENG(EU)")
+		{}
 	MessageRules& getMessageRules() {return commandStrings;}
 	SkillToClassMap& getSkillToClassMap() {return skillToClass;}
 	ItemIDFileReader& getItemIDFileReader() {return itemIDFileReader;}
+	string getLanguageCode() {return languageCode;}
 private:
+	string languageCode;
 	ItemIDFileReader itemIDFileReader;
 	CommandStringsEUEnglish commandStrings;
 	SkillToClassHardCodedEUEnglish skillToClass;

@@ -5,7 +5,7 @@
 
 #include <wx/fileconf.h>
 #include <wx/gbsizer.h>
-
+#include <wx/notifmsg.h>
 
 #include "../parser/LogFileUtility.h"
 
@@ -45,7 +45,7 @@
 #include "TestFrame.h"
 
 #define APP_TITLE "Aion Grind Meter"
-#define APP_VERSION "2.0.1-alpha"
+#define APP_VERSION "2.4.0"
 
 #define MAINFRAME_WIDTH 230
 #define MAINFRAME_HEIGHT 100
@@ -74,6 +74,9 @@ public:
 	
 	wxDECLARE_EVENT_TABLE();
 private:
+	bool started;
+
+	string aionPath;
 	ExpModule expModule;
 	ApModule apModule;
 	GpModule gpModule;
@@ -129,5 +132,9 @@ private:
 
 	int ticksPerRefresh;
 	int tickCounter;
+
+	SystemCFG systemCFG;
+
+	
 };
 

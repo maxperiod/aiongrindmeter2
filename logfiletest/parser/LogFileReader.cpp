@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 /*********************************************************************************************
 Constructor: Open Aion log file from filename, move file pointer to end of file
 *********************************************************************************************/
@@ -36,6 +38,7 @@ Read new lines that have been appended to the log file by the game Client, put t
 *********************************************************************************************/
 //queue<string> LogFileReader::readLines(){
 void LogFileReader::readLines(queue<string>& lines, bool readFromBeginning){
+	if (!OK) openChatLog(directory);
 
 	if (readFromBeginning){
 		file.seekg(0, file.beg);
