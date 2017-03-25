@@ -1,17 +1,17 @@
-##[Click here for Downloads](https://github.com/maxperiod/aiongrindmeter2/releases)
+## [Click here for Downloads](https://github.com/maxperiod/aiongrindmeter2/releases)
 
 Aion Grind Meter 2 - Aion XP/hr meter and more
 
-##Screenshots
+## Screenshots
 
 ![alt text](images/expexample1.png "EXP - progress to next level")
 
 EXP - progress to next level
 
 
-![alt text](images/expexample2.png "EXP - cumulative progress to level 65")
+![alt text](images/expexample2.png "EXP - cumulative progress to level 75")
 
-EXP - cumulative progress to level 65
+EXP - cumulative progress to level 75
 
 
 ![alt text](images/apexample.png "AP")
@@ -57,7 +57,7 @@ Monster kills
 
 Player kills and assists
 
-##Overview
+## Overview
 
 Aion Grind Meter contains various grinding meters for Aion: 
 * XP (Experience) mode
@@ -104,21 +104,37 @@ Aion Grind Meter 2 is written in C++ with wxWidgets library powering the Graphic
 
 
 
-##Prerequisites
+## Prerequisites
 
-Aion chat log file (Chat.log) must be enabled and present for Grind Meter 2 to work.
+**Aion chat log file (Chat.log) must be enabled before launching the Aion Client. 
+Otherwise, the chat log file will be deleted, and any applications depending on the chat log (including Aion Grind Meter and Aion RainMeter) will not work.** 
 
-Input strings and item names are currently configured for North American (NCWest) and Europe English (Gameforge) clients, update 5.0
+**Note: Starting with Aion client version 5.3, the chat log will be automatically disabled (which takes effect the next time you launch Aion client without re-enabling the chatlog) whenever:**
+* Starting of the 10-second relog / quit timer
+* Relogging from gameplay back to character select screen
+* Aion Client is completely shut down (but not with client crashing)
 
-####Enabling Chat Log
-You can use Aion RainMeter (ARM) to enable chat log. 
+**To prevent the loss of chat log file, always launch either Aion Grind Meter (2.4.0 or later) or Aion RainMeter first before launching the game client.** The timer will not start until you log a character into gameplay.
+
+Input strings and item names are currently configured for North American (NCWest) and Europe English (Gameforge) clients, update 5.3
+
+#### Enabling Chat Log
+Aion Grind Meter will automatically enable chat log file (since version 2.4.0) whenever you launch the application, as long as the Aion installation directory have been properly located, and there are no permission issues (e.g. C:\Program Files).
+
+Aion Grind Meter will constantly monitor the system.cfg file and re-enable the chat log whenever it gets disabled for any reason (e.g. Aion 5.3) as long as it is running.
+
+Chatlog enabling is done by adding "g_chatlog = 1" the XOR-encrypted system.cfg file.
+
+**If the Aion client is installed in C:\Program Files, you MUST run Aion Grind Meter as an administrator in order to be able to enable the chat log.**
+
+Alternatively, you can also use Aion RainMeter (ARM) to enable chat log. 
 It can be downloaded from http://rainy.ws/
 
-Once you have enabled chat log using ARM, log into Aion with any one of your characters, and the Chat.log file will be created.
+You can find help on chatlog-related issues on the Aion RainMeter website at http://rainy.ws/misc-stuff/
 
+Once you have enabled chat log using any of these methods, log into Aion with any one of your characters, and the Chat.log file will be created.
 
-
-##Setup
+## Setup
 
 Extract the folder to anywhere (Recommended: inside your Aion folder). 
 You will be prompted to browse for your Aion folder when you run it for the first time.
