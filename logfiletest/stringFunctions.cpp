@@ -58,7 +58,7 @@ string stripCommas(string& line){
 /*********************************************************************************************
 Format a integer with comma separators. Optionally add plus sign on non-negative numbers
 *********************************************************************************************/
-string formatNumber(int number, bool addPlusSign){
+string formatNumber(long long number, bool addPlusSign){
 	ostringstream oss;
 	oss.imbue(locale(""));
 	if (addPlusSign && number >= 0) oss << "+";
@@ -70,7 +70,7 @@ string formatNumber(int number, bool addPlusSign){
 /*********************************************************************************************
 Format a positive integer, or display question marks if negative
 *********************************************************************************************/
-string formatPositiveNumber(int number){
+string formatPositiveNumber(long long number){
 	ostringstream oss;
 	oss.imbue(locale(""));
 	if (number >= 0) oss << fixed << number;

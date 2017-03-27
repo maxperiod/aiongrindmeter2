@@ -31,7 +31,8 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	ticksPerRefresh(2), 
 	tickCounter(0)		
 {
-	//LANGUAGE_MANAGER.setToEnglishEU();
+	//For NA builds, comment out following line. For EU builds, enable following line.
+	LANGUAGE_MANAGER.setToEnglishEU();
 
 	parentSizer = new wxBoxSizer(wxVERTICAL);
 	panel = new wxPanel(this, wxID_ANY);
@@ -41,11 +42,11 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	//moduleWindowSelectionFrame->Show();
 
 	expFrame = new ExpFrame(this, expModule, soulHealerModule, wxDefaultPosition);
-	expFrame->Show();
+	//expFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(expFrame, "XP", 0, 0);
 
 	apFrame = new ApFrame(this,apModule, soulHealerModule, wxDefaultPosition);
-	apFrame->Show();
+	//apFrame->Show();
 	moduleWindowSelectionFrame->addModuleWindow(apFrame, "AP", 0, 1);
 
 	gpFrame = new GpFrame(this,gpModule, wxDefaultPosition);
@@ -130,6 +131,9 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 
 	//Start timer if logFileUtility reads first new line from chat log
 	if (!started && logFileUtility.getTimestampOfLatestMessage() != -1 && secondsSinceLastMessage <= 10){
+		expFrame->Show();
+		apFrame->Show();
+
 		expModule.timer.start();
 		apModule.timer.start();
 		gpModule.timer.start();
@@ -184,11 +188,11 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 				
 		bool writeSuccess = systemCFG.writeCFG(aionPath + "system.cfg");
 		if (writeSuccess){
-			wxNotificationMessage systemCFGEnableSuccessMessage("Aion Grind Meter 2", "Chatlog re-enabled after it was just disabled by Aion client.", this);			
+			wxNotificationMessage systemCFGEnableSuccessMessage(APP_TITLE, "Chatlog re-enabled after it was just disabled by Aion client.", this);			
 			systemCFGEnableSuccessMessage.Show();
 		}
 		else {
-			wxNotificationMessage systemCFGEnableFailureMessage("Aion Grind Meter 2", "Chatlog disabled by Aion client. Aion Grind Meter was unable to re-enable it.", this);
+			wxNotificationMessage systemCFGEnableFailureMessage(APP_TITLE, "Chatlog disabled by Aion client. Aion Grind Meter was unable to re-enable it.", this);
 			systemCFGEnableFailureMessage.Show();
 			this->Close();
 		}

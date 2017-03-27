@@ -192,3 +192,26 @@ TEST_F(ExpTest, updateExpFromDeathNoExpLoss){
 	
 
 }
+
+
+TEST_F(ExpTest, largeExpGained){
+	//lvl 71: 31,229,819,120
+	expModule.levelUpChecker.initializePercent(74, 0);
+	
+
+	
+	logFile.appendFile("2016.01.28 20:45:18 : You have gained 1,000,000,000 XP from Luke Skywalker. ");
+	logFileUtility.parseLogFile();	
+	logFile.appendFile("2016.01.28 20:45:18 : You have gained 1,000,000,000 XP from Luke Skywalker. ");
+	logFileUtility.parseLogFile();	
+	logFile.appendFile("2016.01.28 20:45:18 : You have gained 1,000,000,000 XP from Luke Skywalker. ");
+	logFileUtility.parseLogFile();	
+	
+	
+	EXPECT_EQ(3000000000, expModule.expGainMeter.getNetGained());
+
+	logFile.appendFile("2016.01.28 20:45:18 : You have gained 3,000,000,000 XP from Luke Skywalker. ");
+	logFileUtility.parseLogFile();	
+
+	EXPECT_EQ(6000000000, expModule.expGainMeter.getNetGained());
+}

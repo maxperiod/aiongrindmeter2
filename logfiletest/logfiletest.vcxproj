@@ -294,8 +294,8 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
-    <ClCompile Include="testModule\ApTest.cpp" />
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
+    <ClCompile Include="tests\StringFunctionTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="changelog.txt" />

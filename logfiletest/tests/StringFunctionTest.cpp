@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "../stringfunctions.h"
 
+
 TEST(stringFunctions, formatKiloMega1){
 	EXPECT_EQ("12.7 M", formatKiloMega(12790000, 3));
 
@@ -23,6 +24,61 @@ TEST(stringFunctions, formatKiloMega4){
 
 TEST(stringFunctions, formatKiloMega5){
 	EXPECT_EQ("0.0429", formatKiloMega(0.0429, 3));
+
+}
+
+TEST(stringFunctions, formatNumber1){
+	int number = 123;
+	EXPECT_EQ("123", formatNumber(number));
+
+}
+
+TEST(stringFunctions, formatNumber1a){
+	int number = -123;
+	EXPECT_EQ("-123", formatNumber(number));
+
+}
+
+TEST(stringFunctions, formatNumber1b){
+	int number = 123;
+	EXPECT_EQ("+123", formatNumber(number, true));
+
+}
+
+TEST(stringFunctions, formatNumber1c){
+	int number = -123;
+	EXPECT_EQ("-123", formatNumber(number, true));
+
+}
+
+
+TEST(stringFunctions, formatNumber2){
+	int number = 4567;
+	EXPECT_EQ("4,567", formatNumber(number));
+
+}
+
+TEST(stringFunctions, formatNumber2a){
+	int number = -4567;
+	EXPECT_EQ("-4,567", formatNumber(number));
+
+}
+
+TEST(stringFunctions, formatNumber2b){
+	int number = 4567;
+	EXPECT_EQ("+4,567", formatNumber(number, true));
+
+}
+
+TEST(stringFunctions, formatNumber2c){
+	int number = -4567;
+	EXPECT_EQ("-4,567", formatNumber(number, true));
+
+}
+
+TEST(stringFunctions, formatNumber3){
+	long long number = 3000000000;
+	EXPECT_EQ("3,000,000,000", formatNumber(number));
 
 }
 

@@ -455,7 +455,10 @@
     <ClCompile Include="model\SoulHealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testModule\ApTest.cpp">
+    <ClCompile Include="tests\StringFunctionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">
@@ -504,9 +507,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\TestFrame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
