@@ -112,6 +112,7 @@ Otherwise, the chat log file will be deleted, and any applications depending on 
 **Note: Starting with Aion client version 5.3, the chat log will be automatically disabled (which takes effect the next time you launch Aion client without re-enabling the chatlog) whenever:**
 * Starting of the 10-second relog / quit timer
 * Relogging from gameplay back to character select screen
+* Switching between Standard, Fast-Track / Rookie, and (Integrated) instance servers
 * Aion Client is completely shut down (but not with client crashing)
 
 **To prevent the loss of chat log file, always launch either Aion Grind Meter (2.4.0 or later) or Aion RainMeter first before launching the game client.** The timer will not start until you log a character into gameplay.
