@@ -30,7 +30,7 @@ ProfessionModule::ProfessionModule(): professionMode(NONE){
 	DECLARE_MESSAGE_RULE(STR_MSG_HIGHCRAFT_COMPLETE_CRI);
 	
 
-	timer.start();
+	//timer.start();
 }
 
 void ProfessionModule::executeChatLogCommand(ChatLogCommand& command){

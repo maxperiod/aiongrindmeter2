@@ -23,7 +23,7 @@ ApModule::ApModule(shared_ptr<ApChart> apChart)
 
 	DECLARE_MESSAGE_RULE(STR_REWARD_ITEM_USER_REWARD_ITEMS);
 
-	timer.start();
+	//timer.start();
 }
 
 

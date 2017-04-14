@@ -116,6 +116,9 @@ void AutoAttackBuffer::enemyEvaded(const string &target, const string &skill){
 		CombatStats& individualTargetCombatStats = getIndividualTargetCombatStatsForCurrentWeaponSet(target);
 		allTargetsCombatStats.enemyEvade ++;
 		individualTargetCombatStats.enemyEvade ++;
+
+		allTargetsCombatStats.skillDamageStats[skill].numResists ++;
+		individualTargetCombatStats.skillDamageStats[skill].numResists ++;
 	}
 }
 

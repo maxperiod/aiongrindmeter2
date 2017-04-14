@@ -6,7 +6,7 @@ GpModule::GpModule(){
 	DECLARE_MESSAGE_RULE(STR_MSG_GLORY_POINT_GAIN);
 	DECLARE_MESSAGE_RULE(STR_MSG_GLORY_POINT_LOSE);
 
-	timer.start();
+	//timer.start();
 }
 
 void GpModule::executeChatLogCommand(ChatLogCommand& command){

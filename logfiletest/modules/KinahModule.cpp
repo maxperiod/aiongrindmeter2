@@ -11,7 +11,7 @@
 	DECLARE_MESSAGE_RULE(STR_MSG_PAY_DISTRIBUTE);
 	DECLARE_MESSAGE_RULE(STR_BUY_SELL_USER_SELL_ITEMS);
 
-	timer.start();
+	//timer.start();
 }
 
 void KinahModule::executeChatLogCommand(ChatLogCommand& command){

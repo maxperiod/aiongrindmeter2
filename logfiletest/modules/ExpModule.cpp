@@ -41,7 +41,7 @@ ExpModule::ExpModule(shared_ptr<ExpChart> expChart): expChart(expChart), expGain
 
 		DECLARE_MESSAGE_RULE(STR_MSG_GET_CP);
 
-		timer.start();
+		//timer.start();
 	}
 
 void ExpModule::executeChatLogCommand(ChatLogCommand& command){
