@@ -61,41 +61,41 @@ Player kills and assists
 
 Aion Grind Meter contains various grinding meters for Aion: 
 * XP (Experience) mode
- * XP gained, in actual numbers and percentage
- * XP/hour (XP gained per hour), in actual amounts and percentage per hour
- * Actual XP numbers (4 most significant digits)
- * Total XP gained since level 1 (4 most significant digits)
- * Cumulative progress bar to level 75
+  * XP gained, in actual numbers and percentage
+  * XP/hour (XP gained per hour), in actual amounts and percentage per hour
+  * Actual XP numbers (4 most significant digits)
+  * Total XP gained since level 1 (4 most significant digits)
+  * Cumulative progress bar to level 75
 * AP (Abyss Points) mode
- * AP gained and lost 
- * AP/hour
- * AP gain from PvP
- * AP value of gained relics
+  * AP gained and lost 
+  * AP/hour
+  * AP gain from PvP
+  * AP value of gained relics
 * GP (Glory Points) gained and GP/hour
-* Profession (Gathering / crafting) mode
- * List of recipes crafted
- * Number of success/failure/cancellation/procs per recipe
- * Successful attempts per hour
+* Profession (Gathering / crafting / aetherforging) mode
+  * List of recipes crafted
+  * Number of success/failure/cancellation/procs per recipe
+  * Successful attempts per hour
 * Profession (Gathering / crafting) leveling mode
- * Profession level ups per hour
- * Estimated XP bar toward next skill level, if two level ups have been attained (not yet supported for aetherforging)
+  * Profession level ups per hour
+  * Estimated XP bar toward next skill level, if two level ups have been attained (not yet supported for aetherforging)
 * Monster kills
- * List of XP-granting monsters killed
- * Mobs killed per hour, by monster name
+  * List of XP-granting monsters killed
+  * Mobs killed per hour, by monster name
 * Item Acquisition
- * List of items acquired
- * Items gained per hour, by item ID
+  * List of items acquired
+  * Items gained per hour, by item ID
 * Item Consumption
- * List of items consumed
- * Items consumed per hour, by item name
+  * List of items consumed
+  * Items consumed per hour, by item name
 * Items acquired from container openings 
- * Items acquired from different containers are listed separately
+  * Items acquired from different containers are listed separately
 * Player kills
- * Number of kills, deaths, and assists in PvP
- * List of players killed (you made last hit) or assisted (you dealt damage to a dead enemy player within 20 seconds)
- * Number of PvP kills per hour
+  * Number of kills, deaths, and assists in PvP
+  * List of players killed (you made last hit) or assisted (you dealt damage to a dead enemy player within 20 seconds)
+  * Number of PvP kills per hour
 * Item dice rolls
- * For each item that are distribute by dice rolls in a party, the item ID, name, your roll, winning roll, and winner's player name are listed individually
+  * For each item that are distribute by dice rolls in a party, the item ID, name, your roll, winning roll, and winner's player name are listed individually
 
 
 It uses the chat log file (Chat.log) to obtain gameplay information. It does not interact or modify the Aion client in any way.
