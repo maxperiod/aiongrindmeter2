@@ -29,7 +29,7 @@ GP
 Gathering
 
 
-![alt text](images/ophidan jerkin 1.png "Crafting")
+![alt text](images/ophidanjerkin 1.png "Crafting")
 
 Crafting
 
@@ -39,17 +39,17 @@ Crafting
 Gathering/crafting profession leveling
 
 
-![alt text](images/theo 19x containers.png "Items from container opens")
+![alt text](images/theo19xcontainers.png "Items from container opens")
 
 Items from container opens
 
 
-![alt text](images/theo 19x itemsacquired.png "Items acquired (except opened from containers)")
+![alt text](images/theo19xitemsacquired.png "Items acquired (except opened from containers)")
 
 Items acquired (except opened from containers)
 
 
-![alt text](images/theo 19x mobkills.png "Monster kills")
+![alt text](images/theo19xmobkills.png "Monster kills")
 
 Monster kills
 
