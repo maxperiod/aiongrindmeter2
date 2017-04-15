@@ -29,7 +29,7 @@ GP
 Gathering
 
 
-![alt text](images/ophidanjerkin 1.png "Crafting")
+![alt text](images/ophidanjerkin1.png "Crafting")
 
 Crafting
 
