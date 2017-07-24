@@ -108,6 +108,9 @@ void AutoAttackBuffer::enemyEvaded(const string &target){
 	CombatStats& individualTargetCombatStats = getIndividualTargetCombatStatsForCurrentWeaponSet(target);
 	allTargetsCombatStats.enemyEvade ++;
 	individualTargetCombatStats.enemyEvade ++;
+
+	allTargetsCombatStats.autoDamageStats1.numResists ++;
+	individualTargetCombatStats.autoDamageStats1.numResists ++;
 }
 void AutoAttackBuffer::enemyEvaded(const string &target, const string &skill){
 	stopAutoAttack();
@@ -128,6 +131,9 @@ void AutoAttackBuffer::enemyResisted(const string &target){
 	CombatStats& individualTargetCombatStats = getIndividualTargetCombatStatsForCurrentWeaponSet(target);
 	allTargetsCombatStats.enemyResist ++;
 	individualTargetCombatStats.enemyResist ++;
+
+	allTargetsCombatStats.autoDamageStats1.numResists ++;
+	individualTargetCombatStats.autoDamageStats1.numResists;
 }
 void AutoAttackBuffer::enemyResisted(const string &target, const string &skill){
 	stopAutoAttack();

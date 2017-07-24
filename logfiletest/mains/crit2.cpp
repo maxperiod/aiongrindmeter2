@@ -65,9 +65,10 @@ int main(){
 				autoAttack[0] = &combatStats->autoDamageStats1;
 				autoAttack[1] = &combatStats->autoDamageStats2;
 				
-				printf("Auto Attacks: %dx (%dC)", 
+				printf("Auto Attacks: %dx (%dC%3dF)", 
 					autoAttack[0]->numUses, 
-					autoAttack[0]->crits.numHits + autoAttack[0]->critBlocks.numHits + autoAttack[0]->critParrys.numHits
+					autoAttack[0]->crits.numHits + autoAttack[0]->critBlocks.numHits + autoAttack[0]->critParrys.numHits,
+					autoAttack[0]->numResists
 				);
 				if (i >= 2){
 					printf(" (normal / crits)\n");
