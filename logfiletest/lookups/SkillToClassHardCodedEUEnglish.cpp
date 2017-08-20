@@ -2,7 +2,7 @@
 
 SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 
-		skillToClass["Absorbing Reflector Shield"] = "RI";
+	skillToClass["Absorbing Reflector Shield"] = "RI";
 	skillToClass["Absorbing Reflector Shield Effect"] = "RI";
 	skillToClass["Absorption Wave"] = "FI";
 	skillToClass["Acquittal"] = "PR";
@@ -40,6 +40,7 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Apply Lethal Venom Effect"] = "AS";
 	skillToClass["Armour Spirit"] = "EL";
 	skillToClass["Armour of Attrition"] = "FI";
+	skillToClass["Armour of Vengeance"] = "FI";
 	skillToClass["Arrow of Annihilation"] = "RA";
 	skillToClass["Ascended Soul Arrow"] = "RA";
 	skillToClass["Attack Melody"] = "BA";
@@ -65,6 +66,7 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Blessing of Stone"] = "CH";
 	skillToClass["Blind Leap"] = "WI";
 	skillToClass["Blood Rune"] = "AS";
+	skillToClass["Bloodstorm Blow"] = "KN";
 	skillToClass["Bloodsucking Punishment"] = "KN";
 	skillToClass["Bloodsword Slash"] = "KN";
 	skillToClass["Bloodthirster Surprise Attack"] = "SC";
@@ -198,8 +200,8 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Fast Flame Bullet Chain Skill"] = "WI";
 	skillToClass["Fear: Ginseng"] = "EL";
 	skillToClass["Fear: Porgus"] = "EL";
-	skillToClass["Festering Wound"] = "PR";
 	skillToClass["Fierce Blow Chain Skill"] = "KN";
+	skillToClass["Fiery Roller"] = "WI";
 	skillToClass["Fighting Withdrawal"] = "RA";
 	skillToClass["Final Storm Attack"] = "RA";
 	skillToClass["Final Strike"] = "FI";
@@ -208,6 +210,7 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Fissure Cannonball"] = "GU";
 	skillToClass["Flame Bombardment"] = "GU";
 	skillToClass["Flame Bullet Chain Skill"] = "WI";
+	skillToClass["Flame Damage"] = "WI";
 	skillToClass["Flame Fusion"] = "WI";
 	skillToClass["Flame Harmony"] = "AR";
 	skillToClass["Flame Harpoon"] = "WI";
@@ -225,7 +228,6 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Freezing Wind"] = "WI";
 	skillToClass["Frenzy"] = "AS";
 	skillToClass["Frost"] = "WI";
-	skillToClass["Frost Cannon"] = "GU";
 	skillToClass["Frozen Robes"] = "WI";
 	skillToClass["Full Energy"] = "RA";
 	skillToClass["Full Regeneration"] = "RI";
@@ -332,7 +334,9 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Marchutan's Bane"] = "EN";
 	skillToClass["Marchutan's Boon"] = "EN";
 	skillToClass["Massacre"] = "AS";
+	skillToClass["Materialised Magic Form"] = "EN";
 	skillToClass["Materialised Wall Form"] = "EN";
+	skillToClass["Mau Blessing"] = "RA";
 	skillToClass["Mau Shaman Chain Skill1: Normal"] = "WI";
 	skillToClass["Mau Shaman Normal: Chain Skill1"] = "WI";
 	skillToClass["Meditate"] = "WI";
@@ -342,11 +346,11 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Melody of Discipline"] = "BA";
 	skillToClass["Melody of Hope"] = "BA";
 	skillToClass["Melody of Life"] = "BA";
-	skillToClass["Melody of Purification"] = "BA";
 	skillToClass["Melody of Reflection"] = "AR";
 	skillToClass["Mild Echo"] = "BA";
 	skillToClass["Mind Manipulation"] = "GU";
 	skillToClass["Misery Shot"] = "RA";
+	skillToClass["Mist Butcher Buff Effect"] = "AS";
 	skillToClass["Mobility Boost"] = "RI";
 	skillToClass["Mosky Requiem"] = "BA";
 	skillToClass["Mountain Crash"] = "CH";
@@ -354,12 +358,14 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Nature's Blessing"] = "RA";
 	skillToClass["Nature's Resolve"] = "RA";
 	skillToClass["Nezekan's Shield"] = "KN";
+	skillToClass["Nightmare Scream"] = "EL";
 	skillToClass["Nimble Fingers"] = "RA";
 	skillToClass["Noble Grace"] = "PR";
 	skillToClass["Numbing Blow"] = "CH";
 	skillToClass["Oath of Accuracy"] = "AS";
 	skillToClass["Oath of Earth"] = "CH";
 	skillToClass["Oath of Earth Effect"] = "CH";
+	skillToClass["Overcoming Limits"] = "RI";
 	skillToClass["Pain Rune Burst Effect"] = "AS";
 	skillToClass["Panoply of Protection"] = "KN";
 	skillToClass["Paralysis Resonation"] = "BA";
@@ -395,6 +401,7 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Promise of Magic Power"] = "GU";
 	skillToClass["Promise of Magic Power Effect"] = "GU";
 	skillToClass["Protection"] = "KN";
+	skillToClass["Protection Zone"] = "CH";
 	skillToClass["Protective Shield of Reverse Force"] = "WI";
 	skillToClass["Protective Veil"] = "RI";
 	skillToClass["Punishment of the Goddess"] = "WI";
@@ -569,6 +576,7 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Summon Taunting Energy"] = "PR";
 	skillToClass["Summon Tempest Spirit"] = "EL";
 	skillToClass["Summon Whirlwind"] = "WI";
+	skillToClass["Summon: Punishment Energy"] = "PR";
 	skillToClass["Summoning Alacrity"] = "EL";
 	skillToClass["Supplication of Focus"] = "WI";
 	skillToClass["Surge of Restoration"] = "FI";
@@ -659,7 +667,6 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Blessing of Rock"] = "pcnpc";
 	skillToClass["Blessing of Wind"] = "pcnpc";
 	skillToClass["Blinding Burst"] = "pcnpc";
-	skillToClass["Blinding Light"] = "pcnpc";
 	skillToClass["Bloodthirster Strike"] = "pcnpc";
 	skillToClass["Bludgeon"] = "pcnpc";
 	skillToClass["Bodyguard"] = "pcnpc";
@@ -705,6 +712,7 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Flame Spray"] = "pcnpc";
 	skillToClass["Flame of Demolition"] = "pcnpc";
 	skillToClass["Flashbolt"] = "pcnpc";
+	skillToClass["Flickering Flames"] = "pcnpc";
 	skillToClass["Hallowed Strike"] = "pcnpc";
 	skillToClass["Hand of Healing"] = "pcnpc";
 	skillToClass["Hatch"] = "pcnpc";
@@ -731,7 +739,9 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Lockdown"] = "pcnpc";
 	skillToClass["Magic Smash"] = "pcnpc";
 	skillToClass["Mana Absorption"] = "pcnpc";
+	skillToClass["Melody of Purification"] = "pcnpc";
 	skillToClass["Meteor Strike"] = "pcnpc";
+	skillToClass["Mist Butcher"] = "pcnpc";
 	skillToClass["Mystic Shell"] = "pcnpc";
 	skillToClass["Pentacle Shock"] = "pcnpc";
 	skillToClass["Pressure Wave"] = "pcnpc";
@@ -760,7 +770,6 @@ SkillToClassHardCodedEUEnglish::SkillToClassHardCodedEUEnglish(){
 	skillToClass["Silencing Shot"] = "pcnpc";
 	skillToClass["Sleep"] = "pcnpc";
 	skillToClass["Sniper Shot"] = "pcnpc";
-	skillToClass["Soul Freeze"] = "pcnpc";
 	skillToClass["Soul Shot"] = "pcnpc";
 	skillToClass["Soul Slash"] = "pcnpc";
 	skillToClass["Soul Torrent"] = "pcnpc";

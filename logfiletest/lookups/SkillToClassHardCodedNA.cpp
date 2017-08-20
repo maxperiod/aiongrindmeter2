@@ -2,7 +2,6 @@
 
 SkillToClassHardCodedNA::SkillToClassHardCodedNA(){
 
-
 	skillToClass["Absorbing Fury"] = "FI";
 	skillToClass["Acceleration Cheer"] = "CH";
 	skillToClass["Acquittal"] = "PR";

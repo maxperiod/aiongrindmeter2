@@ -87,20 +87,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;WINVER=0x0400;__WXMSW__;_WINDOWS;wxUSE_GUI=1;_UNICODE;NDEBUG;_CRT_SECURE_NO_DEPRECATE</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\libraries\gtest-1.7.0\include;$(WXWIN)\include;$(WXWIN)\include\msvc</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(WXWIN)\include\msvc;$(WXWIN)\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>E:\libraries\gtest-1.7.0\msvc\gtest\Release;$(WXWIN)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;wxmsw30u_core.lib;wxbase30u.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(WXWIN)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxmsw30u_core.lib;wxbase30u.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
@@ -222,7 +223,6 @@
     <ClInclude Include="parser\SystemCFG.h" />
     <ClInclude Include="parser\UserCommandFactory.h" />
     <ClInclude Include="stringFunctions.h" />
-    <ClInclude Include="testmodule\testlog\temporarylogfile.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -294,23 +294,12 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
-    <ClCompile Include="testExperimental\CombatModuleTest.cpp" />
-    <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
-    <ClCompile Include="tests\StringFunctionTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="changelog.txt" />
     <None Include="classSkills.txt" />
     <None Include="file.txt" />
     <None Include="output.txt" />
-    <None Include="testModule\testDirectoryChatLogDisabled\bin32\AION.bin" />
-    <None Include="testModule\testDirectoryChatLogDisabled\bin64\AION.bin" />
-    <None Include="testModule\testDirectoryChatLogEnabled\bin32\AION.bin" />
-    <None Include="testModule\testDirectoryChatLogEnabled\bin64\AION.bin" />
-    <None Include="testModule\testDirectoryLogfileExistsChatLogDisabled\bin32\AION.bin" />
-    <None Include="testModule\testDirectoryLogfileExistsChatLogDisabled\bin64\AION.bin" />
-    <None Include="testModule\testDirectoryLogfileExistsChatLogEnabled\bin32\AION.bin" />
-    <None Include="testModule\testDirectoryLogfileExistsChatLogEnabled\bin64\AION.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

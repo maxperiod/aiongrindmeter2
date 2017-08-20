@@ -141,9 +141,6 @@
     <ClInclude Include="stringFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testmodule\testlog\temporarylogfile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lookups\RelicAp47.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -386,9 +383,6 @@
     <ClCompile Include="stringFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lookups\RelicAp47.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -455,12 +449,6 @@
     <ClCompile Include="model\SoulHealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\StringFunctionTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testExperimental\CombatModuleTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -514,30 +502,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="testModule\testDirectoryChatLogDisabled\bin32\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryChatLogDisabled\bin64\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryChatLogEnabled\bin32\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryChatLogEnabled\bin64\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryLogfileExistsChatLogDisabled\bin32\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryLogfileExistsChatLogDisabled\bin64\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryLogfileExistsChatLogEnabled\bin32\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="testModule\testDirectoryLogfileExistsChatLogEnabled\bin64\AION.bin">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="classSkills.txt" />
     <None Include="file.txt" />
     <None Include="output.txt" />
