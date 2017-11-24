@@ -4,11 +4,14 @@
 #include "CombatStatsManager.h"
 #include "WeaponSwitch.h"
 
+#include "Attack.h"
+#include <queue>
+
 using namespace std;
 
 class AutoAttackBuffer{
 public:
-	AutoAttackBuffer(CombatStatsManager& combatStatsManager, WeaponSwitch& weaponSwitch); 
+	AutoAttackBuffer(CombatStatsManager& combatStatsManager, WeaponSwitch& weaponSwitch, queue<Attack>& attacks); 
 	  
 	
 	//void setCombatStats(CombatStats& combatStats) {cs[0] = &combatStats;}
@@ -17,6 +20,8 @@ public:
 	void makeAutoAttack(int damage, const string &target, bool critical);
 
 	void makeSkillAttack(int damage, const string &target, const string &skill, bool critical);
+
+	void debuffEnemy(string debuff, const string &target, const string &skill, bool critical);
 
 	void enemyBlocked(const string &target);
 	void enemyParried(const string &target);
@@ -39,6 +44,7 @@ public:
 private:
 	CombatStatsManager& combatStatsManager;
 	WeaponSwitch& weaponSwitch;
+	queue<Attack>& attacks;
 
 	int damageBuffer;
 	int numWeapons;
@@ -49,7 +55,7 @@ private:
 	   
 	bool shielded;
 	bool reflected;
-
+	
 	int autoAttackBaseDmg;
 	int autoAttackBaseDmg2;
 
@@ -61,6 +67,9 @@ private:
 
 	bool lastActionIsAutoAttack;
 
+	bool nextAttackLineIsBlocked;
+	bool nextAttackLineIsParried;
+
 	int idleTicks;
 	//WeaponSwitch* ws;
 	//CombatStats* cs;
@@ -71,6 +80,8 @@ private:
 	//list<Attack> attacks;
 	string lastTarget;
 	string skill;
+
+	void createAttackObject();
 
 	void nonDamageEffect(const string& target);
 

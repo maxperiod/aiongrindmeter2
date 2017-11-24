@@ -1,19 +1,26 @@
 #include "AutoAttackBuffer.h"
 #include "../language/LanguageManager.h"
 
-AutoAttackBuffer::AutoAttackBuffer(CombatStatsManager& combatStatsManager, WeaponSwitch& weaponSwitch): 
+AutoAttackBuffer::AutoAttackBuffer(CombatStatsManager& combatStatsManager, WeaponSwitch& weaponSwitch, queue<Attack>& attacks): 
 	combatStatsManager(combatStatsManager), 
 	weaponSwitch(weaponSwitch),
+	attacks(attacks),
 	numWeapons(0), 
 	idleTicks(0), 
-	lastActionIsAutoAttack(false)
+	lastActionIsAutoAttack(false),
+	nextAttackLineIsBlocked(false),
+	skill("")
 {
 	resetBuffer();
 }
 
 void AutoAttackBuffer::makeAutoAttack(int damage, const string &target, bool critical){			
 
-	if (target != lastTarget) stopAutoAttack();		
+	skill = "";
+
+	if (target != lastTarget) stopAutoAttack();	
+	//if (blocked != nextAttackLineIsBlocked) stopAutoAttack();
+	//if (parried != nextAttackLineIsParried) stopAutoAttack();
 					
 	// auto attack bonus hits (1/10th of main auto attack)
 	
@@ -58,12 +65,18 @@ void AutoAttackBuffer::makeAutoAttack(int damage, const string &target, bool cri
 
 	lastActionIsAutoAttack = true;
 	idleTicks = 0;
+
+	nextAttackLineIsBlocked = false;
+	nextAttackLineIsParried = false;
 }	
 
 void AutoAttackBuffer::makeSkillAttack(int damage, const string &target, const string &skill, bool critical){
 		
-	bool currentlyBlocked = blocked;
-	bool currentlyParried = parried;
+	//bool currentlyBlocked = blocked;
+	//bool currentlyParried = parried;
+
+	bool currentlyBlocked = nextAttackLineIsBlocked;
+	bool currentlyParried = nextAttackLineIsParried;
 
 	stopAutoAttack();
 	
@@ -83,15 +96,27 @@ void AutoAttackBuffer::makeSkillAttack(int damage, const string &target, const s
 	applyBufferToCounter(true);
 		
 	lastActionIsAutoAttack = false;
+
+	nextAttackLineIsBlocked = false;
+	nextAttackLineIsParried = false;
+
+}
+
+void AutoAttackBuffer::debuffEnemy(string debuff, const string &target, const string &skill, bool critical = false){
+	nonDamageEffect(target);
+	nextAttackLineIsBlocked = false;
+	nextAttackLineIsParried = false;
 }
 
 void AutoAttackBuffer::enemyBlocked(const string &target){	
 	//nonDamageEffect(target);		
 	blocked = true;
+	nextAttackLineIsBlocked = true;
 }
 void AutoAttackBuffer::enemyParried(const string &target){
 	//nonDamageEffect(target);
 	parried = true;
+	nextAttackLineIsParried = true;
 }
 void AutoAttackBuffer::enemyShielded(const string &target){
 	nonDamageEffect(target);
@@ -149,13 +174,38 @@ void AutoAttackBuffer::enemyResisted(const string &target, const string &skill){
 
 
 void AutoAttackBuffer::stopAutoAttack(){
-	if (numWeapons > 0){			
+	
+	if (numWeapons > 0){
+
 		applyBufferToCounter(false);
 	}
+	
 }
 
+void AutoAttackBuffer::createAttackObject(){
+	Attack newAttack;
+	newAttack.target = lastTarget;
+	newAttack.skill = skill;
+
+	newAttack.critical = critical;
+	newAttack.blocked = blocked;
+	newAttack.parried = parried;
+	newAttack.shielded = shielded;
+	newAttack.reflected = reflected;
+
+	newAttack.mainhandDamage = autoAttackBaseDmg;
+	if (numWeapons == 2) newAttack.offhandDamage = autoAttackBaseDmg2;
+
+	newAttack.numMainhandMultiStrikes = multiStrike;
+	newAttack.numOffhandMultiStrikes = multiStrike2;
+
+	attacks.push(newAttack);
+}
 
 void AutoAttackBuffer::applyBufferToCounter(bool isSkill){
+
+	createAttackObject();
+
 	combatStatsManager.setLastTarget(lastTarget);
 
 	CombatStats* cs[2];	
@@ -242,6 +292,7 @@ void AutoAttackBuffer::applyBufferToCounter(bool isSkill){
 				}
 				if (damage < damageStatEntry->minDamage || damageStatEntry->minDamage == 0)
 					damageStatEntry->minDamage = damage;
+				damageStatEntry->damageAmountsCounter.add(damage);
 			}
 
 	
@@ -276,7 +327,7 @@ void AutoAttackBuffer::resetBuffer(){
 
 void AutoAttackBuffer::endOfTick(){
 	idleTicks ++;
-	if (idleTicks >= 2) stopAutoAttack();
+	if (idleTicks >= 2) applyBufferToCounter(false); //stopAutoAttack();
 }
 
 // ========================================================================

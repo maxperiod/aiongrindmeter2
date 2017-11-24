@@ -1,4 +1,3 @@
-
 #include "../experimental/AutoAttackBuffer.h"
 #include "../experimental/WeaponSwitch.h"
 
@@ -20,5 +19,5 @@ public:
 
 private:
 	AutoAttackBuffer autoAttackBuffer;//(&weaponSwitch);
-
+	queue<Attack> attacks;
 };

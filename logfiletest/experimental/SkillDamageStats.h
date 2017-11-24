@@ -1,3 +1,8 @@
+#ifndef DAMAGE_STAT_ENTRY_H
+#define DAMAGE_STAT_ENTRY_H
+
+#include "../model/Counter.h"
+
 struct DamageStatEntry{
 	DamageStatEntry():
 			minDamage(0),
@@ -10,6 +15,7 @@ struct DamageStatEntry{
 	int maxDamage;
 	int totalDamage;
 	int numHits;
+	Counter<int> damageAmountsCounter;
 };
 
 struct SkillDamageStats{
@@ -57,3 +63,5 @@ struct SkillDamageStats{
 	int numCritParrys;	
 	*/
 };
+
+#endif

@@ -150,85 +150,89 @@ TEST_F(CombatModuleTest, attackAndSkills){
 	logFile.appendFile("2014.06.18 17:41:13 : Your Physical Def has been weakened by using Reroute Power I. ");
 	logFile.appendFile("2014.06.18 17:41:13 : You received the effect by using Reroute Power I. ");
 	logFileUtility.parseLogFile();
-	logFile.appendFile("2014.06.18 17:41:15 : You inflicted 1,840 damage on Sprawling Agrint by using Inquisitor's Blow IV. ");
-	
+	//Attack
+	logFile.appendFile("2014.06.18 17:41:15 : You inflicted 1,840 damage on Sprawling Agrint by using Inquisitor's Blow IV. ");	
 	logFile.appendFile("2014.06.18 17:41:15 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:15 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:15 : Critical Hit! You inflicted 1,588 critical damage on Sprawling Agrint. ");
 	logFile.appendFile("2014.06.18 17:41:15 : You inflicted 158 damage on Sprawling Agrint. ");
 	logFileUtility.parseLogFile();
-	logFile.appendFile("2014.06.18 17:41:16 : You parried Sprawling Agrint's attack. ");
-	logFile.appendFile("2014.06.18 17:41:16 : You received 228 damage from Sprawling Agrint. ");
-	
-	logFile.appendFile("2014.06.18 17:41:16 : You inflicted 2,791 damage on Sprawling Agrint by using Shining Slash V. ");
-	
-	logFile.appendFile("2014.06.18 17:41:16 : Reroute Power Effect has been activated. ");
-	logFile.appendFile("2014.06.18 17:41:16 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 
+	//Attack
+	logFile.appendFile("2014.06.18 17:41:16 : You parried Sprawling Agrint's attack. ");
+	logFile.appendFile("2014.06.18 17:41:16 : You received 228 damage from Sprawling Agrint. ");		
+	logFile.appendFile("2014.06.18 17:41:16 : You inflicted 2,791 damage on Sprawling Agrint by using Shining Slash V. ");	
 	logFile.appendFile("2014.06.18 17:41:16 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:16 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 	
+	//Attack
+	logFile.appendFile("2014.06.18 17:41:16 : Reroute Power Effect has been activated. ");
+	logFile.appendFile("2014.06.18 17:41:16 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");	
 	logFile.appendFile("2014.06.18 17:41:16 : Critical Hit!You inflicted 3,085 damage on Sprawling Agrint by using Blood Pact I. ");
 	logFileUtility.parseLogFile();
+
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:17 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:17 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
-
 	logFile.appendFile("2014.06.18 17:41:17 : Critical Hit! You inflicted 1,395 critical damage on Sprawling Agrint. ");
 	logFile.appendFile("2014.06.18 17:41:17 : You inflicted 139 damage on Sprawling Agrint. ");
 	logFileUtility.parseLogFile();
-	logFile.appendFile("2014.06.18 17:41:18 : [3.LFG] [charname:Stoia;1.0000 0.6941 0.6941]:           WTS             [item:110501514;ver6;;;Oppye 0;][item:111501414;ver6;;;Oppye 0;] PM OFFER ");
 	
-	logFile.appendFile("2014.06.18 17:41:18 : You inflicted 1,574 damage on Sprawling Agrint by using Blood Pact I. ");
-	
+	//Attack
+	logFile.appendFile("2014.06.18 17:41:18 : [3.LFG] [charname:Stoia;1.0000 0.6941 0.6941]:           WTS             [item:110501514;ver6;;;Oppye 0;][item:111501414;ver6;;;Oppye 0;] PM OFFER ");	
+	logFile.appendFile("2014.06.18 17:41:18 : You inflicted 1,574 damage on Sprawling Agrint by using Blood Pact I. ");		
 	logFile.appendFile("2014.06.18 17:41:18 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:18 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 	
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:18 : Reroute Power Effect has been activated. ");
-	logFile.appendFile("2014.06.18 17:41:18 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
-	
-	logFile.appendFile("2014.06.18 17:41:18 : Sprawling Agrint is no longer shocked. ");
-	
+	logFile.appendFile("2014.06.18 17:41:18 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");	
+	logFile.appendFile("2014.06.18 17:41:18 : Sprawling Agrint is no longer shocked. ");	
 	logFile.appendFile("2014.06.18 17:41:18 : You inflicted 1,566 damage on Sprawling Agrint by using Blood Pact I. ");
 	logFileUtility.parseLogFile();
+
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:19 : Reroute Power Effect has been activated. ");
-	logFile.appendFile("2014.06.18 17:41:19 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
-	
-	logFile.appendFile("2014.06.18 17:41:19 : You received 364 damage from Sprawling Agrint. ");
-	
+	logFile.appendFile("2014.06.18 17:41:19 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");	
+	logFile.appendFile("2014.06.18 17:41:19 : You received 364 damage from Sprawling Agrint. ");	
 	logFile.appendFile("2014.06.18 17:41:19 : You inflicted 782 damage on Sprawling Agrint. ");
 	logFile.appendFile("2014.06.18 17:41:19 : You inflicted 78 damage on Sprawling Agrint. ");
 	
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:19 : You inflicted 862 damage on Sprawling Agrint by using Dazing Severe Blow IV. ");
 	logFile.appendFile("2014.06.18 17:41:19 : Sprawling Agrint's attack speed has decreased because Momomomoo used Dazing Severe Blow IV. ");
 	logFileUtility.parseLogFile();
+
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:20 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:20 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 	
 	logFile.appendFile("2014.06.18 17:41:20 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:20 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 	
-	logFile.appendFile("2014.06.18 17:41:20 : You inflicted 1,134 damage on Sprawling Agrint by using Divine Blow IV. ");
-	
+	logFile.appendFile("2014.06.18 17:41:20 : You inflicted 1,134 damage on Sprawling Agrint by using Divine Blow IV. ");	
 	logFile.appendFile("2014.06.18 17:41:20 : Reroute Power Effect has been activated. ");
 	logFile.appendFile("2014.06.18 17:41:20 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
 	logFileUtility.parseLogFile();
+
+	//Attack
 	logFile.appendFile("2014.06.18 17:41:21 : [3.LFG] [charname:Zombiemastor;1.0000 0.6941 0.6941]: ??[kvalue:0;BlueBird;str]?? Is recruiting active and HARDCORE SIEGERS lvl 60+ to join our Family!, For [where:PVP], [where:PVE], [where:SIEGES!] AND other fun shenanigans!.L8 Legion with TS3, Whisper m ");
-	logFile.appendFile("2014.06.18 17:41:21 : You received 314 damage from Sprawling Agrint. ");
-	
+	logFile.appendFile("2014.06.18 17:41:21 : You received 314 damage from Sprawling Agrint. ");		
 	logFile.appendFile("2014.06.18 17:41:21 : You inflicted 772 damage on Sprawling Agrint. ");
 	logFile.appendFile("2014.06.18 17:41:21 : You inflicted 77 damage on Sprawling Agrint. ");
 	logFile.appendFile("2014.06.18 17:41:21 : You inflicted 77 damage on Sprawling Agrint. ");
 	
-	logFile.appendFile("2014.06.18 17:41:21 : You inflicted 1,074 damage on Sprawling Agrint by using Provoking Severe Blow V. ");
-	
+	//Attack
+	logFile.appendFile("2014.06.18 17:41:21 : You inflicted 1,074 damage on Sprawling Agrint by using Provoking Severe Blow V. ");	
 	logFile.appendFile("2014.06.18 17:41:21 : Momomomoo Increased Sprawling Agrint's enmity Increase by using Provoking Severe Blow V. ");
 	logFileUtility.parseLogFile();
+
+
 	logFile.appendFile("2014.06.18 17:41:22 : Reroute Power Effect has been activated. ");
-	logFile.appendFile("2014.06.18 17:41:22 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");
-	
-	logFile.appendFile("2014.06.18 17:41:22 : Reroute Power Effect has been activated. ");
-	
+	logFile.appendFile("2014.06.18 17:41:22 : Sprawling Agrint received 235 damage due to the effect of Reroute Power Effect. ");	
+	logFile.appendFile("2014.06.18 17:41:22 : Reroute Power Effect has been activated. ");	
 	logFile.appendFile("2014.06.18 17:41:22 : Quest updated: [Coin] Settle the Road ");
 	logFile.appendFile("2014.06.18 17:41:22 : You have gained 111,235 XP from Sprawling Agrint (Energy of Repose 31,781). ");
 	logFile.appendFile("2014.06.18 17:41:22 : Sprawling Agrint restored its attack speed. ");
@@ -417,13 +421,15 @@ TEST_F(CombatModuleTest, evasion){
 	EXPECT_EQ(1, cs.enemyEvade);
 	EXPECT_EQ(1, cs2.enemyEvade);
 
-	logFile.appendFile("2014.11.26 22:09:36 : Dragonmagic-IS evaded Shield Counter VI. ");
+	//logFile.appendFile("2014.11.26 22:09:36 : Dragonmagic-IS evaded Shield Counter VI. ");
+	logFile.appendFile("2014.11.26 22:09:36 : Dragonmagic-IS evaded Shield Counter. ");
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(2, cs.enemyEvade);
 	EXPECT_EQ(2, cs2.enemyEvade);
 
-	logFile.appendFile("2014.11.25 23:46:10 : Ikarosx-TM evaded Omniknight-SL's Hallowed Strike IV. ");
+	//logFile.appendFile("2014.11.25 23:46:10 : Ikarosx-TM evaded Omniknight-SL's Hallowed Strike IV. ");
+	logFile.appendFile("2014.11.25 23:46:10 : Ikarosx-TM evaded Omniknight-SL's Hallowed Strike. ");
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(2, cs.enemyEvade);
@@ -441,13 +447,15 @@ TEST_F(CombatModuleTest, resist){
 	EXPECT_EQ(1, cs.enemyResist);
 	EXPECT_EQ(1, cs2.enemyResist);
 
-	logFile.appendFile("2014.11.20 15:06:10 : Tursin Outlaw resisted Divine Justice VII. ");
+	//logFile.appendFile("2014.11.20 15:06:10 : Tursin Outlaw resisted Divine Justice VII. ");
+	logFile.appendFile("2014.11.20 15:06:10 : Tursin Outlaw resisted Divine Justice. ");
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(2, cs.enemyResist);
 	EXPECT_EQ(2, cs2.enemyResist);
 
-	logFile.appendFile("2014.10.13 14:26:25 : Tursin Outlaw resisted Enyscha-SL's Sonic Gust I. ");
+	//logFile.appendFile("2014.10.13 14:26:25 : Tursin Outlaw resisted Enyscha-SL's Sonic Gust I. ");
+	logFile.appendFile("2014.10.13 14:26:25 : Tursin Outlaw resisted Enyscha-SL's Sonic Gust. ");
 	logFileUtility.parseLogFile();
 
 	EXPECT_EQ(2, cs.enemyResist);
@@ -458,4 +466,35 @@ TEST_F(CombatModuleTest, resist){
 
 	EXPECT_EQ(2, cs.enemyResist);
 	EXPECT_EQ(2, cs2.enemyResist);
+}
+
+TEST_F(CombatModuleTest, nonBlockSkillFollowingBlockedAutoAttack){
+
+	logFile.appendFile("2017.11.16 15:54:55 : 1s16BE07 blocked the attack. ");
+	logFile.appendFile("2017.11.16 15:54:55 : You inflicted 55 damage on 1s16BE07. ");
+	logFile.appendFile("2017.11.16 15:54:55 : Expedition Trainee inflicted 2,244 damage on Training Dummy. ");
+	logFile.appendFile("2017.11.16 15:54:55 : You inflicted 1,201 damage on 1s16BE07 by using Sure Strike. ");
+
+	//unordered_map<string, SkillDamageStats>& sds = combatModule.combatStatsManager.getAllTargetsCombatStats().first.skillDamageStats;
+
+	logFileUtility.parseLogFile();
+	
+	CombatStats& cs = combatModule.combatStatsManager.getAllTargetsCombatStats().first;
+	CombatStats& cs2 = combatModule.combatStatsManager.getIndividualTargetCombatStats("1s16BE07").first;
+
+	unordered_map<string, SkillDamageStats>& sds = cs.skillDamageStats;
+
+	EXPECT_EQ(1, cs.autoDamageStats1.numUses);
+
+	EXPECT_EQ(0, cs.autoDamageStats1.normals.damageAmountsCounter.get(55).numGained);
+	EXPECT_EQ(0, cs.autoDamageStats1.crits.damageAmountsCounter.get(55).numGained);
+	EXPECT_EQ(1, cs.autoDamageStats1.blocks.damageAmountsCounter.get(55).numGained);
+	EXPECT_EQ(0, cs.autoDamageStats1.critBlocks.damageAmountsCounter.get(55).numGained);
+
+	EXPECT_EQ(1, sds.at("Sure Strike").numUses);
+
+	EXPECT_EQ(1, sds.at("Sure Strike").normals.damageAmountsCounter.get(1201).numGained);
+	EXPECT_EQ(0, sds.at("Sure Strike").crits.damageAmountsCounter.get(1201).numGained);
+	EXPECT_EQ(0, sds.at("Sure Strike").blocks.damageAmountsCounter.get(1201).numGained);
+	EXPECT_EQ(0, sds.at("Sure Strike").critBlocks.damageAmountsCounter.get(1201).numGained);
 }

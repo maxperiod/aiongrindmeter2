@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="exception\NoSuchRuleStringException.h" />
+    <ClInclude Include="experimental\Attack.h" />
     <ClInclude Include="experimental\AutoAttackBuffer.h" />
     <ClInclude Include="experimental\CombatModule.h" />
     <ClInclude Include="experimental\CombatStats.h" />
@@ -139,23 +140,6 @@
     <ClInclude Include="experimental\ProcDamageRegister.h" />
     <ClInclude Include="experimental\skilldamagestats.h" />
     <ClInclude Include="experimental\WeaponSwitch.h" />
-    <ClInclude Include="gui\ApFrame.h" />
-    <ClInclude Include="gui\ExpFrame.h" />
-    <ClInclude Include="gui\GpFrame.h" />
-    <ClInclude Include="gui\ItemAcquisitionFrame.h" />
-    <ClInclude Include="gui\ItemBundleFrame.h" />
-    <ClInclude Include="gui\ItemConsumptionFrame.h" />
-    <ClInclude Include="gui\ItemRollsFrame.h" />
-    <ClInclude Include="gui\KinahFrame.h" />
-    <ClInclude Include="gui\ListCtrlFrame.h" />
-    <ClInclude Include="gui\MainFrame.h" />
-    <ClInclude Include="gui\MobKillsFrame.h" />
-    <ClInclude Include="gui\ModulePanel.h" />
-    <ClInclude Include="gui\ModuleWindowSelectionFrame.h" />
-    <ClInclude Include="gui\PlayerKillsFrame.h" />
-    <ClInclude Include="gui\ProfessionFrame.h" />
-    <ClInclude Include="gui\ProfessionLevelingFrame.h" />
-    <ClInclude Include="gui\TestFrame.h" />
     <ClInclude Include="language\EnglishEU.h" />
     <ClInclude Include="language\EnglishNA.h" />
     <ClInclude Include="language\language.h" />
@@ -223,28 +207,13 @@
     <ClInclude Include="parser\SystemCFG.h" />
     <ClInclude Include="parser\UserCommandFactory.h" />
     <ClInclude Include="stringFunctions.h" />
+    <ClInclude Include="testmodule\testlog\temporarylogfile.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="experimental\AutoAttackBuffer.cpp" />
     <ClCompile Include="experimental\CombatModule.cpp" />
     <ClCompile Include="experimental\ProcDamageRegister.cpp" />
-    <ClCompile Include="gui\ApFrame.cpp" />
-    <ClCompile Include="gui\ExpFrame.cpp" />
-    <ClCompile Include="gui\GpFrame.cpp" />
-    <ClCompile Include="gui\ItemAcquisitionFrame.cpp" />
-    <ClCompile Include="gui\ItemBundleFrame.cpp" />
-    <ClCompile Include="gui\ItemConsumptionFrame.cpp" />
-    <ClCompile Include="gui\ItemRollsFrame.cpp" />
-    <ClCompile Include="gui\KinahFrame.cpp" />
-    <ClCompile Include="gui\ListCtrlFrame.cpp" />
-    <ClCompile Include="gui\MainFrame.cpp" />
-    <ClCompile Include="gui\MobKillsFrame.cpp" />
-    <ClCompile Include="gui\ModuleWindowSelectionFrame.cpp" />
-    <ClCompile Include="gui\PlayerKillsFrame.cpp" />
-    <ClCompile Include="gui\ProfessionFrame.cpp" />
-    <ClCompile Include="gui\ProfessionLevelingFrame.cpp" />
-    <ClCompile Include="gui\TestFrame.cpp" />
     <ClCompile Include="language\LanguageManager.cpp" />
     <ClCompile Include="lookups\ApChart.cpp" />
     <ClCompile Include="lookups\CommandStringsEUEnglish.cpp" />
@@ -256,7 +225,7 @@
     <ClCompile Include="lookups\RelicAp48.cpp" />
     <ClCompile Include="lookups\SkillToClassHardCodedEUEnglish.cpp" />
     <ClCompile Include="lookups\SkillToClassHardCodedNA.cpp" />
-    <ClCompile Include="mains\MyApp.cpp" />
+    <ClCompile Include="mains\crit2.cpp" />
     <ClCompile Include="model\ApGainMeter.cpp" />
     <ClCompile Include="model\ExpChart.cpp" />
     <ClCompile Include="model\ExpGainMeter.cpp" />
@@ -294,6 +263,8 @@
     <ClCompile Include="parser\SystemCFG.cpp" />
     <ClCompile Include="parser\UserCommandFactory.cpp" />
     <ClCompile Include="stringFunctions.cpp" />
+    <ClCompile Include="testExperimental\AutoAttackBufferTest.cpp" />
+    <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="changelog.txt" />

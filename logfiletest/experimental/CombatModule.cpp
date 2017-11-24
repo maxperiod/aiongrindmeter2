@@ -2,10 +2,37 @@
 #include "../stringFunctions.h"
 
 
-CombatModule::CombatModule(): autoAttackBuffer(combatStatsManager, weaponSwitch){
+CombatModule::CombatModule(): autoAttackBuffer(combatStatsManager, weaponSwitch, attacks){
 	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_SkillATK_Instant_ME_TO_B);
 	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_CarveSignet_ME_TO_B);
 	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_DispelBuffCounterATK_ME_TO_B);
+	
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_StatDown_ME_TO_B);
+
+
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Blind_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Confuse_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Disease_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Fear_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Paralyze_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Root_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Silence_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Sleep_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Spin_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Stagger_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Stumble_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Stun_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Bind_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Bleed_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Curse_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_NoFly_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_OpenAerial_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Petrification_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Poison_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Slow_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_Snare_ME_TO_B);
+	DECLARE_CRITABLE_MESSAGE_RULE(STR_SKILL_SUCC_HostileUp_ME_TO_B);
+
 	DECLARE_MESSAGE_RULE(STR_MSG_COMBAT_MY_CRITICAL);
 	DECLARE_MESSAGE_RULE(STR_MSG_COMBAT_MY_ATTACK);
 	DECLARE_MESSAGE_RULE(STR_MSG_COMBAT_BLOCK_ME_TO_B);
@@ -17,6 +44,8 @@ CombatModule::CombatModule(): autoAttackBuffer(combatStatsManager, weaponSwitch)
 	DECLARE_MESSAGE_RULE(STR_MSG_COMBAT_RESISTED_ME_TO_B);
 	DECLARE_MESSAGE_RULE(STR_SKILL_RESISTED_ME_TO_B);		
 	DECLARE_MESSAGE_RULE(STR_MSG_CHANGE_WEAPON);
+
+	
 }
 
 void CombatModule::executeChatLogCommand(ChatLogCommand& command){
@@ -34,7 +63,38 @@ void CombatModule::executeChatLogCommand(ChatLogCommand& command){
 		break; 
 	case STR_MSG_COMBAT_MY_ATTACK:
 		autoAttackBuffer.makeAutoAttack(stringToInt(params["%num1"]), params["%0"], false);
+		break;		
+
+	case STR_SKILL_SUCC_StatDown_ME_TO_B: // [%SkillCaster] has weakened [%SkillTarget]'s %0 by using [%SkillName].
+		autoAttackBuffer.debuffEnemy(params["%0"], params["[%SkillTarget]"], params["[%SkillName]"], command.isCritical());
 		break;
+
+	case STR_SKILL_SUCC_Blind_ME_TO_B: //"You blinded [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Confuse_ME_TO_B: //You confused [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Disease_ME_TO_B: //You diseased [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Fear_ME_TO_B: //You made [%SkillTarget] afraid by using [%SkillName].";
+	case STR_SKILL_SUCC_Paralyze_ME_TO_B: //You paralyzed [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Root_ME_TO_B: //You immobilized [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Silence_ME_TO_B: //You silenced [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Sleep_ME_TO_B: //You put [%SkillTarget] to sleep by using [%SkillName].";
+	case STR_SKILL_SUCC_Spin_ME_TO_B: //You span [%SkillTarget] around by using [%SkillName].";
+	case STR_SKILL_SUCC_Stagger_ME_TO_B: //You knocked [%SkillTarget] back by using [%SkillName].";
+	case STR_SKILL_SUCC_Stumble_ME_TO_B: //You knocked [%SkillTarget] over by using [%SkillName].";
+	case STR_SKILL_SUCC_Stun_ME_TO_B: //You stunned [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Bind_ME_TO_B: //You used [%SkillName] and [%SkillTarget] became bound.";
+	case STR_SKILL_SUCC_Bleed_ME_TO_B: //You caused [%SkillTarget] to bleed by using [%SkillName].";
+	case STR_SKILL_SUCC_Curse_ME_TO_B: //You cursed [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_NoFly_ME_TO_B: //[%SkillTarget] is unable to fly because you used [%SkillName].";
+	case STR_SKILL_SUCC_OpenAerial_ME_TO_B: //You used [%SkillName] to immobilize [%SkillTarget] in mid-air.";
+	case STR_SKILL_SUCC_Petrification_ME_TO_B: //You petrified [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Poison_ME_TO_B: //You poisoned [%SkillTarget] by using [%SkillName].";
+	case STR_SKILL_SUCC_Slow_ME_TO_B: // [%SkillTarget]'s attack speed has decreased because [%SkillCaster] used [%SkillName].
+	case STR_SKILL_SUCC_Snare_ME_TO_B: // [%SkillTarget]'s movement speed decreased as you used [%SkillName].
+	case STR_SKILL_SUCC_HostileUp_ME_TO_B: // [%SkillCaster] %0d [%SkillTarget]'s enmity %0 by using [%SkillName].";
+		//all untested
+		autoAttackBuffer.debuffEnemy("placeholder", params["[%SkillTarget]"], params["[%SkillName]"], command.isCritical());
+		break;	
+
 	case STR_MSG_COMBAT_BLOCK_ME_TO_B:
 		autoAttackBuffer.enemyBlocked(params["%0"]);
 		break;
@@ -88,8 +148,7 @@ void CombatModule::executeChatLogCommand(ChatLogCommand& command){
 }
 
 void CombatModule::endOfTickAction(){
-	autoAttackBuffer.endOfTick();
-	//autoAttackBuffer.stopAutoAttack();
+	autoAttackBuffer.stopAutoAttack();
 }
 
 /*

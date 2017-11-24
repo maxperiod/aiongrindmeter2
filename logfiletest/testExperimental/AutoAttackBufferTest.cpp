@@ -1,17 +1,36 @@
 #include "../experimental/AutoAttackBuffer.h"
 #include "gtest/gtest.h"
 
+
 TEST(AutoAttackBuffer, regularAttack1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 	//aab.setCombatStats(cs);
 
 	aab.makeAutoAttack(659, "Supraklaw Forager", false);
 	aab.makeAutoAttack(65, "Supraklaw Forager", false);
 	aab.stopAutoAttack();
+
+	//queue<Attack>& attacks = aab.getAttacks();
+	EXPECT_EQ(1, attacks.size());
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Supraklaw Forager", attack.target);
+	EXPECT_EQ(659, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(1, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);
@@ -51,11 +70,25 @@ TEST(AutoAttackBuffer, regularAttack2){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(1537, "Training Dummy", true);	
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ(1537, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_TRUE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(1,cs.numCrits);
@@ -74,11 +107,13 @@ TEST(AutoAttackBuffer, regularAttack2){
 	//2014.07.15 21:26:22 : Critical Hit! You inflicted 1,537 critical damage on Training Dummy. 
 }
 
+
 TEST(AutoAttackBuffer, regularAttack3){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(659, "Supraklaw Forager", false);
@@ -86,6 +121,19 @@ TEST(AutoAttackBuffer, regularAttack3){
 	aab.makeAutoAttack(65, "Supraklaw Forager", false);
 	aab.makeAutoAttack(65, "Supraklaw Forager", false);
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Supraklaw Forager", attack.target);
+	EXPECT_EQ(659, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(3, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);
@@ -103,13 +151,17 @@ TEST(AutoAttackBuffer, regularAttack3){
 
 	//2014.05.10 11:52:43 : You inflicted 659 damage on Supraklaw Forager. 
 	//2014.05.10 11:52:43 : You inflicted 65 damage on Supraklaw Forager. 
+	//2014.05.10 11:52:43 : You inflicted 65 damage on Supraklaw Forager. 
+	//2014.05.10 11:52:43 : You inflicted 65 damage on Supraklaw Forager. 
 }
+
 
 TEST(AutoAttackBuffer, weakrRegularAttack){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(9, "David Tam", false);
@@ -117,6 +169,19 @@ TEST(AutoAttackBuffer, weakrRegularAttack){
 	aab.makeAutoAttack(1, "David Tam", false);
 
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("David Tam", attack.target);
+	EXPECT_EQ(9, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(2, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);
@@ -127,65 +192,71 @@ TEST(AutoAttackBuffer, weakrRegularAttack){
 	EXPECT_EQ(0,cs.multiStrikes[3]);
 }
 
+
 TEST(AutoAttackBuffer, multiAttack1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(776, "Training Dummy", false);
-	aab.makeAutoAttack(77, "Training Dummy", false);
-	aab.makeAutoAttack(77, "Training Dummy", false);	
+	aab.stopAutoAttack();
+	//aab.makeAutoAttack(77, "Training Dummy", false);
+	//aab.makeAutoAttack(77, "Training Dummy", false);	
 	aab.makeAutoAttack(720, "Training Dummy", false);
-	aab.makeAutoAttack(72, "Training Dummy", false);
-	aab.makeAutoAttack(72, "Training Dummy", false);
+	aab.stopAutoAttack();
+	//aab.makeAutoAttack(72, "Training Dummy", false);
+	//aab.makeAutoAttack(72, "Training Dummy", false);
 	aab.makeAutoAttack(1547, "Training Dummy", true);
 	aab.makeAutoAttack(154, "Training Dummy", false);
 	
 	aab.stopAutoAttack();
 
-	EXPECT_EQ(3,cs.numHits);
-	EXPECT_EQ(1,cs.numCrits);
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(776, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 	
-	EXPECT_EQ(0,cs.enemyBlock);
-	EXPECT_EQ(0,cs.enemyParry);
-	EXPECT_EQ(0,cs.enemyEvade);
-	
-	EXPECT_EQ(0,cs.multiStrikes[0]);
-	EXPECT_EQ(1,cs.multiStrikes[1]);
-	EXPECT_EQ(2,cs.multiStrikes[2]);
-	EXPECT_EQ(0,cs.multiStrikes[3]);
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(720, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
-	EXPECT_EQ(776+77+77+720+72+72+1547+154,cs.totalDamageInflicted);
-
-	/*
-	2014.07.15 21:26:18 : You inflicted 776 damage on Training Dummy. 
-	2014.07.15 21:26:18 : You inflicted 77 damage on Training Dummy. 
-	2014.07.15 21:26:18 : You inflicted 77 damage on Training Dummy. 
-	2014.07.15 21:26:19 : You inflicted 720 damage on Training Dummy. 
-	2014.07.15 21:26:19 : You inflicted 72 damage on Training Dummy. 
-	2014.07.15 21:26:19 : You inflicted 72 damage on Training Dummy. 
-	2014.07.15 21:26:21 : Critical Hit! You inflicted 1,547 critical damage on Training Dummy. 
-	2014.07.15 21:26:21 : You inflicted 154 damage on Training Dummy. 
-	*/
-}
-
-TEST(AutoAttackBuffer, multiAttack2){
-	CombatStatsManager combatStatsManager;
-	WeaponSwitch weaponSwitch;
-
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
-	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
-
-	aab.makeAutoAttack(776, "Training Dummy", false);	
-	aab.stopAutoAttack();
-	aab.makeAutoAttack(720, "Training Dummy", false);	
-	aab.stopAutoAttack();
-	aab.makeAutoAttack(1547, "Training Dummy", true);
-	aab.makeAutoAttack(154, "Training Dummy", false);
-	
-	aab.stopAutoAttack();
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(1547, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(1, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_TRUE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(3,cs.numHits);
 	EXPECT_EQ(1,cs.numCrits);
@@ -200,7 +271,94 @@ TEST(AutoAttackBuffer, multiAttack2){
 	EXPECT_EQ(0,cs.multiStrikes[3]);
 
 	EXPECT_EQ(776+720+1547+154,cs.totalDamageInflicted);
+	/*
+	2014.07.15 21:26:18 : You inflicted 776 damage on Training Dummy. 
+	2014.07.15 21:26:19 : You inflicted 720 damage on Training Dummy.  
+	2014.07.15 21:26:21 : Critical Hit! You inflicted 1,547 critical damage on Training Dummy. 
+	2014.07.15 21:26:21 : You inflicted 154 damage on Training Dummy. 
+	*/
+}
 
+
+TEST(AutoAttackBuffer, multiAttack2){
+	CombatStatsManager combatStatsManager;
+	WeaponSwitch weaponSwitch;
+
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
+	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
+
+	aab.makeAutoAttack(776, "Training Dummy", false);	
+	aab.makeAutoAttack(77, "Training Dummy", false);
+	aab.makeAutoAttack(77, "Training Dummy", false);
+	aab.stopAutoAttack();
+	aab.makeAutoAttack(720, "Training Dummy", false);	
+	aab.makeAutoAttack(72, "Training Dummy", false);	
+	aab.makeAutoAttack(72, "Training Dummy", false);	
+	aab.stopAutoAttack();
+	aab.makeAutoAttack(1547, "Training Dummy", true);
+	aab.makeAutoAttack(154, "Training Dummy", false);
+	
+	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(776, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(2, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+	
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(720, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(2, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);	
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(1547, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(1, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_TRUE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	EXPECT_EQ(3,cs.numHits);
+	EXPECT_EQ(1,cs.numCrits);
+	
+	EXPECT_EQ(0,cs.enemyBlock);
+	EXPECT_EQ(0,cs.enemyParry);
+	EXPECT_EQ(0,cs.enemyEvade);
+	
+	EXPECT_EQ(0,cs.multiStrikes[0]);
+	EXPECT_EQ(1,cs.multiStrikes[1]);
+	EXPECT_EQ(2,cs.multiStrikes[2]);
+	EXPECT_EQ(0,cs.multiStrikes[3]);
+
+	
+	EXPECT_EQ(776+77+77+720+72+72+1547+154,cs.totalDamageInflicted);
 	/*
 	2014.07.15 21:26:18 : You inflicted 776 damage on Training Dummy. 
 	2014.07.15 21:26:18 : You inflicted 77 damage on Training Dummy. 
@@ -213,17 +371,32 @@ TEST(AutoAttackBuffer, multiAttack2){
 	*/
 }
 
+
 TEST(AutoAttackBuffer, skillAttack1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
-	aab.makeSkillAttack(8360, "Chief of Staff Moriata", "Harpist's Pod I", false);	
-	
+	aab.makeSkillAttack(8360, "Chief of Staff Moriata", "Harpist's Pod I", false);		
 	
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Chief of Staff Moriata", attack.target);
+	EXPECT_EQ("Harpist's Pod I", attack.skill);
+	EXPECT_EQ(8360, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);
@@ -246,17 +419,32 @@ TEST(AutoAttackBuffer, skillAttack1){
 	*/
 }
 
+
 TEST(AutoAttackBuffer, skillAttack2){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeSkillAttack(4398, "Chief of Staff Moriata", "Spiral Arrow IV", true);	
-	
-	
+		
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Chief of Staff Moriata", attack.target);
+	EXPECT_EQ("Spiral Arrow IV", attack.skill);
+	EXPECT_EQ(4398, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_TRUE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(1,cs.numCrits);
@@ -279,15 +467,46 @@ TEST(AutoAttackBuffer, skillAttack2){
 	*/
 }
 
+
 TEST(AutoAttackBuffer, skillAttackMulti1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeSkillAttack(1827, "Sprawling Agrint", "Ferocious Strike VI", true);	
 	aab.makeSkillAttack(1930, "Sprawling Agrint", "Robust Blow VI", true);	
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Sprawling Agrint", attack.target);
+	EXPECT_EQ("Ferocious Strike VI", attack.skill);
+	EXPECT_EQ(1827, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_TRUE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Sprawling Agrint", attack.target);
+	EXPECT_EQ("Robust Blow VI", attack.skill);
+	EXPECT_EQ(1930, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_TRUE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(2,cs.numHits);
 	EXPECT_EQ(2,cs.numCrits);
@@ -311,11 +530,13 @@ TEST(AutoAttackBuffer, skillAttackMulti1){
 	*/
 }
 
+
 TEST(AutoAttackBuffer, dualWield1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(190, "Steel Rake Watcher", false);
@@ -323,6 +544,20 @@ TEST(AutoAttackBuffer, dualWield1){
 	aab.makeAutoAttack(19, "Steel Rake Watcher", false);
 	
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Steel Rake Watcher", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(190, attack.mainhandDamage);
+	EXPECT_EQ(219, attack.offhandDamage);
+	EXPECT_EQ(1, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);
@@ -354,7 +589,8 @@ TEST(AutoAttackBuffer, dualWield2){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(1651, "Training Dummy", false);
@@ -364,6 +600,20 @@ TEST(AutoAttackBuffer, dualWield2){
 	
 	aab.stopAutoAttack();
 	
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(1651, attack.mainhandDamage);
+	EXPECT_EQ(1120, attack.offhandDamage);
+	EXPECT_EQ(1, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
 	EXPECT_EQ(1,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);
 	
@@ -394,7 +644,8 @@ TEST(AutoAttackBuffer, dualWield3){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(219, "Steel Rake Watcher", false);
@@ -408,6 +659,50 @@ TEST(AutoAttackBuffer, dualWield3){
 	aab.makeAutoAttack(18, "Steel Rake Watcher", false);
 	
 	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Steel Rake Watcher", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(219, attack.mainhandDamage);
+	EXPECT_EQ(190, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Steel Rake Watcher", attack.target);
+	EXPECT_EQ("Rune Carve III", attack.skill);
+	EXPECT_EQ(231, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Steel Rake Watcher", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(198, attack.mainhandDamage);
+	EXPECT_EQ(183, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
 
 	EXPECT_EQ(3,cs.numHits);
 	EXPECT_EQ(0,cs.numCrits);	
@@ -438,7 +733,8 @@ TEST(AutoAttackBuffer, block1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyBlocked("Karuken");
@@ -468,9 +764,9 @@ TEST(AutoAttackBuffer, shieldReflect){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
-
 
 	aab.enemyReflected("Furiousxado");
 	aab.enemyShielded("Furiousxado");
@@ -515,7 +811,8 @@ TEST(AutoAttackBuffer, shield1){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyShielded("Chief of Staff Moriata");
@@ -551,7 +848,8 @@ TEST(AutoAttackBuffer, shield2){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyShielded("Chief of Staff Moriata");
@@ -594,7 +892,8 @@ TEST(AutoAttackBuffer, shield3){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyShielded("David Tam");
@@ -647,7 +946,8 @@ TEST(AutoAttackBuffer, shield4){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyShielded("xKyonx");
@@ -728,7 +1028,8 @@ TEST(AutoAttackBuffer, shield5){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyShielded("Chief of Staff Moriata");
@@ -769,7 +1070,8 @@ TEST(AutoAttackBuffer, BlockTest){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyBlocked("Emeyno");
@@ -811,7 +1113,8 @@ TEST(AutoAttackBuffer, BlockNormalAttack){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyBlocked("Zadra Spellweaver");
@@ -851,7 +1154,8 @@ TEST(AutoAttackBuffer, BlockNormalAndSkill){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.enemyBlocked("Enraged Krotan Lord");
@@ -893,7 +1197,8 @@ TEST(AutoAttackBuffer, ParryNormalAttack){
 	CombatStatsManager combatStatsManager;
 	WeaponSwitch weaponSwitch;
 
-	AutoAttackBuffer aab(combatStatsManager, weaponSwitch);
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
 	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
 
 	aab.makeAutoAttack(550, "Unstable Kaluva the Fourth", false);
@@ -935,6 +1240,46 @@ TEST(AutoAttackBuffer, ParryNormalAttack){
 */
 }
 
+TEST(AutoAttackBuffer, ParryNormalAttack2){
+
+	CombatStatsManager combatStatsManager;
+	WeaponSwitch weaponSwitch;
+
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
+	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
+
+
+
+	aab.enemyParried("1s36C7DF");
+	aab.makeAutoAttack(52, "1s36C7DF", false);
+	aab.enemyParried("1s36C7DF");
+	aab.makeAutoAttack(5, "1s36C7DF", false);
+	aab.stopAutoAttack();	
+
+	EXPECT_EQ(1, attacks.size());
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("1s36C7DF", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(52, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(1, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_TRUE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+/*
+2017.11.18 12:16:40 : 1s36C7DF parried the attack. 
+2017.11.18 12:16:40 : You inflicted 52 damage on 1s36C7DF. 
+2017.11.18 12:16:40 : 1s36C7DF parried the attack. 
+2017.11.18 12:16:40 : You inflicted 5 damage on 1s36C7DF. 
+*/
+}
+
 /*
 TEST(AutoAttackBuffer, resist){
 	AutoAttackBuffer aab;
@@ -956,3 +1301,136 @@ TEST(AutoAttackBuffer, resist){
 
 }
 */
+
+
+TEST(AutoAttackBuffer, nonBlockSkillFollowingBlockedAutoAttack){
+	CombatStatsManager combatStatsManager;
+	WeaponSwitch weaponSwitch;
+
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
+	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
+
+	aab.enemyBlocked("1s16BE07");
+	aab.makeAutoAttack(55, "1s16BE07", false);	
+	aab.stopAutoAttack();
+	
+	aab.makeSkillAttack(1201, "1s16BE07", "Sure Strike", false);
+	
+	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("1s16BE07", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(55, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_TRUE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("1s16BE07", attack.target);
+	EXPECT_EQ("Sure Strike", attack.skill);
+	EXPECT_EQ(1201, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	EXPECT_EQ(2,cs.numHits);
+	EXPECT_EQ(0,cs.numCrits);
+	
+	EXPECT_EQ(1,cs.enemyBlock);
+	EXPECT_EQ(0,cs.enemyParry);
+	EXPECT_EQ(0,cs.enemyEvade);
+	EXPECT_EQ(0,cs.enemyResist);
+/*
+2017.11.16 15:54:55 : 1s16BE07 blocked the attack. 
+2017.11.16 15:54:55 : You inflicted 55 damage on 1s16BE07. 
+2017.11.16 15:54:55 : Expedition Trainee inflicted 2,244 damage on Training Dummy. 
+2017.11.16 15:54:55 : You inflicted 1,201 damage on 1s16BE07 by using Sure Strike. 
+*/
+}
+
+TEST(AutoAttackBuffer, nonBlockSkillFollowingBlockedAutoAttack2){
+	CombatStatsManager combatStatsManager;
+	WeaponSwitch weaponSwitch;
+
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
+	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
+
+	aab.enemyBlocked("1s36C7DF");
+	aab.makeSkillAttack(931, "1s36C7DF", "Break Power", false);
+	aab.enemyBlocked("1s36C7DF");
+	aab.debuffEnemy("Attack", "1s36C7DF", "Break Power", false);
+	aab.stopAutoAttack();
+
+	//aab.makeAutoAttack(55, "1s16BE07", false);	
+	//aab.stopAutoAttack();
+	
+	aab.makeSkillAttack(992, "1s36C7DF", "Punishing Thrust", false);
+	
+	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("1s36C7DF", attack.target);
+	EXPECT_EQ("Break Power", attack.skill);
+	EXPECT_EQ(931, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_TRUE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("1s36C7DF", attack.target);
+	EXPECT_EQ("Punishing Thrust", attack.skill);
+	EXPECT_EQ(992, attack.mainhandDamage);
+	EXPECT_EQ(-1, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(0, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	EXPECT_EQ(2,cs.numHits);
+	EXPECT_EQ(0,cs.numCrits);
+	
+	EXPECT_EQ(1,cs.enemyBlock);
+	EXPECT_EQ(0,cs.enemyParry);
+	EXPECT_EQ(0,cs.enemyEvade);
+	EXPECT_EQ(0,cs.enemyResist);
+
+	EXPECT_EQ(931,cs.skillDamageStats.at("Break Power").blocks.totalDamage);
+	EXPECT_EQ(992,cs.skillDamageStats.at("Punishing Thrust").normals.totalDamage);
+	/*
+2017.11.16 18:57:39 : 1s36C7DF blocked the attack. 
+2017.11.16 18:57:39 : You inflicted 931 damage on 1s36C7DF by using Break Power. 
+2017.11.16 18:57:39 : 1s36C7DF blocked the attack. 
+2017.11.16 18:57:39 : 1s16BE07 has weakened 1s36C7DF's Attack by using Break Power. 
+2017.11.16 18:57:39 : Expedition Trainee inflicted 2,313 damage on Training Dummy. 
+2017.11.16 18:57:39 : 1s36C7DF is no longer shocked.  
+
+2017.11.16 18:58:43 : You inflicted 992 damage on 1s36C7DF by using Punishing Thrust. 
+*/
+}
