@@ -35,12 +35,16 @@ TEST_F(MaxPeriodParserTest, resemble2){
 
 TEST_F(MaxPeriodParserTest, resemble2a){
 	map<string, string> params;
+	// The space between "74" and "510" are directly copy-pasted from Aion chatlog, and it is NOT a regular space character!
+	//string test = "You have gained 74 510 XP from Primeval Mookie. (Energy of Repose 19 869) ";
+	//EXPECT_EQ('\xA0', test.at(18));
 	EXPECT_TRUE(parser.resembles(
-		"2014.05.25 09:48:29 : You have gained 12 345 Abyss Points. ",
-		"You have gained %num0 Abyss Points.",		
+		"2017.12.01 22:37:41 : You have gained 74 510 XP from Primeval Mookie. (Energy of Repose 19 869) ",
+		"You have gained %num1 XP from %0.",		
 		params));
-	EXPECT_EQ(1, params.size());
-	EXPECT_EQ("12 345", params.at("%num0"));
+	EXPECT_EQ(2, params.size());
+	EXPECT_EQ("74 510", params.at("%num1"));
+	EXPECT_EQ("Primeval Mookie", params.at("%0"));	
 }
 
 TEST_F(MaxPeriodParserTest, resemble2b){
@@ -332,5 +336,20 @@ TEST_F(MaxPeriodParserTest, growthAura){
 		params));	
 	EXPECT_EQ(1, params.size());	
 	EXPECT_EQ("29.91", params.at("%0"));
+	
+}
+
+TEST_F(MaxPeriodParserTest, resembleAposopheThousandSeparator){
+	map<string, string> params;
+	string test = "You inflicted 1'479 damage on Prismatic Spirit by using Hallowed Strike. ";
+	EXPECT_EQ('\'', test.at(15));
+	EXPECT_TRUE(parser.resembles(
+		"2017.12.01 23:47:51 : You inflicted 1'479 damage on Prismatic Spirit by using Hallowed Strike. ",
+		"You inflicted %num0 damage on [%SkillTarget] by using [%SkillName].",		 		
+		params));
+	EXPECT_EQ("1'479", params.at("%num0"));
+	EXPECT_EQ("Prismatic Spirit", params.at("[%SkillTarget]"));
+	EXPECT_EQ("Hallowed Strike", params.at("[%SkillName]"));	
+	
 	
 }

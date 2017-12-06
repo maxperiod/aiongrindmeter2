@@ -109,7 +109,7 @@ TEST(stringFunctions, formatCurrentAndNextValuesWithKiloMega5){
 }
 
 TEST(stringFunctions, formatCurrentAndNextValuesWithKiloMega6){
-	EXPECT_EQ("0.99 K / 11.11 K", formatCurrentAndNextValuesWithKiloMega(999, 11111, 4));
+	EXPECT_EQ("0.99 k / 11.11 k", formatCurrentAndNextValuesWithKiloMega(999, 11111, 4));
 
 }
 
@@ -163,4 +163,19 @@ TEST(stringFunctions, verifyPercentInput13){
 
 TEST(stringFunctions, verifyPercentInput14){
 	EXPECT_NEAR(-1, verifyPercentInput("-0.01"), 0.001);
+}
+
+TEST(stringFunctions, stripCommas1){
+	string input = "135,161";
+	EXPECT_EQ(135161, stringToInt(stripCommas(input)));
+}
+
+TEST(stringFunctions, stripCommas2){
+	string input = "74 510";
+	EXPECT_EQ(74510, stringToInt(stripCommas(input)));
+}
+
+TEST(stringFunctions, stripCommas3){
+	string input = "2'298";
+	EXPECT_EQ(2298, stringToInt(stripCommas(input)));
 }

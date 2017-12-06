@@ -186,7 +186,7 @@ string formatCurrentAndNextValuesWithKiloMega(long long current, long long next,
 	}
 	else if (abs(next) >= 1000 && numSigDigits < numDigitsNext){
 		//oss << setprecision(numSigDigits) << (double)(current / divisor * divisor) / 1000 << " k / " << formatKiloMega(next, numSigDigits);//(double)next / 1000 << " k ";
-		oss << setprecision(numSigDigits) << numericPartCurrent / 1000 << " K / " << numericPartNext / 1000 << " K";
+		oss << setprecision(numSigDigits) << numericPartCurrent / 1000 << " k / " << numericPartNext / 1000 << " k";
 	}
 	else {
 		oss << setprecision(numSigDigits) << current << " / " << next;

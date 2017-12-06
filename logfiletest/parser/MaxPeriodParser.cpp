@@ -200,7 +200,7 @@ int MaxPeriodParser::readParameterValue(const char* input, const char* ruleAfter
 			if (input[i] >= '0' && input[i] <= '9'){
 				lastDigit = i;
 			}
-			else if (input[i] != ',' && input[i] != '.' && input[i] != ' '){
+			else if (input[i] != ',' && input[i] != '.' && input[i] != ' ' && input[i] != '\xA0' && input[i] != '\''){ 
 				return lastDigit + 1;
 			}
 																			
