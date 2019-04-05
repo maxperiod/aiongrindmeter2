@@ -24,7 +24,7 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	),
 	started(false),
 	aionPath(aionPath),
-	expModule(shared_ptr<ExpChart>(new ExpChartKR51())),
+	expModule(shared_ptr<ExpChart>(new ExpChart60())),
 	apModule(shared_ptr<ApChart>(new ApChart())),
 	timer(this, TIMER_ID),
 	soulHealerModule(expModule, apModule, kinahModule),
@@ -131,8 +131,8 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 
 	//Start timer if logFileUtility reads first new line from chat log
 	if (!started && logFileUtility.getTimestampOfLatestMessage() != -1 && secondsSinceLastMessage <= 10){
-		expFrame->Show();
-		apFrame->Show();
+		//expFrame->Show();
+		//apFrame->Show();
 
 		expModule.timer.start();
 		apModule.timer.start();
@@ -194,7 +194,7 @@ void MainFrame::OnTimer(wxTimerEvent& event){
 		else {
 			wxNotificationMessage systemCFGEnableFailureMessage(APP_TITLE, "Chatlog disabled by Aion client. Aion Grind Meter was unable to re-enable it.", this);
 			systemCFGEnableFailureMessage.Show();
-			this->Close();
+			//this->Close();
 		}
 		
 	}

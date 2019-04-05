@@ -38,6 +38,7 @@
 #include "MobKillsFrame.h"
 #include "PlayerKillsFrame.h"
 
+#include "../lookups/ExpChart60.h"
 #include "../lookups/ExpChartKR51.h"
 #include "../lookups/ExpChartNA40.h"
 #include "../lookups/ExpChartEU49.h"
@@ -45,7 +46,7 @@
 #include "TestFrame.h"
 
 #define APP_TITLE "Aion Grind Meter"
-#define APP_VERSION "2.4.5"
+#define APP_VERSION "2.4.6"
 
 #define MAINFRAME_WIDTH 230
 #define MAINFRAME_HEIGHT 100

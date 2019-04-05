@@ -108,9 +108,9 @@ void CombatModule::executeChatLogCommand(ChatLogCommand& command){
 		if (weaponSwitch.getCurrentSet() == 0)
 			combatStatsManager.getAllTargetsCombatStats().first.enemyEvade ++;
 		else 
-			combatStatsManager.getAllTargetsCombatStats().second.enemyEvade ++;
-		break;
+			combatStatsManager.getAllTargetsCombatStats().second.enemyEvade ++;		
 		*/
+		break;
 	case STR_SKILL_DODGED_ME_TO_B:
 		autoAttackBuffer.enemyEvaded(params["[%SkillTarget]"], params["[%SkillName]"]);
 		break;
@@ -148,7 +148,8 @@ void CombatModule::executeChatLogCommand(ChatLogCommand& command){
 }
 
 void CombatModule::endOfTickAction(){
-	autoAttackBuffer.stopAutoAttack();
+	//autoAttackBuffer.stopAutoAttack();
+	autoAttackBuffer.endOfTick();
 }
 
 /*

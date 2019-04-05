@@ -327,7 +327,7 @@ void AutoAttackBuffer::resetBuffer(){
 
 void AutoAttackBuffer::endOfTick(){
 	idleTicks ++;
-	if (idleTicks >= 2) applyBufferToCounter(false); //stopAutoAttack();
+	if (idleTicks >= 2) /*applyBufferToCounter(false);*/ stopAutoAttack();
 }
 
 // ========================================================================

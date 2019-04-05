@@ -9,6 +9,7 @@ class ItemIDReader{
 public:
 	//ItemIDReader(string file);
 	string getItemName(int ID);
+	int getItemIDFromName(string& name);
 	//int getItemID(string name);
 	string getItemName(string bracketedItemIdFromChatLog);
 	//bool isItemIDFileSuccessfullyRead() {return readFileStatus;}

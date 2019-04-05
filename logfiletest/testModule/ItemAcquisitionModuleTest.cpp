@@ -39,66 +39,83 @@ protected:
 };
 
 TEST_F(ItemAcquisitionModuleTest, getItem){
-	logFile.appendFile("2014.09.10 22:45:16 : You have acquired [item:188051605;ver6;;;;]. ");
+	logFile.appendFile("2019.03.28 10:54:19 : You inflicted 25,730 damage on Redcoral Puffstinger by using Element Smash. ");
+	logFile.appendFile("2019.03.28 10:54:19 : Redcoral Puffstinger received 4,434 damage due to the effect of Erosion. ");
+	logFile.appendFile("2019.03.28 10:54:19 : You have gained 259,935 XP from Redcoral Puffstinger. ");
+	logFile.appendFile("2019.03.28 10:54:19 : Quest updated: [Weekly] Western Elimination ");
+	logFile.appendFile("2019.03.28 10:54:19 : You gave yourself a defense shield by using Stone Skin. ");
+	logFile.appendFile("2019.03.28 10:54:19 : Your PvP Defense has been boosted by using Stone Skin. ");
+	logFile.appendFile("2019.03.28 10:54:19 : Earth Spirit is in Guard mode. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 10:54:21 : You have acquired [@item:152080004;ver8;;;;]. ");
+	
 	logFileUtility.parseLogFile();
 	logFileUtility.parseLogFile();
+	
 
-	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	//EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getTotalCount());
 
-	EXPECT_EQ(188051605, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(152080004).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(152080004).numPackets);
+
+	EXPECT_EQ(152080004, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
 	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
 	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numPackets);
 }
 
 TEST_F(ItemAcquisitionModuleTest, getItemMulti){
-	logFile.appendFile("2014.09.10 22:45:16 : You have acquired 7 [item:164000156;ver6;;;;](s). ");
+	
+	logFile.appendFile("2019.03.28 16:35:05 : You inflicted 4,526 damage on Brutal Dargor by using Erosion. ");
+	logFile.appendFile("2019.03.28 16:35:05 : You inflicted continuous damage on Brutal Dargor by using Erosion. ");
+	logFile.appendFile("2019.03.28 16:35:05 : You have gained 306,103 XP from Brutal Dargor. ");
 	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 16:35:06 : Earth Spirit is in Guard mode. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 16:35:07 : You have acquired 160 [@item:169020003;ver8;????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????;;;](s). ");
+	
+	logFileUtility.parseLogFile();	
 	logFileUtility.parseLogFile();
 
-	EXPECT_EQ(7, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	//EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	EXPECT_EQ(160, itemAcquisitionModule.itemsAcquired.get(169020003).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(169020003).numPackets);
 
-	EXPECT_EQ(164000156, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
-	EXPECT_EQ(7, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
+	EXPECT_EQ(169020003, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
+	EXPECT_EQ(160, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
 	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numPackets);
 }
 
 TEST_F(ItemAcquisitionModuleTest, getItemSpecial){
 	
-	logFile.appendFile("2014.09.11 21:24:34 : You have acquired [item:186000135;ver6;;;;] and stored it in your special cube. ");
-	logFile.appendFile("2014.09.11 21:24:34 : You have acquired [item:186000184;ver6;;;;] and stored it in your special cube. ");
+	logFile.appendFile("2019.03.27 15:53:36 : You obtained [@item:185000331;ver8;;;;] and put it in the cube dedicated to quests, coins, tickets, and cores. ");
 	logFileUtility.parseLogFile();
 	logFileUtility.parseLogFile();
 
-	EXPECT_EQ(2, itemAcquisitionModule.itemsAcquired.getTotalCount());
-
-	EXPECT_EQ(186000184, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
-	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
-	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numPackets);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(185000331).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(185000331).numPackets);
 }
 
 TEST_F(ItemAcquisitionModuleTest, getItemMultiSpecial){
-	logFile.appendFile("2014.08.25 23:43:09 : Quest updated: [Coin] From The Cold Dead Klaws ");
-	logFile.appendFile("2014.08.25 23:43:10 : You have acquired 10 [item:186000237;ver6;;;;]s and stored them in your special cube. ");
-	logFile.appendFile("2014.08.25 23:43:10 : You have acquired [item:188052315;ver6;;;;]. ");
-	logFile.appendFile("2014.08.25 23:43:10 : You have gained 4,825,175 XP from Nedzelinerk. ");
-	logFile.appendFile("2014.08.25 23:43:10 : You can receive the daily quest again at 9 in the morning. ");
-	logFile.appendFile("2014.08.25 23:43:10 : Quest complete: [Coin] From The Cold Dead Klaws ");	
+	logFile.appendFile("2019.03.28 16:35:28 : You have gained 45,915,450 XP from Euron. ");
+	logFile.appendFile("2019.03.28 16:35:28 : You obtained 13 [@item:152012768;ver8;;;;](s) and put them in the cube dedicated to quests, coins, tickets, and cores. ");
+	logFile.appendFile("2019.03.28 16:35:28 : Quest complete: [Weekly] Western Elimination ");
+	logFile.appendFile("2019.03.28 16:35:28 : You have acquired [@item:188070796;ver8;;;;]. ");	
 	
 	logFileUtility.parseLogFile();
 	logFileUtility.parseLogFile();
 
-	EXPECT_EQ(11, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	//EXPECT_EQ(2, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	EXPECT_EQ(13, itemAcquisitionModule.itemsAcquired.get(152012768).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(152012768).numPackets);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(188070796).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(188070796).numPackets);
 
-	EXPECT_EQ(188052315, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
+	EXPECT_EQ(188070796, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
 	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
-	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numPackets);
-
-	EXPECT_EQ(10, itemAcquisitionModule.itemsAcquired.get(186000237).numGained);
-	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(186000237).numPackets);
-	//EXPECT_EQ(10, itemAcquisitionModule.itemsAcquired.get(186000237)->second.numGained);
-	//EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(186000237)->second.numPackets);
+	
 }
-
+/*
 TEST_F(ItemAcquisitionModuleTest, rollDice){
 	logFile.appendFile("2014.06.18 17:45:44 : You rolled the dice and got 94 (max. 100). ");
 	logFile.appendFile("2014.06.18 17:45:44 : You recovered 4,797 HP by using Prayer of Resilience VII. ");
@@ -377,5 +394,38 @@ TEST_F(ItemAcquisitionModuleTest, spamContainers){
 	EXPECT_EQ(50, itemAcquisitionModule.itemsFromContainers.at("Heavy Hidden Bundle").get(141000001).numGained);	
 	EXPECT_EQ(2, itemAcquisitionModule.itemsFromContainers.at("Heavy Hidden Bundle").get(152000907).numGained);	
 
+
+}
+*/
+TEST_F(ItemAcquisitionModuleTest, expExtraction){
+
+	logFile.appendFile("2019.03.28 00:34:17 : Charlotte is in the boost Stumble Resistance,Silence Resistance,Knock Back Resistance state because Charlotte used Mvt. 3: Autumn. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:19 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:24 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:25 : [3.LFG] [charname:Stoplis;1.0000 0.6941 0.6941]: [cmd:Stoplis;Zh6kH7wqRIp64jef+7TXi8olcfUVsJVyG6/k2FOfMSo=]coe ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:29 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:33 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:37 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:41 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:43 : Iamthailand recovered 3,858 HP by using Flash of Recovery. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:45 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:49 : You used Bobonerk’s Coin. You lost 20,000,000 XP and obtained Bobonerk’s Gem. ");
+	logFileUtility.parseLogFile();
+	logFile.appendFile("2019.03.28 00:34:50 : AmyYinYouccc recovered 3,382 HP by using Hymn of Rejuvenation. ");
+	logFileUtility.parseLogFile();
+
+	EXPECT_EQ(8, itemAcquisitionModule.containersOpened.get("Bobonerk’s Coin").numGained);
+	EXPECT_EQ(8, itemAcquisitionModule.itemsFromContainers.at("Bobonerk’s Coin").get(188920046).numGained);	
+	
 
 }

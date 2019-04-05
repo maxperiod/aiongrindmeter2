@@ -132,9 +132,10 @@ void ExpModule::executeChatLogCommand(ChatLogCommand& command){
 		break;	
 
 	// Level up automatic skill learn
-	case STR_SKILL_LEARNED_NEW_SKILL:
+	/*case STR_SKILL_LEARNED_NEW_SKILL:
 		levelUpChecker.levelUpLearnSkill();
 		break;
+		*/
 		
 	case STR_MSG_GET_CP:
 		levelUpChecker.gainEssence();

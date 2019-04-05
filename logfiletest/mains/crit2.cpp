@@ -1,5 +1,7 @@
 #include "../experimental/CombatModule.h"
 #include "../parser/LogFileUtility.h"
+
+#include "../language/LanguageManager.h"
 //#include "lookups/RuleStringsHardCodedNA.h"
 //#include "parser/MaxPeriodParser.h"
 //#include "lookups/SkillToClassHardCodedNA.h"
@@ -500,11 +502,15 @@ int main(){
 	CombatModule combatModule;
 	SoulHealToSaveToFile soulHealToSaveToFile(combatModule);
 
+	int millsecondsPerTick = 250;
 	
 	string aionDirectory = "D:/Aion/";
 	
 	LogFileUtility logFileUtility;
 	bool status = logFileUtility.setAionDirectory(aionDirectory);
+	
+	//For NA builds, comment out following line. For EU builds, enable following line.
+	//LANGUAGE_MANAGER.setToEnglishEU();
 
 	if (!status) cout << "UNABLE TO OPEN CHAT.LOG" << endl;
 
@@ -516,7 +522,7 @@ int main(){
 		logFileUtility.parseLogFile();
 	
 		refreshCounter ++;
-		if (refreshCounter >= 10){
+		if (refreshCounter >= 1000 / millsecondsPerTick){
 			refreshCounter = 0;
 			system("cls");	
 	
@@ -617,6 +623,6 @@ int main(){
 			}
 			*/
 		}
-		Sleep(100);
+		Sleep(millsecondsPerTick);
 	}		
 }

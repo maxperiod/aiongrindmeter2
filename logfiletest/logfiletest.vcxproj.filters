@@ -249,55 +249,58 @@
     <ClInclude Include="experimental\Attack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\apframe.h">
+    <ClInclude Include="lookups\ExpChart60.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\expframe.h">
+    <ClInclude Include="gui\ApFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\gpframe.h">
+    <ClInclude Include="gui\ExpFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\itemacquisitionframe.h">
+    <ClInclude Include="gui\GpFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\itembundleframe.h">
+    <ClInclude Include="gui\ItemAcquisitionFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\itemconsumptionframe.h">
+    <ClInclude Include="gui\ItemBundleFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\itemrollsframe.h">
+    <ClInclude Include="gui\ItemConsumptionFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\kinahframe.h">
+    <ClInclude Include="gui\ItemRollsFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\listctrlframe.h">
+    <ClInclude Include="gui\KinahFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\mainframe.h">
+    <ClInclude Include="gui\ListCtrlFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\mobkillsframe.h">
+    <ClInclude Include="gui\MainFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\MobKillsFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gui\ModulePanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\modulewindowselectionframe.h">
+    <ClInclude Include="gui\ModuleWindowSelectionFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\playerkillsframe.h">
+    <ClInclude Include="gui\PlayerKillsFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\professionframe.h">
+    <ClInclude Include="gui\ProfessionFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\professionlevelingframe.h">
+    <ClInclude Include="gui\ProfessionLevelingFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gui\testframe.h">
+    <ClInclude Include="gui\TestFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -456,6 +459,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="testModule\testLog\TemporaryLogFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lookups\ExpChart60.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mains\MyApp.cpp">

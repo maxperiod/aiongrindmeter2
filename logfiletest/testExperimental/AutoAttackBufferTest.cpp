@@ -371,6 +371,123 @@ TEST(AutoAttackBuffer, multiAttack2){
 	*/
 }
 
+TEST(AutoAttackBuffer, multiAttack3){
+	CombatStatsManager combatStatsManager;
+	WeaponSwitch weaponSwitch;
+
+	queue<Attack> attacks;
+	AutoAttackBuffer aab(combatStatsManager, weaponSwitch, attacks);
+	CombatStats& cs = combatStatsManager.getAllTargetsCombatStats().first;
+
+	aab.makeAutoAttack(672, "Training Dummy", false);	
+	aab.makeAutoAttack(535, "Training Dummy", false);
+	aab.makeAutoAttack(53, "Training Dummy", false);
+
+	aab.makeAutoAttack(668, "Training Dummy", false);	
+	aab.makeAutoAttack(538, "Training Dummy", false);	
+	aab.makeAutoAttack(53, "Training Dummy", false);	
+
+	aab.makeAutoAttack(654, "Training Dummy", false);
+	aab.makeAutoAttack(533, "Training Dummy", false);
+	aab.makeAutoAttack(53, "Training Dummy", false);
+
+	aab.makeAutoAttack(668, "Training Dummy", false);
+	aab.makeAutoAttack(539, "Training Dummy", false);
+	aab.makeAutoAttack(53, "Training Dummy", false);
+
+	aab.stopAutoAttack();
+
+	Attack attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(672, attack.mainhandDamage);
+	EXPECT_EQ(535, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+	
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(668, attack.mainhandDamage);
+	EXPECT_EQ(538, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(654, attack.mainhandDamage);
+	EXPECT_EQ(533, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+
+	attacks.pop();
+	attack = attacks.front();
+	EXPECT_EQ("", attack.user);
+	EXPECT_EQ("Training Dummy", attack.target);
+	EXPECT_EQ("", attack.skill);
+	EXPECT_EQ(668, attack.mainhandDamage);
+	EXPECT_EQ(539, attack.offhandDamage);
+	EXPECT_EQ(0, attack.numMainhandMultiStrikes);
+	EXPECT_EQ(1, attack.numOffhandMultiStrikes);
+	EXPECT_FALSE(attack.blocked);
+	EXPECT_FALSE(attack.critical);
+	EXPECT_FALSE(attack.parried);
+	EXPECT_FALSE(attack.shielded);
+	EXPECT_FALSE(attack.reflected);
+	/*
+	EXPECT_EQ(4,cs.numHits);
+	EXPECT_EQ(0,cs.numCrits);
+	
+	EXPECT_EQ(0,cs.enemyBlock);
+	EXPECT_EQ(0,cs.enemyParry);
+	EXPECT_EQ(0,cs.enemyEvade);
+	
+	EXPECT_EQ(0,cs.multiStrikes[0]);
+	EXPECT_EQ(4,cs.multiStrikes[1]);
+	EXPECT_EQ(0,cs.multiStrikes[2]);
+	EXPECT_EQ(0,cs.multiStrikes[3]);
+	*/
+	
+	EXPECT_EQ(672+535+53+668+538+53+654+533+53+668+539+53,cs.totalDamageInflicted);
+	/*
+2017.12.11 22:56:01 : You inflicted 672 damage on Training Dummy. 
+2017.12.11 22:56:01 : You inflicted 535 damage on Training Dummy. 
+2017.12.11 22:56:01 : You inflicted 53 damage on Training Dummy. 
+
+2017.12.11 22:56:07 : You inflicted 668 damage on Training Dummy. 
+2017.12.11 22:56:07 : You inflicted 538 damage on Training Dummy. 
+2017.12.11 22:56:07 : You inflicted 53 damage on Training Dummy. 
+
+2017.12.11 22:56:24 : You inflicted 654 damage on Training Dummy. 
+2017.12.11 22:56:24 : You inflicted 533 damage on Training Dummy. 
+2017.12.11 22:56:24 : You inflicted 53 damage on Training Dummy. 
+
+2017.12.11 22:56:27 : You inflicted 668 damage on Training Dummy. 
+2017.12.11 22:56:27 : You inflicted 539 damage on Training Dummy. 
+2017.12.11 22:56:27 : You inflicted 53 damage on Training Dummy. 
+	*/
+}
 
 TEST(AutoAttackBuffer, skillAttack1){
 	CombatStatsManager combatStatsManager;
@@ -1434,3 +1551,4 @@ TEST(AutoAttackBuffer, nonBlockSkillFollowingBlockedAutoAttack2){
 2017.11.16 18:58:43 : You inflicted 992 damage on 1s36C7DF by using Punishing Thrust. 
 */
 }
+

@@ -1,12 +1,14 @@
 #include "ItemAcquisitionModule.h"
 #include "../stringFunctions.h"
 #include "../parser/BracketValueReader.h"
+#include "../language/LanguageManager.h"
 
 ItemAcquisitionModule::ItemAcquisitionModule(): idleTicks(0), isContainerOpened(false), diceRollWin(false){
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM_EXTRA_MULTI);
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM_EXTRA);
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM_MULTI);
 	DECLARE_MESSAGE_RULE(STR_MSG_GET_ITEM);
+	DECLARE_MESSAGE_RULE(STR_MSG_EXP_EXTRACTION_USE);
 	DECLARE_MESSAGE_RULE(STR_USE_ITEM);
 	DECLARE_MESSAGE_RULE(STR_MSG_ENCHANT_TYPE1_ENCHANT_FAIL);
 	DECLARE_MESSAGE_RULE(STR_MSG_STIGMA_ENCHANT_FAIL);
@@ -24,7 +26,7 @@ void ItemAcquisitionModule::acquireItem(const string& item, int quantity){
 	vector<string> bracketValues;
 	BracketValueReader::readValues(item, bracketValues);
 	
-	if (!bracketValues.empty() && bracketValues[0] == "item"){
+	if (!bracketValues.empty() && bracketValues[0] == "@item"){
 		int itemNumber = stringToInt(bracketValues[1]);
 		//itemsAcquired.add(itemNumber, quantity);
 		itemsBuffer.add(itemNumber, quantity);
@@ -87,6 +89,14 @@ void ItemAcquisitionModule::executeChatLogCommand(ChatLogCommand& command){
 		case STR_MSG_GET_ITEM_EXTRA:
 		case STR_MSG_GET_ITEM:
 			acquireItem(params["%0"], 1);
+			break;
+
+		// Use exp extraction item
+		case STR_MSG_EXP_EXTRACTION_USE:
+			//string extractionItem = params["%0"];
+			
+			containersOpened.add(params["%0"]);			
+			itemsFromContainers[params["%0"]].add(LANGUAGE_MANAGER.getCurrentLanguage().getItemIDFileReader().getItemIDFromName(params["%2"]));
 			break;
 
 		// use item
