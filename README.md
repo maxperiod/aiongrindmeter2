@@ -4,6 +4,21 @@ Aion Grind Meter 2 - Aion XP/hr meter and more
 
 ## Screenshots
 
+![alt text](images/theo19xcontainers.png "Items from container opens")
+
+Items from container opens
+
+
+![alt text](images/theo19xitemsacquired.png "Items acquired (except opened from containers)")
+
+Items acquired (except opened from containers)
+
+
+![alt text](images/theo19xmobkills.png "Monster kills")
+
+Monster kills
+
+
 ![alt text](images/expexample1.png "EXP - progress to next level")
 
 EXP - progress to next level
@@ -39,20 +54,6 @@ Crafting
 Gathering/crafting profession leveling
 
 
-![alt text](images/theo19xcontainers.png "Items from container opens")
-
-Items from container opens
-
-
-![alt text](images/theo19xitemsacquired.png "Items acquired (except opened from containers)")
-
-Items acquired (except opened from containers)
-
-
-![alt text](images/theo19xmobkills.png "Monster kills")
-
-Monster kills
-
 ![alt text](images/pvpexample.png "Player kills and assists")
 
 Player kills and assists
@@ -60,6 +61,17 @@ Player kills and assists
 ## Overview
 
 Aion Grind Meter contains various grinding meters for Aion: 
+* Monster kills
+  * List of XP-granting monsters killed
+  * Mobs killed per hour, by monster name
+* Item Acquisition
+  * List of items acquired
+  * Items gained per hour, by item ID
+* Item Consumption
+  * List of items consumed
+  * Items consumed per hour, by item name
+* Items acquired from container openings 
+  * Items acquired from different containers are listed separately
 * XP (Experience) mode
   * XP gained, in actual numbers and percentage
   * XP/hour (XP gained per hour), in actual amounts and percentage per hour
@@ -79,17 +91,6 @@ Aion Grind Meter contains various grinding meters for Aion:
 * Profession (Gathering / crafting) leveling mode
   * Profession level ups per hour
   * Estimated XP bar toward next skill level, if two level ups have been attained (not yet supported for aetherforging)
-* Monster kills
-  * List of XP-granting monsters killed
-  * Mobs killed per hour, by monster name
-* Item Acquisition
-  * List of items acquired
-  * Items gained per hour, by item ID
-* Item Consumption
-  * List of items consumed
-  * Items consumed per hour, by item name
-* Items acquired from container openings 
-  * Items acquired from different containers are listed separately
 * Player kills
   * Number of kills, deaths, and assists in PvP
   * List of players killed (you made last hit) or assisted (you dealt damage to a dead enemy player within 20 seconds)
