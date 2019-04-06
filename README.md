@@ -1,6 +1,8 @@
 ## [Click here for Downloads](https://github.com/maxperiod/aiongrindmeter2/releases)
 
-Aion Grind Meter 2 - Aion XP/hr meter and more
+## Updates
+
+2019-04-05 - Aion Grind Meter 2.4.6 released, now supporting Aion 6.5!
 
 ## Screenshots
 
