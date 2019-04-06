@@ -6,17 +6,17 @@
 
 ## Screenshots
 
-![alt text](images/theo19xcontainers.png "Items from container opens")
+![alt text](images/luna6.5.png "Items from container opens")
 
 Items from container opens
 
 
-![alt text](images/theo19xitemsacquired.png "Items acquired (except opened from containers)")
+![alt text](images/itemsacquired.png "Items acquired (except opened from containers)")
 
 Items acquired (except opened from containers)
 
 
-![alt text](images/theo19xmobkills.png "Monster kills")
+![alt text](images/mobskilled.png "Monster kills")
 
 Monster kills
 
