@@ -61,7 +61,18 @@ bool MaxPeriodParser::resembles(const string &input, const string &rule, map<str
 										
 					int parameterLength = readParameterValue(inputPointer + j, rulePointer + i, numericOnly);
 					
-					if (parameterLength == -1) {
+					//begin experimental
+					if (j != 0 && input.size() - TIMESTAMP_OFFSET >= 254 && !numericOnly){
+						int newInputSize = input.size() - 1 - j - totalOffset;
+						if (newInputSize > 0) {
+							parameterLength = newInputSize; 
+							j = input.size();
+						}
+					}
+					//end experimental
+
+					if (parameterLength == -1) {						
+
 						parameterMap.clear();
 						return false;
 					}					
@@ -102,7 +113,7 @@ bool MaxPeriodParser::resembles(const string &input, const string &rule, map<str
 			parameterMap.insert(pair<string, string>("_REPOSE_", trailingValues));
 		}
 	}
-	
+	parameterMap.insert(pair<string, string>(TIME_PARAMETER, input.substr(0, TIMESTAMP_OFFSET - 3)));
 	return true;	
 }
 

@@ -4,6 +4,8 @@
 //#include "RuleStrings.h"
 using namespace std;
 
+#define TIME_PARAMETER "_TIME"
+
 class MaxPeriodParser: public Parser{
 public:	
 	MaxPeriodParser();

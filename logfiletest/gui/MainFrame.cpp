@@ -32,7 +32,7 @@ MainFrame::MainFrame(string& aionPath, const wxPoint& pos):
 	tickCounter(0)		
 {
 	//For NA builds, comment out following line. For EU builds, enable following line.
-	LANGUAGE_MANAGER.setToEnglishEU();
+	//LANGUAGE_MANAGER.setToEnglishEU();
 
 	parentSizer = new wxBoxSizer(wxVERTICAL);
 	panel = new wxPanel(this, wxID_ANY);

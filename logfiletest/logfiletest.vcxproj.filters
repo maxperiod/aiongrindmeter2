@@ -464,9 +464,6 @@
     <ClCompile Include="lookups\ExpChart60.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mains\MyApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="gui\ApFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -513,6 +510,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gui\TestFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mains\MyApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

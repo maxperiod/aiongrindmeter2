@@ -10,18 +10,18 @@ using namespace std;
 
 class ChatLogCommand{
 public:
-	ChatLogCommand(MessageRuleCode messageRuleCode, map<string, string>& params, bool critical, clock_t timestamp)
+	ChatLogCommand(MessageRuleCode messageRuleCode, map<string, string>& params, bool critical, time_t timestamp)
 		: messageRuleCode(messageRuleCode), params(params), critical(critical), timestamp(timestamp){}
 
 	MessageRuleCode getMessageRuleCode() {return messageRuleCode;}
 	map<string, string>& getParams() {return params;}
 	bool isCritical() {return critical;}
-	clock_t& getTimestamp() {return timestamp;}
+	time_t getTimestamp() {return timestamp;}
 private:
 	MessageRuleCode messageRuleCode;	 
 	map<string, string> params;
 	bool critical;
-	clock_t timestamp;
+	time_t timestamp;
 };
 
 #endif

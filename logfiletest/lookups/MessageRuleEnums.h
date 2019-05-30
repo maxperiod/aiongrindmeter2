@@ -21988,7 +21988,8 @@ enum MessageRuleCode{
 	STR_TransCollection_029 = 914954,
 	STR_TransCollection_030 = 914955,
 	STR_TransCollection_031 = 914956,
-	STR_TransCollection_032 = 914957,
+	STR_TransCollection_032 = 914957
+
 
 
 };

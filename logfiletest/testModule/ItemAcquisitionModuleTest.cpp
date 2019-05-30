@@ -115,6 +115,41 @@ TEST_F(ItemAcquisitionModuleTest, getItemMultiSpecial){
 	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
 	
 }
+
+TEST_F(ItemAcquisitionModuleTest, getItemCorruptedLine){
+	logFile.appendFile("2019.05.28 17:41:20 : You have acquired 160 [@item:169020003;ver8;Ö·¦¹´@??????æ}Ùï?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»????? ");
+
+	logFileUtility.parseLogFile();
+	logFileUtility.parseLogFile();
+
+	//EXPECT_EQ(2, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	EXPECT_EQ(160, itemAcquisitionModule.itemsAcquired.get(169020003).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(169020003).numPackets);	
+
+	EXPECT_EQ(169020003, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
+	EXPECT_EQ(160, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
+	
+}
+
+TEST_F(ItemAcquisitionModuleTest, getItemCorruptedLine2){
+	logFile.appendFile("2019.05.28 17:47:30 : You have acquired [@item:112350120;ver8;íe?ÅöÝÛéÔ´¼¨ïÕÈ?ºHÄj?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»??????§HÚR????§t??­å?¯C??¶ÐªN??ÐÒ¤K?¦·®ú?ÚG®»????? ");
+
+	logFileUtility.parseLogFile();
+	logFileUtility.parseLogFile();
+
+	//EXPECT_EQ(2, itemAcquisitionModule.itemsAcquired.getTotalCount());
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(112350120).numGained);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.get(112350120).numPackets);	
+
+	EXPECT_EQ(112350120, itemAcquisitionModule.itemsAcquired.getLastUpdated()->first);
+	EXPECT_EQ(1, itemAcquisitionModule.itemsAcquired.getLastUpdated()->second.numGained);
+
+	
+	
+}
+
+
+
 /*
 TEST_F(ItemAcquisitionModuleTest, rollDice){
 	logFile.appendFile("2014.06.18 17:45:44 : You rolled the dice and got 94 (max. 100). ");

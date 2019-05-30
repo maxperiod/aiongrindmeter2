@@ -1,15 +1,14 @@
 #include "BracketValueReader.h"
 
-
 void BracketValueReader::readValues(const string& input, vector<string>& values){
 		
 	const char* inputPointer = input.c_str();
 				
-	if (input.size() > 0 && inputPointer[0] == '[' && inputPointer[input.size() - 1] == ']'){
+	if (input.size() > 0 && inputPointer[0] == '['/* && inputPointer[input.size() - 1] == ']'*/){
 		int valueStart = 1;		
 		char delimiter = ':';
 			
-		for (int i = 1; i < input.size() - 1; i ++){
+		for (int i = 1; i < input.size() - 1 && inputPointer[i] != ']'; i ++){
 			if (inputPointer[i] == delimiter){
 				string value(inputPointer, valueStart, i - valueStart);
 				values.push_back(value);

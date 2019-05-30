@@ -12,7 +12,7 @@ public:
 	 * The timestamp header is in the format of "YYYY.MM.DD HH:MM:SS : "
 	 * which is 22 characters before start of message body
 	 */
-	static const int TIMESTAMP_OFFSET = 22;	
+	static const int TIMESTAMP_OFFSET = 22;		
 
 	/*
 	 * Extracts the timestamp from the input message line as a string.
