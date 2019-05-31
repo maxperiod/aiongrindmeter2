@@ -2,6 +2,7 @@
 
 ## Updates
 
+2019-05-31 - Aion Grind Meter 2.4.7 released, fixes a chatlog-related issue that occasionally prevented equipment and shards from recognizing their acquisition, due to overly long truncated logfile lines with gibberish characters.
 2019-04-05 - Aion Grind Meter 2.4.6 released, now supporting Aion 6.5!
 
 ## Screenshots

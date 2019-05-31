@@ -2120,7 +2120,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_CHAT_ROOM_JOIN_FAIL_ROOM_NOT_FOUND] = "That private channel does not exist.";
 	rules[STR_CHAT_ROOM_JOIN_FAIL_TOO_MANY_ROOM] = "You cannot enter the private channel as it is full.";
 	rules[STR_CHAT_ROOM_JOIN_FAIL_BANNED_USER] = "An expelled character cannot enter the same private channel again.";
-	rules[STR_CHAT_ROOM_JOIN_FAIL_WRONG_PASSWORD] = "Enter a password to join channel %0. Please follow the correct input requirements: ѯJoin channel [ChannelName] [Password]'.";
+	rules[STR_CHAT_ROOM_JOIN_FAIL_WRONG_PASSWORD] = "Enter a password to join channel %0. Please follow the correct input requirements: ‘/Join channel [ChannelName] [Password]'.";
 	rules[STR_CHAT_ROOM_JOIN_FAIL_ROOM_FULL] = "You cannot enter the private channel (%0) as it is full.";
 	rules[STR_CHAT_ROOM_JOIN_NOTIFY] = "%0 has entered the private channel.";
 	rules[STR_CHAT_ROOM_JOIN_NOTIFY_SELF] = "You have joined the private channel %1 on Channel %0. Make sure you have selected the channel in your Tab Options under the Chat Preferences menu.";
@@ -2659,7 +2659,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_GET_CASH_SOCIALACTION] = "You have acquired the %0 emote.";
 	rules[STR_MSG_DELETE_CASH_TITLE_BY_TIMEOUT] = "The usage time of %0 title has expired.";
 	rules[STR_MSG_DELETE_CASH_SOCIALACTION_BY_TIMEOUT] = "The usage time of the %0 emote has expired.<a href=\"ingame_web_shop_dialog\">Open Aion Shop</a>";
-	rules[STR_MSG_DELETE_CASH_XPBOOST_BY_TIMEOUT] = "The usage time for the bonus 20%% XP from LodasҠAmulet has expired.<a href=\"ingame_web_shop_dialog\">Open Aion Shop</a>";
+	rules[STR_MSG_DELETE_CASH_XPBOOST_BY_TIMEOUT] = "The usage time for the bonus 20%% XP from Lodas’ Amulet has expired.<a href=\"ingame_web_shop_dialog\">Open Aion Shop</a>";
 	rules[STR_MSG_SPLIT_ME_TO_B] = "You distributed %num0 Kinah to %num1 people, giving each %num2 Kinah.";
 	rules[STR_MSG_SPLIT_B_TO_ME] = "%0 distributed %num1 Kinah among %num2 people, giving %num3 Kinah each.";
 	rules[STR_MSG_WHO_DIALOG_RESULT] = "The search found %num0 characters (max. 104).";
@@ -2723,7 +2723,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_TEMP_PSEUDO_FULLSCREEN] = "Changing Game Preferences to Pseudo Full Screen mode for convenient access of the website.";
 	rules[STR_MSG_DELETE_CASH_ITEM_BY_TIMEOUT] = "Usage time for %0 has expired.";
 	rules[STR_CANNOT_GET_AP_TIMEBASE_LIMIT] = "You cannot gain any Abyss Points for a while as you have gained too many Abyss Points in too short a period of time.";
-	rules[STR_MSG_LEVEL_LIMIT_FREE_TIME] = "Your trial has ended. %1, We hope youӶe enjoyed playing AionΡ To continue to play, purchase Aion. Go to AionOnline.com to buy now!";
+	rules[STR_MSG_LEVEL_LIMIT_FREE_TIME] = "Your trial has ended. %1, We hope you’ve enjoyed playing Aion®! To continue to play, purchase Aion. Go to AionOnline.com to buy now!";
 	rules[STR_MSG_CANNOT_ENTER_INSTANCE_COOL_TIME_HOUR_CLIENT] = "You may enter %0 again after %1 hour(s).";
 	rules[STR_MSG_CANNOT_ENTER_INSTANCE_COOL_TIME_MIN_CLIENT] = "You may enter %0 again after %1 minute(s).";
 	rules[STR_MACRO_MSG_REGIST] = "The Macro has been registered.";
@@ -3415,7 +3415,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_ITEM_CHARGE_LEVEL_DOWN] = "%0 has been conditioned to level %1, and the item's stats have changed.";
 	rules[STR_MSG_ITEM_CHARGE_ALL_FAIL_EQUIPED_ALREADY_CHARGED] = "All equipped items have been conditioned to their maximum level, and cannot be conditioned to level %0.";
 	rules[STR_MSG_ITEM_CHARGE_ALL_FAIL_NO_CHARGEABLE_EQUIPMENT] = "None of the equipped items are conditionable.";
-	rules[STR_MSG_DOPING_PET_MESSAGE03] = "As long as the ҡutomatic buffҠfunction is activated on the pet/minion, the contents of the buff bag cannot be changed.";
+	rules[STR_MSG_DOPING_PET_MESSAGE03] = "As long as the ‘automatic buff’ function is activated on the pet/minion, the contents of the buff bag cannot be changed.";
 	rules[STR_TIRED_REMAIN_PLAYTIME_CHINA_1] = "Please log out of the game and take a break.";
 	rules[STR_TIRED_REMAIN_PLAYTIME_CHINA_2] = "Your in-game gains have been reduced to 50% of normal values. Please log out and taking a break.";
 	rules[STR_CANT_ACQUIRE_QUEST_FATIGUE] = "You can't acquire any quest while fatigued. Please take a break until your fatigue level decreases, and then resume play.";
@@ -4268,12 +4268,12 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_CANNOT_TALK_INVISIBLE_TARGET] = "You cannot chat to your counterparts in stealth mode.";
 	rules[STR_MSG_FATIGUE_CANT_DISTRIBUTE_GOLD_TO_MEMBER] = "This can not be distributed to %0 as you are at recommend break level 2.";
 	rules[STR_MSG_GLORY_POINT_LOSE_PERSONAL] = "The amount of Honour Points to be deducted from you %0, is %1 [%gchar:glory_point].";
-	rules[STR_GET_EXP_PCBANG_VITAL_BONUS] = "You received %num1 EP from %0 (Internet caf麠Energy of Repose %num2).";
-	rules[STR_GET_EXP_PCBANG_VITAL_MAKEUP_BONUS] = "You received %num1 EP from %0 (Internet caf麠Energy of Repose %num2, Energy of Salvation %num3).";
-	rules[STR_MSG_COMBAT_MY_EXP_GAIN_PCBANG_VITAL_BONUS] = "You received %0 (Internet caf麠Energy of Repose %num1).";
-	rules[STR_MSG_COMBAT_MY_EXP_GAIN_PCBANG_VITAL_MAKEUP_BONUS] = "You received %0 (Internet caf麠Energy of Repose %num1, Energy of Salvation %num2).";
-	rules[STR_GET_EXP2_PCBANG_VITAL_BONUS] = "You received %num0 EP (Internet caf麠Energy of Repose %num1).";
-	rules[STR_GET_EXP2_PCBANG_VITAL_MAKEUP_BONUS] = "You received %num0 EP (Internet caf麠Energy of Repose %num1, Energy of Salvation %num2).";
+	rules[STR_GET_EXP_PCBANG_VITAL_BONUS] = "You received %num1 EP from %0 (Internet café: Energy of Repose %num2).";
+	rules[STR_GET_EXP_PCBANG_VITAL_MAKEUP_BONUS] = "You received %num1 EP from %0 (Internet café: Energy of Repose %num2, Energy of Salvation %num3).";
+	rules[STR_MSG_COMBAT_MY_EXP_GAIN_PCBANG_VITAL_BONUS] = "You received %0 (Internet café: Energy of Repose %num1).";
+	rules[STR_MSG_COMBAT_MY_EXP_GAIN_PCBANG_VITAL_MAKEUP_BONUS] = "You received %0 (Internet café: Energy of Repose %num1, Energy of Salvation %num2).";
+	rules[STR_GET_EXP2_PCBANG_VITAL_BONUS] = "You received %num0 EP (Internet café: Energy of Repose %num1).";
+	rules[STR_GET_EXP2_PCBANG_VITAL_MAKEUP_BONUS] = "You received %num0 EP (Internet café: Energy of Repose %num1, Energy of Salvation %num2).";
 	rules[STR_MSG_GLORY_POINT_LOSE] = "%num0 Honour Points have been deducted from you.";
 	rules[STR_MSG_BREAK_PROC] = "%1% at %0 has been destroyed.";
 	rules[STR_MSG_GIVE_PROC_CANCEL] = "The Godstone Socketing for %0 was cancelled.";
@@ -4471,21 +4471,21 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_GACHA_FEVERTIME_START] = "Nyerk Fever!";
 	rules[STR_MSG_GET_GACHA_COIN] = "You obtained %0%. The item seems to be valuable.";
 	rules[STR_MSG_CANT_PLUS_ABSOLUTEEXP_BONUS] = "This item could not be used because your current maximum number of available XP was exceeded.";
-	rules[STR_GET_EXP_ABSOLUTEEXP_BONUS] = "You have gained%num1XP from%0 (Blessing of Wisdom %num2).";
-	rules[STR_GET_EXP_VITAL_ABSOLUTEEXP_BONUS] = "You have gained%num1XP from%0(Energy of Repose %num2, Blessing of Wisdom %num3).";
-	rules[STR_GET_EXP_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained%num1XP from%0(Energy of Salvation %num2, Blessing of Wisdom %num3).";
-	rules[STR_GET_EXP_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained%num1XP from%0(Energy of Repose %num2, Energy of Salvation %num3, Blessing of Wisdom %num4).";
+	rules[STR_GET_EXP_ABSOLUTEEXP_BONUS] = "You have gained %num1 XP from %0 (Blessing of Wisdom %num2).";
+	rules[STR_GET_EXP_VITAL_ABSOLUTEEXP_BONUS] = "You have gained %num1 XP from %0 (Energy of Repose %num2, Blessing of Wisdom %num3).";
+	rules[STR_GET_EXP_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num1 XP from %0 (Energy of Salvation %num2, Blessing of Wisdom %num3).";
+	rules[STR_GET_EXP_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num1 XP from %0 (Energy of Repose %num2, Energy of Salvation %num3, Blessing of Wisdom %num4).";
 	rules[STR_MSG_GODELITE_TimeAttack_Start] = "The Lord's Agent ends the battle in 30 minutes.";
 	rules[STR_MSG_GODELITE_TimeAttack_Fail] = "The Lord's Agent disappeared after the battle.";
 	rules[STR_MSG_ATTEND_REWARD_REMOVE_EXCESS] = "Because the Reward Box was full, the oldest gift (%0%) has been deleted.";
-	rules[STR_GET_EXP_PCBANG_VITAL_ABSOLUTEEXP_BONUS] = "You have gained%num1XP from%0(Energy of Repose(Internet caf驠%num2, Blessing of Wisdom %num3).";
-	rules[STR_GET_EXP_PCBANG_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained%num1XP from%0(Energy of Repose(Internet caf驠%num2, Energy of Salvation %num3, Blessing of Wisdom %num4).";
+	rules[STR_GET_EXP_PCBANG_VITAL_ABSOLUTEEXP_BONUS] = "You have gained %num1 XP from %0 (Energy of Repose (Internet café) %num2, Blessing of Wisdom %num3).";
+	rules[STR_GET_EXP_PCBANG_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num1 XP from %0 (Energy of Repose (Internet café) %num2, Energy of Salvation %num3, Blessing of Wisdom %num4).";
 	rules[STR_GET_EXP2_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Blessing of Wisdom %num1).";
 	rules[STR_GET_EXP2_VITAL_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Repose %num1, Blessing of Wisdom %num2).";
 	rules[STR_GET_EXP2_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Salvation %num1, Blessing of Wisdom %num2).";
 	rules[STR_GET_EXP2_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Repose %num1, Energy of Salvation %num2, Blessing of Wisdom %num3)";
-	rules[STR_GET_EXP2_PCBANG_VITAL_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Repose(Internet caf驠%num1, Blessing of Wisdom %num2).";
-	rules[STR_GET_EXP2_PCBANG_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Repose(Internet caf驠%num1, Energy of Salvation %num2, Blessing of Wisdom %num3).";
+	rules[STR_GET_EXP2_PCBANG_VITAL_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Repose (Internet café) %num1, Blessing of Wisdom %num2).";
+	rules[STR_GET_EXP2_PCBANG_VITAL_MAKEUP_ABSOLUTEEXP_BONUS] = "You have gained %num0 XP (Energy of Repose (Internet café) %num1, Energy of Salvation %num2, Blessing of Wisdom %num3).";
 	rules[STR_MSG_BUFF_PET_USE_STOP_MESSAGE_02] = "Cheering stopped because all the %0% have been used.";
 	rules[STR_MSG_EXCEED_CANNOT_01] = "An evolution is not possible for %0.";
 	rules[STR_MSG_EXCEED_CANNOT_02] = "You must reach the highest boost level first before an evolution is possible.";
@@ -4547,7 +4547,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_Tames_Solo_C_End] = "The door to the next area is open.";
 	rules[STR_MSG_EXP_VITAL_POINT] = "Energy of Repose";
 	rules[STR_MSG_EXP_MAKEUP_BONUS] = "Energy of Salvation";
-	rules[STR_MSG_EXP_PCBANG_VITAL_POINT] = "Energy of Repose (Internet caf驢;
+	rules[STR_MSG_EXP_PCBANG_VITAL_POINT] = "Energy of Repose (Internet café)";
 	rules[STR_MSG_EXP_ABSOLUTEEXP_BONUS] = "Blessing of Wisdom";
 	rules[STR_MSG_EXP_TOPPING] = "Shugo Workshop Boost";
 	rules[STR_GOLDVENDOR_CANCEL_MAIL_FROM] = "Kinah Trade Broker";
@@ -4879,7 +4879,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_CANNOT_SELL_SEALED_DISUSE_ITEM] = "You cannot sell sealed items.";
 	rules[STR_MSG_CAN_QUEST_DEVA] = "You must complete the class change quest if you want to become a Daeva. If you complete the quest, you will immediately reach level 10 regardless of your Experience Points.<a href=\"quest_dialog\">Open mission/quest</a>";
 	rules[STR_MSG_CAN_QUEST_HIGHDEVA] = "You must complete the class change quest if you want to become a High Daeva. If you complete the quest, you will immediately reach level 66 regardless of your Experience Points.<a href=\"quest_dialog\">Open mission/quest</a>";
-	rules[STR_MSG_EXP_COND_BONUS_ATTR] = "Internet caf鰬egion advantages";
+	rules[STR_MSG_EXP_COND_BONUS_ATTR] = "Internet café/legion advantages";
 	rules[STR_MSG_MEMBERSHIP_ALL_ERROR] = "Your membership data could not be updated. Please check the details.";
 	rules[STR_MSG_TOPPING_WARNING_EXPIRE_TIME_SPECIAL] = "The %1 effect will end in %DURATIONDAY0. Visit the shop and purchase a corresponding pack to prolong the effect. [%shoplink2]";
 	rules[STR_MSG_TOPPING_EXPIRED_SPECIAL] = "The %0 effect has expired. Visit the shop and purchase corresponding packs to unlock all game functions. [%shoplink2]";
@@ -5374,7 +5374,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_MSG_GACHA_ITEM_OWNER] = "Game Character";
 	rules[STR_PARTY_ENTERED_PARTY_NOTI_01] = "If you click on the button on the right in the group window, a window will appear containing group options.";
 	rules[STR_FORCE_ENTERED_FORCE_NOTI_01] = "You can view the status of the alliance in the Start menu - Community - Alliance window.";
-	rules[STR_FORCE_ENTERED_FORCE_NOTI_02] = "You can use the Alliance chat. You can write something using \"/a\" or ӯalliance\".";
+	rules[STR_FORCE_ENTERED_FORCE_NOTI_02] = "You can use the Alliance chat. You can write something using \"/a\" or “/alliance\".";
 	rules[STR_UNION_ENTER_UNION_NOTI_01] = "You can view the status of the League in the Start menu - Community - League window.";
 	rules[STR_UNION_ENTER_UNION_NOTI_02] = "You can use the League chat. You can write something using \"/l\" or \"/league\".";
 	rules[STR_PARTY_ENTERED_PARTY_NOTI_02] = "You can use the Group chat. You can write something using \"/g\" or \"/group\".";
@@ -5681,6 +5681,7 @@ CommandStringsEUEnglish::CommandStringsEUEnglish(){
 	rules[STR_CLASS_NAME_GUNNER_F] = "Gunner";
 	rules[STR_CLASS_NAME_ARTIST_F] = "Artist";
 	rules[STR_CLASS_NAME_BARD_F] = "Bard";
+
 
 
 
